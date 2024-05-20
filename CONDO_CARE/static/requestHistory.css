@@ -21,8 +21,8 @@ table{
 }
 
 th,
-td{
-  text-align: center;
+td {
+  text-align: left;
   padding: 5px;
   border-right: 1px solid black;
 }

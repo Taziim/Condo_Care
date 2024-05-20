@@ -28,31 +28,15 @@
         <th>issue description</th>
         <th>Status</th>
     </tr>
-    {% for Tenant in tenantinfo %}
+    {% for request_history in request_history %}
     <tr>
       <td>{{forloop.counter }}</td>
-      <td>{{Tenant.full_name}}</td>
-      <td>{{Tenant.email}}</td>
-      <td>{{Tenant.phone_number}}</td>
-      <td>
-        <a href="{% url 'download_passport_or_nric' Tenant.id %}">
-            <i class="fa-solid fa-download"></i>
-        </a>
-      </td>
-      <td>
-        {% if Tenant.driving_license %}
-        <a href="{% url 'download_driving_license' Tenant.id %}">
-          <i class="fa-solid fa-download"></i>
-        </a>
-        {% else %}
-        <p>No file</p>
-        {% endif %}
-      </td>
-      <td>
-        <a href="{% url 'delete' Tenant.id %}">
-          <i class="fa-sharp fa-solid fa-trash"></i>
-        </a>
-      </td>
+      <td>{{request_history.issue_type}}</td>
+      <td>{{request_history.name}}</td>
+      <td>{{request_history.request_datetime}}</td>
+      <td>{{request_history.location}}</td>
+      <td>{{request_history.description}}</td>
+      <td>{{request_history.status}}</td>
     </tr>
     {% endfor %}
     </table>

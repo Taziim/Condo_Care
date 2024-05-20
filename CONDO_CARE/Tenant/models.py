@@ -33,7 +33,6 @@ class MaintenenceRequest(models.Model):
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES)
     photo = models.ImageField(upload_to='media/', blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
-    # status = models.CharField(max_length=20, default='pending')
 
 
 

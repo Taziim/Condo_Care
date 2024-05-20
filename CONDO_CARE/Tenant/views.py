@@ -3,19 +3,18 @@ from django.http import HttpResponse
 from .models import *
 
 def maintenenece_request(request):
-    if request.method == "POST":
-       full_name = request.POST.get('full_name')
-       email = request.POST.get('email')
-       phone_number = request.POST.get('phone_number')
-       occupation = request.POST.get('occupation')
-       date_of_birth = request.POST.get('date_of_birth')
-       nationality = request.POST.get('nationality')
-       home_address = request.POST.get('home_address')
-       passport_or_nric = request.FILES['passport_or_nric']
-       driving_license = request.FILES['driving_license']
-       addTenant1 = MaintenenceRequest(full_name=full_name,email=email,phone_number=phone_number, occupation=occupation, nationality=nationality,date_of_birth=date_of_birth,  passport_or_nric=passport_or_nric,driving_license=driving_license,home_address=home_address)
-       addTenant1.save()
-       return redirect('maintenenecerequest')
+    if request.method == "POST":         
+        name = request.POST.get("Tenant",'')
+        issue_type = request.POST.get("issue_type",'')
+        location = request.POST.get("location",'')
+        request_datetime = request.POST.get("request_datetime",'')
+        priority = request.POST.get("priority",'')
+        photo = request.POST.get("photo",'')
+        maintenenecerequest = MaintenenceRequest(name=name, issue_type=issue_type, location=location, request_datetime=request_datetime, priority=priority, photo=photo)
+        maintenenecerequest.save()
+        return redirect('maintenenecerequest')  
     return render(request, 'Tenant/MainReq.html')
+
 def request_history(request):
-    return render(request, 'Tenant/RequestHistory.html')
+    requesthistory = MaintenenceRequest.objects.all()
+    return render(request, 'Tenant/RequestHistory.html',{'request_history':requesthistory})

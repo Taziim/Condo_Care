@@ -15,7 +15,8 @@
     <main>
         <section id="submit-request">
             <h2>Submit a Maintenance Request</h2>
-            <form id="request-form">
+            <form id="request-form" method = "POST">
+                {% csrf_token %}
                 <label for="issue-type"><i class="fa-solid fa-screwdriver-wrench"></i>Request Type</label>
                 <select id="issue-type" name="issueType">
                     <option value="">Select a type</option>
@@ -32,9 +33,12 @@
 
                 <label for="location">Location</label>
                 <input type="text" id="location" name="location" placeholder="Unit number or area...">
-                 
+
                 <label for="datetime-local">Request Date And Time</label>
-                <input type="datetime-local" id="datetime-local" name="datetime-local" required>
+                <input type="datetime-local" id="datetime-local" name="request_datetime" required>
+
+                 
+
                 
                 <label for="description">Describe the issue</label>
                 <textarea id="description" name="description" rows="4" placeholder="provide the issue details"></textarea>
