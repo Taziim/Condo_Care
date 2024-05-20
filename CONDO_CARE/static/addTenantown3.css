@@ -1,0 +1,122 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #c9ccd1;
+  font-size: 16px;
+  color: #000;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+form {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #fff ;
+  border-radius: 5px;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 0.5px solid #000;
+  border-radius: 3px;
+  box-sizing: border-box;
+  resize: none; /* Remove resize handle for textarea */
+}
+
+input[type="file"] {
+  padding: 5px;
+}
+
+select {
+  appearance: none; /* Remove default dropdown styles */
+  background-image: url("data:image/svg+xml;base64,phN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdwbortPSJubm8iPgogPHBhdGggZD0iTTYgMFY4bDIgLTJWTDQgMHoiIGZpbGw9IiNjY2NjY2MiIgLz4KPC9zdmc+"); /* Create a small down arrow icon */
+  background-repeat: no-repeat;
+  background-position: calc(100% - 10px) center; /* Position icon at right side */
+  padding-right: 20px;
+}
+
+.custom-button {
+  background-color: #3366FF;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  width: 100%;
+}
+
+.custom-button:hover {
+  background-color: #45a049;
+}
+
+h2 {
+  margin: 5px auto;
+  text-align: center;
+}
+.checkbox-button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    padding: 8px ;
+    cursor: pointer;
+    background-color: #000;
+    transition: 0.3s ease;
+    align-items: flex-end;
+    display: inline-block;
+    margin: 8px ;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .checkbox-button:checked {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+ 
+.checkbox-button-label {
+  margin-left: auto;
+  padding-top: 2px;
+  margin-bottom: px;
+}

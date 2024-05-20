@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'incidentReporting.css' %}" />
+    <title>Incident Reporting</title>
+</head>
+<body>
+    <div class="Container_1">
+        <header>
+            <h1>Security Reporting</h1>
+        </header>
+        <section class="report-form">
+            <h2>Incident Reporting</h2>
+            <form id="incident-report-form">
+                <select id="incident_type" name="incident_type" >
+                    <option value="">Select Incident Type</option>
+                    <option value="theft">Theft</option>
+                    <option value="vandalism">Vandalism</option>
+                    <option value="suspicious-activity">Suspicious Activity</option>
+                    <option value="suspicious-activity">Parking Violation</option>
+                    <option value="other">Others</option>
+                  </select>
+                
+                <label for="incident-description">Incident Description:</label>
+                <textarea id="incident-description" name="description" rows="3" required></textarea>
+
+                <label for="incident-location">Location:</label>
+                <input type="text" id="incident-location" name="incident-location" required>   
+
+                <label for="datetime-local">Enter Date And Time:</label>
+                <input type="datetime-local" id="datetime-local" name="datetime-local" required>
+
+                <label for="incident-attachment">Upload Evidence:</label>
+                <input type="file" id="incident-attachment" name="attachment">
+
+                <button type="submit">Submit Report</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
+  

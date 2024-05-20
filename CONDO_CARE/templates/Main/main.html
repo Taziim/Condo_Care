@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'Mainpage.css' %}" />
+    <title>mainpage</title>
+</head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="{% static 'condologo.png' %}" alt="Condo Care Logo"> 
+      </div>
+      <nav>
+        <a href="{% url 'login' %}" class="login-btn">Login</a>
+        <a href="{% url 'signup' %}" class="signup-btn">Sign Up</a>        
+      </nav>
+    </header>
+    <main>
+      <h1 id="special-heading">Welcome to Condo Care</h1>
+      <p>Experience a smarter and more connected way to manage your condominium.</p>
+      <section class="features">
+        <article>
+          <h3>Seamless Visitor Management</h3>
+          <p>Effortlessly register and verify visitors for enhanced security and peace of mind.</p>
+        </article>
+        <article>
+          <h3>Effortless Maintenance & Booking</h3>
+          <p>Submit maintenance requests and schedule amenities with ease.</p>
+        </article>
+        <article>
+          <h3>Thriving Community Engagement</h3>
+          <p>Connect with your neighbors, plan events, and share feedback.</p>
+        </article>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; Condo Care. All Rights Reserved.</p>
+    </footer>
+  </body>
+  </html>

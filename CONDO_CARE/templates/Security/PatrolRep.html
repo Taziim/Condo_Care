@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'patrolReporting.css' %}" />
+    <title>Daily Patrolling Report</title>
+</head>
+<body>
+    <div class="Container_1">
+        <header>
+            <h1>Security Reporting</h1>
+        </header>
+            <section class="patrol-report">
+                <h2>Daily Patrolling Report</h2>
+                <form id="patrol-report-form">
+
+                    <label for="patrol-date">Date:</label>
+                    <input type="date" id="patrol-date" name="patrol-date" required>
+
+                    <label for="patrol-start-time">Start Time:</label>
+                    <input type="time" id="patrol-start-time" name="patrol-start-time" required>
+
+                    <label for="patrol-end-time">End Time:</label>
+                    <input type="time" id="patrol-end-time" name="patrol-end-time" required>
+
+                    <label for="patrol-summary">Patrol Summary:</label>
+                    <textarea id="patrol-summary" name="summary" required></textarea>
+    
+                    <label for="patrol-areas">Areas 1:</label>
+                    {% comment %} <input type="text" id="patrol-areas" name="areas" required> {% endcomment %}
+                    <input type="file" id="patrol-media" name="patrol-media" multiple>
+                    <p>only videos</p>
+
+                    <label for="patrol-observations">Observations:</label>
+                    <textarea id="patrol-observations" name="patrol-observations"></textarea>
+                    
+
+                    <label for="patrol-media">Attach Media (photos, videos):</label>
+                    <input type="file" id="patrol-media" name="patrol-media" multiple>
+    
+                    <button type="submit">Submit Patrol Report</button>
+                </form>
+        </section>
+    </div>
+</body>
+</html>
+  
