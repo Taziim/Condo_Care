@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'mainReq.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Maintenance</title>
+</head>
+<body>
+    <header>
+        <h1>Maintenance Request</h1>
+    </header>
+    <main>
+        <section id="submit-request">
+            <h2>Submit a Maintenance Request</h2>
+            <form id="request-form">
+                <label for="issue-type"><i class="fa-solid fa-screwdriver-wrench"></i>Request Type</label>
+                <select id="issue-type" name="issueType">
+                    <option value="">Select a type</option>
+                    <option value="Appliance">Appliance Repair</option>
+                    <option value="Plumbing">Plumbing</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="House-Exterior">House Exterior</option>
+                    <option value="Outdoors">Outdoors</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="Tenant">Tenant Name</label>
+                <input type="text" id="Tenant" name="Tenant" placeholder="Enter Your Name">
+
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" placeholder="Unit number or area...">
+                 
+                <label for="datetime-local">Request Date And Time</label>
+                <input type="datetime-local" id="datetime-local" name="datetime-local" required>
+                
+                <label for="description">Describe the issue</label>
+                <textarea id="description" name="description" rows="4" placeholder="provide the issue details"></textarea>
+
+                <label for="priority">Priority</label>
+                <select id="priority" name="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+
+                <label for="photo">Upload Photo(</label>
+                <input type="file" id="photo" name="photo" accept="image/*,video/*">
+            
+                <button type="submit">Create a Request</button>
+            </form>
+        </section>
+    </main>
+
+        
+                 

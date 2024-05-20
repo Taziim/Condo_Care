@@ -3,9 +3,8 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
-
-    # path('addtenant1/', views.add_tenant1, name='addtenant1'),
-    # path('addtenant2/', views.add_tenant2, name='addtenant2'),
+     path('maintenenecerequest/', views.maintenenece_request, name='maintenenecerequest'),
+     path('requesthistory/', views.request_history, name='requesthistory'),
     # path('addtenant3/', views.add_tenant3, name='addtenant3'),
     # path('viewtenantinfo/', views.view_tenant_info, name='viewtenantinfo'),
     # path('viewtenantagree/', views.view_tenant_agree, name='viewtenantagree'),

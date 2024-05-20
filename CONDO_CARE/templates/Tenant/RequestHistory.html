@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'requestHistory.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Maintenance</title>
+</head>
+<body>
+    {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}" role="alert">
+      {{ message }}
+  </div>
+  {% endfor %}
+  <div class="table_1">
+    <table>
+      <caption>
+        Maintenance Request History
+      </caption>
+    <tr>
+        <th>Request ID</th>
+        <th>Issue Type</th>
+        <th>Tenant Name</th>
+        <th>Date Submitted</th>
+        <th>Location</th>
+        <th>issue description</th>
+        <th>Status</th>
+    </tr>
+    {% for Tenant in tenantinfo %}
+    <tr>
+      <td>{{forloop.counter }}</td>
+      <td>{{Tenant.full_name}}</td>
+      <td>{{Tenant.email}}</td>
+      <td>{{Tenant.phone_number}}</td>
+      <td>
+        <a href="{% url 'download_passport_or_nric' Tenant.id %}">
+            <i class="fa-solid fa-download"></i>
+        </a>
+      </td>
+      <td>
+        {% if Tenant.driving_license %}
+        <a href="{% url 'download_driving_license' Tenant.id %}">
+          <i class="fa-solid fa-download"></i>
+        </a>
+        {% else %}
+        <p>No file</p>
+        {% endif %}
+      </td>
+      <td>
+        <a href="{% url 'delete' Tenant.id %}">
+          <i class="fa-sharp fa-solid fa-trash"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+    </table>
+  </div>
+  <button type="submit" class="custom-button" onclick="window.location.href='{% url 'maintenenecerequest' %}'">Go Back to Main</button>
+</body>
+</html>
