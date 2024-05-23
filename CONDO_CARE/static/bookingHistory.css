@@ -52,3 +52,16 @@ h2 {
 .my_bookings button:hover {
   background-color: #45a049;
 }
+
+.fa-user-pen{
+  font-size: 18px;
+  margin-left: 20px;
+  margin-right: 0px;
+  color: rgb(19, 6, 6);
+}
+.fa-trash {
+  margin-left: 5px;
+  font-size: 18px;
+  margin-right: 0px;
+  color: rgb(0, 0, 0); 
+}

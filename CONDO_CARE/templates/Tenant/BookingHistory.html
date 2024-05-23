@@ -14,24 +14,34 @@
     <table>
       <thead>
         <tr>
+          <th>Name</th>
           <th>Facility</th>
-          <th>Date</th>
-          <th>Time</th>
+          <th>Booking Date</th>
+          <th>Booking Time</th>
           <th>Attendees</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
+        {% for booking_history in booking_history %}
         <tr>
-          <td>Community Center</td>
-          <td>2023-03-15</td>
-          <td>10am to 10pm</td>
-          <td>10</td>
-          <td>Pending</td>
-          <td><button>Edit</button> 
-          <button>Cancel</button></td>
+          <td>{{booking_history.booker_name}}</td>
+          <td>{{booking_history.facility}}</td>
+          <td>{{booking_history.booking_date}}</td>
+          <td>{{booking_history.booking_time}}</td>
+          <td>{{booking_history.attendees}}</td>
+          <td>{{booking_history.status}}</td>
+          <td>
+            <a href="{% url 'delete' booking_history.id %}">
+              <i class="fa-sharp fa-solid fa-trash"></i>
+            </a>
+            <a href="{% url 'delete' booking_history.id %}">
+              <i class="fa-solid fa-user-pen"></i>
+            </a>
+          </td>
         </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

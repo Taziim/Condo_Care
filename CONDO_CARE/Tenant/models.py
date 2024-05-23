@@ -35,6 +35,47 @@ class MaintenenceRequest(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
 
 
+class FacilityBooking(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    booker_name = models.CharField(max_length=100)
+    floor_number = models.IntegerField()
+    unit_number = models.IntegerField()
+    facility = models.CharField(max_length=50, choices=[
+        ('common-room', 'Common Room'),
+        ('hall-room', 'Hall Room'),
+        ('swimming-pool', 'Swimming Pool'),
+        ('bbq-area', 'BBQ Area'),
+        ('rooftop-terrace', 'Rooftop Terrace'),
+        ('sports-facilities', 'Sports Facilities'),
+    ])
+    booking_date = models.DateField()
+    booking_time = models.CharField(max_length=20, choices=[
+        ('9:00 am To 10:00 am', '9:00 am To 10:00 am'),
+        ('10:00 am To 11:00 am', '10:00 am To 11:00 am'),
+        ('11:00 am To 12:00 pm', '11:00 am To 12:00 pm'),
+        ('12:00 pm To 1:00 pm', '12:00 pm To 1:00 pm'),
+        ('1:00 pm To 2:00 pm', '1:00 pm To 2:00 pm'),
+        ('2:00 pm To 3:00 pm', '2:00 pm To 3:00 pm'),
+        ('3:00 pm To 4:00 pm', '3:00 pm To 4:00 pm'),
+        ('4:00 pm To 5:00 pm', '4:00 pm To 5:00 pm'),
+        ('5:00 pm To 6:00 pm', '5:00 pm To 6:00 pm'),
+        ('6:00 pm To 7:00 pm', '6:00 pm To 7:00 pm'),
+        ('7:00 pm To 8:00 pm', '7:00 pm To 8:00 pm'),
+        ('8:00 pm To 9:00 pm', '8:00 pm To 9:00 pm'),
+    ])
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('approve', 'Approved'),
+        ('rejected', 'Rejected'),
+    ] 
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
+    attendees = models.IntegerField()
+    additional_notes = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+
+
 
 
 
