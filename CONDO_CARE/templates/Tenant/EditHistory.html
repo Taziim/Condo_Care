@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-{% load static%}
+{% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'bookFacilities.css' %}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Book Facilities</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'editHistory.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Edit Facilities</title>
 </head>
 <body>
     <div class="container">
         <section id="reserve-facility">
             <h2>Book Facility</h2>
-            <form action="#" method="POST">
+            <form action="" method="POST">
                 {% csrf_token %}
                 <label for="full-name">Name</label>
-                <input type="text" id="full-name" name="full_name" placeholder="Enter Your Name">
+                <input type="text" id="full-name" name="full_name" placeholder="Enter Your Name" value="{{ booking_history.booker_name }}" required>
                     
                 <label for="floor-number">Floor Number</label>
-                <input type="number" min="1" id="floor-number" name="floor_number"  placeholder="Enter Floor Number" required>
+                <input type="number" min="1" id="floor-number" name="floor_number" placeholder="Enter Floor Number" value="{{ booking_history.floor_number }}" required>
     
                 <label for="unit-number">Unit Number</label>
-                <input type="number" min="1" id="unit-number" name="unit_number"  placeholder="Enter Unit Number"  required>
+                <input type="number" min="1" id="unit-number" name="unit_number" placeholder="Enter Unit Number" value="{{ booking_history.unit_number }}" required>
            
                 <label for="facility">Choose a facility</label>
                 <select id="facility" name="facility">
+                    <option selected>{{ booking_history.facility }}</option>
                     <option value="common-room">Common Room</option>
                     <option value="hall-room">Hall Room</option>
                     <option value="swimming-pool">Swimming Pool</option>
@@ -34,10 +35,12 @@
                 </select>
 
                 <label for="date">Select Date:</label>
-                <input type="date" id="date" name="date">
+                <input type="date" id="date" name="date" value="{{ booking_history.date }}">
+
 
                 <label for="time">Select Time</label>
                 <select id="time" name="time">
+                <option selected>{{ booking_history.booking_time }}</option>
                   <option value="9:00 am To 10:00 am">9:00 am To 10:00 am</option>
                   <option value="10:00 am To 11:00 am">10:00 am To 11:00 am</option>
                   <option value="11:00 am To 12:00 pm">11:00 am To 12:00 pm</option>
@@ -51,14 +54,17 @@
                   <option value="7:00 pm To 8:00 pm">7:00 pm To 8:00 pm</option>
                   <option value="8:00 pm To 9:00 pm">8:00 pm To 9:00 pm</option>
                 </select>
+
+
                  
                 <label for="booking-attendees">Number of Attendees</label>
-                <input type="number" min="1" id="booking-attendees" name="attendees">
+                <input type="number" min="1" id="booking-attendees" name="attendees" value="{{ booking_history.num_attendees }}" required>
 
                 
-                <label for="addtional_notes">Additional Notes</label>
-                <textarea id="addtional_notes" name="additional_notes" rows="3"   placeholder="Add Any Reason/Notes"></textarea>
-                <button type="submit">Reserve</button>
+                <label for="additional-notes">Additional Notes</label>
+                <textarea id="additional-notes" name="additional_notes" rows="3" placeholder="Add Any Reason/Notes"></textarea>
+                <button type="submit">Update</button>
+                
                 {% if messages %}
                 <div class="messages">
                     {% for message in messages %}
@@ -70,6 +76,6 @@
                {% endif %}
             </form>
         </section>
-</div>
+    </div>
 </body>
 </html>

@@ -32,18 +32,18 @@ from .models import FacilityBooking
 
 def book_facilities(request):
     if request.method == "POST":
-        name = request.POST.get('full_name')
+        booker_name = request.POST.get('full_name')
         floor_number = request.POST.get('floor_number')
         unit_number = request.POST.get('unit_number')
         facility = request.POST.get('facility')
         booking_date = request.POST.get('date')
         booking_time = request.POST.get('time')
         num_attendees = request.POST.get('attendees')
-        additional_notes = request.POST.get('addtional_notes')
+        additional_notes = request.POST.get('additional_notes')
 
         # Create a new FacilityBooking instance
         booking = FacilityBooking(
-            booker_name=name,
+            booker_name=booker_name,
             floor_number=floor_number,
             unit_number=unit_number,
             facility=facility,
@@ -58,11 +58,42 @@ def book_facilities(request):
     return render(request, 'Tenant/BookFacilities.html')
 
 def booking_history(request):
-    booking_history = FacilityBooking.objects.all()    
-    return render(request, 'Tenant/BookingHistory.html',{'booking_history':booking_history})
+    booking_history = FacilityBooking.objects.all()
+    context = {
+        'booking_history':booking_history
+    }   
+    return render(request, 'Tenant/BookingHistory.html',context)
 
 def delete_history(request, id):
-    dele = FacilityBooking.objects.get(pk=id)
-    dele.delete()
-    messages.success(request, 'Tenant deleted successfully')
+    delhistory = FacilityBooking.objects.get(pk=id)
+    delhistory.delete()
+    messages.success(request, 'Deleted successfully')
     return redirect('bookinghistory')
+
+def update_history(request, id):
+    if request.method == "POST":
+        name = request.POST.get('full_name')
+        floor_number = request.POST.get('floor_number')
+        unit_number = request.POST.get('unit_number')
+        facility = request.POST.get('facility')
+        booking_date = request.POST.get('date')
+        booking_time = request.POST.get('time')
+        num_attendees = request.POST.get('attendees')
+        additional_notes = request.POST.get('additional_notes')
+        edit = FacilityBooking.objects.get(pk=id)
+        edit.booker_name = name
+        edit.floor_number = floor_number
+        edit.unit_number = unit_number
+        edit.facility = facility
+        edit.booking_date = booking_date
+        edit.booking_time = booking_time
+        edit.attendees = num_attendees
+        edit.additional_notes = additional_notes
+        edit.save()
+        messages.success(request, 'Updated successfully')
+        return redirect('bookinghistory')
+    booking_history = FacilityBooking.objects.get(pk=id)
+    context = {
+        'booking_history':booking_history
+    }   
+    return render(request, 'Tenant/EditHistory.html', context)
