@@ -16,5 +16,14 @@ def maintenenece_request(request):
     return render(request, 'Tenant/MainReq.html')
 
 def request_history(request):
-    requesthistory = MaintenenceRequest.objects.all()
+    requesthistory = MaintenenceRequest.objects.all()    
     return render(request, 'Tenant/RequestHistory.html',{'request_history':requesthistory})
+
+def book_facilities(request):
+    return render(request, 'Tenant/BookFacilities.html')
+
+def available_facilities(request):
+    return render(request, 'Tenant/AvailableFacilities.html')
+
+def booking_history(request):
+    return render(request, 'Tenant/BookingHistory.html')

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'bookingHistory.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Maintenance</title>
+</head>
+<body>
+  <h2>My Bookings</h2>
+  <div class="my_bookings">
+    <table>
+      <thead>
+        <tr>
+          <th>Facility</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Attendees</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Community Center</td>
+          <td>2023-03-15</td>
+          <td>10am to 10pm</td>
+          <td>10</td>
+          <td>Pending</td>
+          <td><button>Edit</button> 
+          <button>Cancel</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
+    
