@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import *
 
+
+
 def maintenenece_request(request):
     if request.method == "POST":         
         name = request.POST.get("Tenant",'')
@@ -97,3 +99,8 @@ def update_history(request, id):
         'booking_history':booking_history
     }   
     return render(request, 'Tenant/EditHistory.html', context)
+
+
+
+def complain(request):
+    return render(request, 'Tenant/Complain.html')

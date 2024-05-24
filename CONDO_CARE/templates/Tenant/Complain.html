@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'complain.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Maintenance</title>
+</head>
+<div class="container">
+    <header>
+        <h1>Complaints</h1>
+    </header>
+    <section class="submit-complaint">
+        <h2>Submit a Complaint</h2>
+        <form id="complaintForm">
+            <label for="complaintCategory">Category</label>
+            <select id="complaintCategory" name="category">
+                <option value="">Select Category</option>
+                <option value="maintenance">Maintenance</option>
+                <option value="noise">Noise</option>
+                <option value="security">Security</option>
+                <option value="amenities">Tenant</option>
+                <option value="amenities">Amenities</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="complaintDescription">Description</label>
+            <textarea id="complaintDescription" name="description" rows="5" placeholder="Describe your complaint here..."></textarea>
+
+            <label for="complaintAttachment">Attachment</label>
+            <input type="file" id="complaintAttachment" name="attachment">
+            
+            <button type="submit">Submit Complaint</button>
+        </form>
+    </section>
+</div>
+</body>
+</html>
