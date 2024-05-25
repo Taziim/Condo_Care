@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'Main',
     'Owner',
     'Security',
-    'Tenant'
+    'Tenant',
+    'Management',
 ]
 
 MIDDLEWARE = [

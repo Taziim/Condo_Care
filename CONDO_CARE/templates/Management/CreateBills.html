@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'createBills.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Create Billings</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Payment & Billing (Management)</h1>
+        </header>
+        <section class="create-bill">
+            <h2>Create New Bill</h2>
+            <form method="post">
+
+                <label for="TenantName">Tenant Name</label>
+                <input type="text" id="TenantName" name="TenantName" required>
+
+                <label for="Rent_amount">Rent Month</label>
+                <select id="payment-month" name="payment-month">
+                        <option value="#">Select the Month</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                </select>
+
+                <label for="BillsType">Bills Type</label>
+                <select id="BillsType" name="BillsType">
+                    <option value="Electricity">Electricity</option>
+                    <option value="Water">Water</option>
+                    <option value="Rent">Rent</option>
+                </select>
+
+                <label for="amount">Amount</label>
+                <input type="number" min="1" id="amount" name="amount">
+
+                <label for="BillsType">Bills Type</label>
+                <select id="BillsType" name="BillsType">
+                    <option value="Electricity">Electricity</option>
+                    <option value="Water">Water</option>
+                    <option value="Rent">Rent</option>
+                </select>
+
+                <label for="amount">Amount</label>
+                <input type="number" min="1" id="amount" name="amount">
+
+                <label for="BillsType">Bills Type</label>
+                <select id="BillsType" name="BillsType">
+                    <option value="Electricity">Electricity</option>
+                    <option value="Water">Water</option>
+                    <option value="Rent">Rent</option>
+                </select>
+
+                <label for="amount">Amount</label>
+                <input type="number" min="1" id="amount" name="amount">
+
+                <label for="Comments">Comments</label>
+                <textarea rows="3" id="Comments" name="Comments"></textarea>
+
+                <label for="due-date">Due Date:</label>
+                <input type="date" id="due-date" name="due-date">
+                
+                <button type="submit">Create Bill</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

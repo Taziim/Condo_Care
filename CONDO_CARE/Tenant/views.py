@@ -102,5 +102,47 @@ def update_history(request, id):
 
 
 
-def complain(request):
-    return render(request, 'Tenant/Complain.html')
+def complain_history(request):
+    complainhistory = MakeComplaint.objects.all()
+    context = {
+        'complainhistory':complainhistory
+    }   
+    return render(request, 'Tenant/ComplainHistory.html',context)
+
+def make_complaint(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        floor_number = request.POST.get('floor_number')
+        unit_number = request.POST.get('unit_number')
+        category = request.POST.get('category')
+        date = request.POST.get('date')
+        description = request.POST.get('description')
+        attachment = request.FILES.get('attachment')
+
+        # Create a new Complaint instance
+        complaint = MakeComplaint(
+            name=name,
+            floor_number=floor_number,
+            unit_number=unit_number,
+            category=category,
+            date=date,
+            description=description,
+            attachment=attachment
+        )
+        complaint.save()
+        messages.success(request, 'Complaint submitted successfully!')
+        return redirect('complainhistory')  
+    return render(request, 'Tenant/MakeComplain.html')  
+
+
+def delete_complain_history(request, id):
+    delhistory = MakeComplaint.objects.get(pk=id)
+    delhistory.delete()
+    messages.success(request, 'Deleted successfully')
+    return redirect('complainhistory')
+
+def outstanding_bills(request):
+    return render(request, 'Tenant/OutstandingBill.html')
+
+def make_payment(request):
+    return render(request, 'Tenant/MakePayment.html')

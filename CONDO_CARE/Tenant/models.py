@@ -73,6 +73,36 @@ class FacilityBooking(models.Model):
     additional_notes = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class MakeComplaint(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    floor_number = models.PositiveIntegerField()
+    unit_number = models.PositiveIntegerField()
+    category = models.CharField(
+        max_length=20,
+        choices=[
+            ('maintenance', 'Maintenance'),
+            ('noise', 'Noise'),
+            ('security', 'Security'),
+            ('tenant', 'Tenant'),
+            ('amenities', 'Amenities'),
+            ('other', 'Other'),
+        ],
+    )
+    STATUS_CHOICES = [
+        ('open', 'Open'),
+        ('resolved', 'Resolved'),
+    ] 
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Open')
+    date = models.DateField()
+    description = models.TextField()
+    attachment = models.FileField(upload_to='media/', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+
+
     
 
 

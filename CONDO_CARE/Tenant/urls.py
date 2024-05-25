@@ -7,9 +7,23 @@ urlpatterns = [
      path('requesthistory/', views.request_history, name='requesthistory'),
      path('bookfacilities/', views.book_facilities, name='bookfacilities'),
      path('availablefacilities/', views.available_facilities, name='availablefacilities'),
-     path('complain/', views.complain, name='complain'),
+     path('complain/', views.make_complaint, name='complain'),
+     path('complainhistory/', views.complain_history, name='complainhistory'),
      path('bookinghistory/', views.booking_history, name='bookinghistory'),
+     path('outstandingbills/', views.outstanding_bills, name='outstandingbills'),
+     path('makepayment/', views.make_payment, name='makepayment'),
+     
+     
+     
+     
+     
+     
+     
+     
+     
      path('deletehistory/<int:id>/', views.delete_history, name='deletehistory'),
+     path('deletecomplianhistory/<int:id>/', views.delete_complain_history, name='deletecomplianhistory'),
+     path('updatehistory/<int:id>/', views.update_history, name='updatehistory'),
      path('updatehistory/<int:id>/', views.update_history, name='updatehistory'),
      
 ]

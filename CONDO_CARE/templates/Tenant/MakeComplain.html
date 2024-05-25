@@ -14,25 +14,47 @@
     </header>
     <section class="submit-complaint">
         <h2>Submit a Complaint</h2>
-        <form id="complaintForm">
-            <label for="complaintCategory">Category</label>
+        <form id="complaintForm" method="POST">
+            {% csrf_token %}
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter Your Name">
+
+            <label for="floor-number">Floor Number</label>
+            <input type="number" min="1" id="floor-number" name="floor_number"  placeholder="Enter Floor Number" required>
+
+            <label for="unit-number">Unit Number</label>
+            <input type="number" min="1" id="unit-number" name="unit_number"  placeholder="Enter Unit Number"  required>
+            
+            <label for="complaintCategory">Complaint Category </label>
             <select id="complaintCategory" name="category">
                 <option value="">Select Category</option>
                 <option value="maintenance">Maintenance</option>
                 <option value="noise">Noise</option>
                 <option value="security">Security</option>
-                <option value="amenities">Tenant</option>
+                <option value="tenant">Tenant</option>
                 <option value="amenities">Amenities</option>
                 <option value="other">Other</option>
             </select>
+
+            <label for="date">Select Date</label>
+            <input type="date" id="date" name="date"
 
             <label for="complaintDescription">Description</label>
             <textarea id="complaintDescription" name="description" rows="5" placeholder="Describe your complaint here..."></textarea>
 
             <label for="complaintAttachment">Attachment</label>
             <input type="file" id="complaintAttachment" name="attachment">
-            
+
             <button type="submit">Submit Complaint</button>
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+           {% endif %}
         </form>
     </section>
 </div>

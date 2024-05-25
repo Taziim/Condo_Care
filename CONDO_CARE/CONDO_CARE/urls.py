@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('Security.urls')),
     path('', include('Owner.urls')),
     path('', include('Tenant.urls')),
+    path('', include('Management.urls')),
 ]
 
 # if settings.DEBUG:

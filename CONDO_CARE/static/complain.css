@@ -40,6 +40,8 @@ label {
 }
 
 input[type="text"],
+input[type="date"],
+input[type="number"],
 textarea,
 select,
 input[type="file"],
@@ -87,3 +89,17 @@ button:hover {
 .status.resolved {
     color: #007BFF; /* Blue for resolved */
 }
+.complaint-container {
+  padding: 20px;
+}
+
+.complaint-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.complaint-list {
+  overflow-x: auto;
+}
+
