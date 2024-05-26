@@ -10,7 +10,9 @@
 <body>
     <header>
         <div class="logo">
-            <img src="{% static 'condologo.png' %}" alt="Condo Care Logo"> 
+            <a href="{% url 'main' %}">
+                <img src="{% static 'condologo.png' %}" alt="Condo Care Logo">
+            </a>
         </div>
     </header>
     <main>
@@ -34,7 +36,7 @@
                 </div>
                 {% endfor %}
             </form>
-            <p>Already have an account? <a href="/login/">Login here</a></p>
+            <p>Already have an account? <a href={% url "login" %}>Login here</a></p>
         </div>
     </main>
     <footer>
