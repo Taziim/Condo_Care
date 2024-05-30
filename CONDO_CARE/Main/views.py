@@ -12,6 +12,7 @@ from .models import Userinfo
 
 def main(request):
     return render(request,'Main/main.html',)
+
 def log_in(request):
         if request.method == "POST":
              username = request.POST.get('username')
@@ -23,12 +24,6 @@ def log_in(request):
              else:
                  return HttpResponse("Invalid login credentials")
         return render(request,'Main/login.html');
-
-# def delete(request, id):
-#     dele = Addform1.objects.get(id=id)
-#     dele.delete()
-#     messages.success(request, 'Tenant deleted successfully!')
-#     return redirect('viewTenant')
 
 def sing_up(request):
     if request.method == "POST":

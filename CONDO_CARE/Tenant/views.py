@@ -146,3 +146,6 @@ def outstanding_bills(request):
 
 def make_payment(request):
     return render(request, 'Tenant/MakePayment.html')
+
+def create_visitor(request):
+    return render(request, 'Tenant/CreateVisitor.html')

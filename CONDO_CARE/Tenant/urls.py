@@ -12,6 +12,7 @@ urlpatterns = [
      path('bookinghistory/', views.booking_history, name='bookinghistory'),
      path('outstandingbills/', views.outstanding_bills, name='outstandingbills'),
      path('makepayment/', views.make_payment, name='makepayment'),
+     path('createvisitor/', views.create_visitor, name='createvisitor'),
      
      
      
