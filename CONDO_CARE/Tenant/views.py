@@ -43,7 +43,6 @@ def book_facilities(request):
         num_attendees = request.POST.get('attendees')
         additional_notes = request.POST.get('additional_notes')
 
-        # Create a new FacilityBooking instance
         booking = FacilityBooking(
             booker_name=booker_name,
             floor_number=floor_number,

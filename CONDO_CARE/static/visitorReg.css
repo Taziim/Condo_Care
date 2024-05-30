@@ -18,7 +18,7 @@ h1 {
 }
 
 form {
-  background-color: white;
+  background-color: #f2f2f2;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -36,7 +36,7 @@ form {
 
 label {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   font-weight: bold;
 }
 
@@ -50,19 +50,15 @@ select {
   padding: 10px;
   border: 0.5px solid #000;
   border-radius: 3px;
-  box-sizing: border-box;
   resize: none;
 }
 
-input[type="file"] {
-  padding: 5px;
-}
 
 select {
-  appearance: none; /* Remove default dropdown styles */
+  appearance: none; 
   background-image: url("data:image/svg+xml;base64,phN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdwbortPSJubm8iPgogPHBhdGggZD0iTTYgMFY4bDIgLTJWTDQgMHoiIGZpbGw9IiNjY2NjY2MiIgLz4KPC9zdmc+"); /* Create a small down arrow icon */
   background-repeat: no-repeat;
-  background-position: calc(100% - 10px) center; /* Position icon at right side */
+  background-position: calc(100% - 10px) center; 
   padding-right: 20px;
 }
 
@@ -70,7 +66,7 @@ select {
   background-color: #3366FF;
   border: none;
   color: white;
-  padding: 10px;
+  padding: 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -90,8 +86,7 @@ h2 {
   text-align: center;
 }
 
-p{
-  font-size: 12px;
-  font-weight: bold;
-  margin: 0;
+.alert {
+  text-align: center;
+  font-size: 16px;
 }

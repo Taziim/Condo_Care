@@ -3,9 +3,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="{% static 'createVisitor.css' %}" />
-    <title>regirster Visitors </title>
+    <title>regirster Visitors</title>
 </head>
 <body>
-  
+  <header>
+      <nav>
+          <ul>
+              <li><a href="#tenant">Tenant</a></li>
+              <li><a href="#management">Management</a></li>
+              <li><a href="#owner">Owner</a></li>
+              <li><a href="#security">Security</a></li>
+          </ul>
+      </nav>
+  </header>
+  <main>
+      <section id="tenant">
+          <h2>Tenant</h2>
+          <form>
+              <label for="visitor-name">Visitor Name:</label>
+              <input type="text" id="visitor-name" name="visitor-name"><br><br>
+              <label for="visitor-email">Visitor Email:</label>
+              <input type="email" id="visitor-email" name="visitor-email"><br><br>
+              <label for="visitor-phone">Visitor Phone:</label>
+              <input type="tel" id="visitor-phone" name="visitor-phone"><br><br>
+              <button type="submit">Register Visitor</button>
+          </form>
+          <h3>Registered Visitors:</h3>
+          <ul id="registered-visitors"></ul>
+      </section>
+      <section id="management">
+          <h2>Management</h2>
+          <table id="visitor-log">
+              <thead>
+                  <tr>
+                      <th>Visitor Name</th>
+                      <th>Arrival Time</th>
+                      <th>Departure Time</th>
+                  </tr>
+              </thead>
+              <tbody id="visitor-log-body"></tbody>
+          </table>
+      </section>
+      <section id="owner">
+          <h2>Owner</h2>
+          <h3>Registered Visitors:</h3>
+          <ul id="owner-registered-visitors"></ul>
+      </section>
+      <section id="security">
+          <h2>Security</h2>
+          <h3>Visitor Check-in:</h3>
+          <form>
+              <label for="visitor-id">Visitor ID:</label>
+              <input type="text" id="visitor-id" name="visitor-id"><br><br>
+              <button type="submit">Check-in Visitor</button>
+          </form>
+      </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

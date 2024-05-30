@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #c9ccd1;
+  font-size: 16px;
+}
+
+.table_1 {
+  background-color: #323233;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f2f2f2;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 2px;
+}
+
+caption {
+  font-size: 24px;
+  text-transform: uppercase;
+  background-color: #000;
+  color: #fff;
+}
+th{
+  background-color: #fff;
+  border-bottom: 0.5px solid blue;
+}
+
+button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  background-color: red;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+button:hover {
+  background-color: blue;
+}
+
+.fa-download {
+  font-size: 16px;
+  margin-left: 45px;
+  color: rgb(19, 6, 6);
+}
+.fa-trash {
+  margin-left: 16px;
+  font-size: 16px;
+  color: rgb(0, 0, 0); 
+}
+.custom-button {
+  background-color: #3366FF;
+  border: none;
+  color: white;
+  padding: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  position: fixed;
+  font-size: 14px;
+  border-radius: 3px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  right: 0%;
+  margin-top: 5px;
+  left:92%;
+}
+
+.custom-button:hover {
+  background-color: #45a049;
+}
+
+.alert {
+  text-align: center;
+  font-size: 16px;
+}

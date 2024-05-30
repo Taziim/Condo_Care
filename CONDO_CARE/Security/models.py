@@ -4,19 +4,23 @@ from io import BytesIO
 from PIL import Image, ImageDraw
 import qrcode
 
-class visitorRegistration(models.Model):
+class VisitorRegistration(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=64)
+    tenant_name = models.CharField(max_length=64)
+    floor_number = models.IntegerField()
+    unit_number = models.IntegerField()
     phone_number = models.CharField(max_length=64)
     home_address  = models.TextField()
     reason_to_visit  = models.TextField()
     TOWER_CHOICES = [
-        (1, 'Tower 1'),
-        (2, 'Tower 2'),
-        (3, 'Tower 3'),
-        (4, 'Others'),
+        ('Tower 1', 'Tower 1'),
+        ('Tower 2', 'Tower 2'),
+        ('Tower 3', 'Tower 3'),
+        ('others', 'Others'),
     ]
 
-    tower_select = models.IntegerField(choices=TOWER_CHOICES)
+    tower_select = models.CharField(choices=TOWER_CHOICES)
     datetime_local = models.DateTimeField()
 
 
