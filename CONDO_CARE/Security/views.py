@@ -8,8 +8,10 @@ def visitor_log(request):
 
 def incident_reporting(request):
     return render(request, 'Security/IncidentRep.html')
+
 def patrol_reporting(request):
     return render(request, 'Security/PatrolRep.html')
+
 def qr(request):
     return render(request, 'Security/Qr.html',)
      
