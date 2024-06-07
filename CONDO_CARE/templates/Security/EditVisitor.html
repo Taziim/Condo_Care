@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'editVisitor.css' %}" />
+    <title>Visitor Registration (Security)</title>
+</head>
+<body>
+  <h1>Visitor Form</h1>
+  <form id="rental-application" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>Update details</h2>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="full_name" name="full_name" value="{{update_visitor.name}}" placeholder="Enter Your Name">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Tenant Name</label>
+      <input type="text" id="tenant_name" name="tenant_name" value="{{update_visitor.tenant_name}}"  placeholder="Enter Whom your are visiting">
+    </div>
+
+    <div class="form-group">
+       <label for="floor_number">Floor Number</label>
+       <input type="number" min="1" id="floor-number" name="floor_number" value="{{update_visitor.floor_number}}"   placeholder="Enter Floor Number">
+    </div>
+
+    <div class="form-group">
+        <label for="unit_number">Unit Number</label>
+        <input type="number" min="1" id="unit-number" name="unit_number" value="{{update_visitor.unit_number}}"   placeholder="Enter Unit Number">
+    </div>
+
+    <div class="form-group">
+      <label for="phone_number">Phone Number</label>
+      <input type="tel" id="phone_number" name="phone_number" value="{{update_visitor.phone_number}}" placeholder="Enter Your Phone Number">
+    </div>
+
+    <div class="form-group">
+      <label for="home_address">Home Address</label>
+      <textarea id="home_address" name="home_address" rows="3" value=""  placeholder="Enter Your Address">{{update_visitor.home_address}}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="reason_to_visit">Reason To Visit</label>
+      <textarea id="reason_to_visits" name="reason_to_visit" rows="3" value=""   placeholder="Enter Reason To  Visit">{{update_visitor.reason_to_visit}}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="tower_select">Tower to visit</label>
+      <select name="tower_select" id="tower_select" value="{{update_visitor.tower_select}}" >
+        <option value="">Select Tower</option>
+        <option value="Tower 1">Tower 1</option>
+        <option value="Tower 2">Tower 2</option>
+        <option value="Tower 3">Tower 3</option>
+        <option value="Others">Others</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="datetime_local">Enter Date And Time</label>
+      <input type="datetime-local" id="datetime_local" name="datetime_local" value="{{update_visitor.datetime_local}}">
+    </div>
+    <button type="submit" class="custom-button">Update</button>
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+   {% endif %}
+  </form>
+</body>
+</html>   
