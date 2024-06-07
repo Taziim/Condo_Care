@@ -3,6 +3,12 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import *
 
+
+
+def dashboard_security(request):
+    return render(request, 'Security/DashboardSecurity.html')
+
+
 def visitor_log(request):
     return render(request, 'Security/VisitorLog.html')
 
@@ -50,11 +56,11 @@ def visitor_log(request):
     }   
     return render(request, 'Security/VisitorLog.html',context)
 
-# def delete_history(request, id):
-#     delhistory = FacilityBooking.objects.get(pk=id)
-#     delhistory.delete()
-#     messages.success(request, 'Deleted successfully')
-#     return redirect('bookinghistory')
+def delete_visitor(request, id):
+    delvisitor = VisitorRegistration.objects.get(pk=id)
+    delvisitor.delete()
+    messages.success(request, 'Deleted successfully')
+    return redirect('visitorlog')
 
 # def update_history(request, id):
 #     if request.method == "POST":

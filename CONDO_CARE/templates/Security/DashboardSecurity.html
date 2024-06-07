@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'dashboardSecurity.css' %}" />
+    <title>Dashboard (Security)</title>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Dashboard</h2>
+    <a href="{% url 'visitorregistration' %}">Visitor Registration</a>
+    <a href="{% url 'visitorlog' %}">Visitor Log</a>
+    <a href="{% url 'incidentreporting' %}">Incident Reporting</a>
+    <a href="{% url 'patrolreporting' %}">Patrol Reporting</a>
+    <a href="{% url 'qr' %}">QR</a>
+</div>
+
+<div class="main_content">
+    <div class="dashboard_div">
+        <h3>Visitor Analytics</h3>
+        <div id="visitor-charts"></div>
+    </div>
+    <div class="dashboard_div">
+        <h3>Incident Reports</h3>
+        <div id="incident-charts"></div>
+    </div>
+    <div class="dashboard_div">
+        <h3>Access Control Logs</h3>
+        <div id="access-control-charts"></div>
+    </div>
+    <div class="dashboard_div">
+        <h3>Surveillance Analysis</h3>
+        <div id="surveillance-charts"></div>
+    </div>
+</div>
+</body>
+</html>
