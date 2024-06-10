@@ -24,6 +24,19 @@ class VisitorRegistration(models.Model):
     datetime_local = models.DateTimeField()
 
 
+class Emergency(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    EMERGENCY_TYPES = [
+        ('fire', 'Fire'),
+        ('medical', 'Medical Emergency'),
+        ('security', 'Security Threat'),
+    ]
+
+    emergency_type = models.CharField(max_length=20, choices=EMERGENCY_TYPES)
+    emergency_details = models.TextField()
+    notify_email = models.BooleanField(default=False)
+    created_at  = models.DateTimeField(auto_now_add=True)
+
 
 
 

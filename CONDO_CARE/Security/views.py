@@ -90,3 +90,7 @@ def update_visitor(request, id):
         'update_visitor': update_visitor
     }
     return render(request, 'Security/EditVisitor.html', context)
+
+
+def security_emergency(request):
+    return render(request, 'Security/Emergency.html',)

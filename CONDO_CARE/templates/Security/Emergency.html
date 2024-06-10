@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'emergency.css' %}" />
+    <title>Emergency</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Emergency</h1>
+        <form class="emergency-form" id="emergency-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="emergency_type">Emergency Type</label>
+            <select id="emergency_type" name="emergency_type">
+                <option value="fire">Fire</option>
+                <option value="medical">Medical Emergency</option>
+                <option value="security">Security Threat</option>
+            </select>
+            <label for="emergency-details">Additional Details</label>
+            <textarea id="emergency-details" name="emergency_details" rows="4" placeholder="Enter additional details.."></textarea>
+            <div class="notify-checkbox">
+                <input type="checkbox" id="notify-email" name="notify_email">
+                <label for="notify-email">Notify by Email</label>
+            </div>
+            <button class="notify-button" type="submit">Issue Emergency Alert</button>
+        </form>
+        <div class="emergency-info">
+            <h2>Emergency Contacts</h2>
+            <p>Ambulance: <a href="tel:911">911</a></p>
+            <p>Location:Cyberjaya</p>
+            <p>Fire Department:<a href="tel:911">911</a></p>
+            <p>Location:Cyberjaya</p>
+            <p>Nearest Hospital:Cyberjaya</p>
+        </div>
+    </div>
+</body>
+</html>
