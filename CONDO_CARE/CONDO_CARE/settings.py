@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'Security',
     'Tenant',
     'Management',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [

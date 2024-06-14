@@ -1,7 +1,9 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from rest_framework. renderers import JSONRenderer
 from .models import *
+from .serilizers import *
 
 
 
@@ -48,12 +50,12 @@ def visitor_registration(request):
         return redirect('visitorregistration')
     return render(request, 'Security/VisitorReg.html')
 
-def visitor_log(request):
-    visitorlog = VisitorRegistration.objects.all()
-    context = {
-        'visitorlog':visitorlog
-    }   
-    return render(request, 'Security/VisitorLog.html',context)
+# def visitor_log(request):
+#     visitorlog = VisitorRegistration.objects.all()
+#     context = {
+#         'visitorlog':visitorlog
+#     }   
+#     return render(request, 'Security/VisitorLog.html',context)
 
 def delete_visitor(request, id):
     delvisitor = VisitorRegistration.objects.get(id=id)
@@ -93,4 +95,23 @@ def update_visitor(request, id):
 
 
 def security_emergency(request):
+    # emergency = Emergency.objects.all()
+    # serilizers = Emergencyserializers(emergency, many = True)
+    # json_data = JSONRenderer().render(serilizers.data)
+    # return HttpResponse(json_data, content_type ='application/json')
     return render(request, 'Security/Emergency.html',)
+
+# Assuming you have already imported necessary modules: VisitorRegistration, VisitorRegistrationSerializer, JSONRenderer, render
+
+def visitor_log(request):
+    visitor_logs = VisitorRegistration.objects.all()  # Retrieve all visitor logs from database
+    serializer = VisitorRegistrationSerializer(visitor_logs, many=True)  # Serialize the visitor logs
+    
+    json_data = JSONRenderer().render(serializer.data)  # Render the serialized data into JSON format
+    
+    context = {
+        # 'visitorlog': visitor_logs,  # Pass the queryset of visitor logs
+        'json_data': json_data  # Pass the JSON data to context
+    }
+    
+    return render(request, 'Security/VisitorLog.html', context)

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'notifications.css' %}" />
+    <title>Notification Announcement (Management)</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Condo Care Management Portal</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Announcements & Notifications</a></li>
+                    <li><a href="#">Maintenance</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Analytics</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="dashboard">
+                <h2>Dashboard</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <h3>Total Announcements</h3>
+                        <p class="stat">24</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Notifications</h3>
+                        <p class="stat">3</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Avg. Read Rate</h3>
+                        <p class="stat">78%</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="announcements">
+                <h2>Announcements</h2>
+                <button class="create-btn">Create New</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>Audience</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monthly Meeting</td>
+                            <td>2024-06-01</td>
+                            <td>All Residents</td>
+                            <td>Active</td>
+                            <td>
+                                <button class="action-btn">View</button>
+                                <button class="action-btn">Edit</button>
+                            </td>
+                        </tr>
+                        <!-- More rows would go here -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="notifications">
+                <h2>Notifications</h2>
+                <button class="create-btn">Create New</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Water Shutdown</td>
+                            <td>2024-06-15</td>
+                            <td>High</td>
+                            <td>Scheduled</td>
+                            <td>
+                                <button class="action-btn">View</button>
+                                <button class="action-btn">Edit</button>
+                            </td>
+                        </tr>
+                        <!-- More rows would go here -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+
+
+
+
+
+    <body>
+        <div class="container">
+            <header>
+                <h1>Condo Care Management Portal</h1>
+            </header>
+            <nav>
+                <ul>
+                    <li><a href="#announcements">Announcements</a></li>
+                    <li><a href="#create-announcement">Create Announcement</a></li>
+                    <li><a href="#notifications">Notifications</a></li>
+                </ul>
+            </nav>
+            <main>
+                <section id="announcements">
+                    <h2>Announcements</h2>
+                    <div class="announcement-list">
+                        <!-- Example announcements -->
+                        <div class="announcement">
+                            <h3>Maintenance Activity</h3>
+                            <p>Scheduled maintenance will occur on 2024-05-30 from 8 AM to 12 PM. Please be advised.</p>
+                            <span class="date">Posted on 2024-05-25</span>
+                        </div>
+                        <div class="announcement">
+                            <h3>Community Event</h3>
+                            <p>Join us for a community BBQ on 2024-06-01 at 5 PM in the main courtyard.</p>
+                            <span class="date">Posted on 2024-05-20</span>
+                        </div>
+                    </div>
+                </section>
+                <section id="create-announcement">
+                    <h2>Create Announcement</h2>
+                    <form id="announcement-form">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title" required>
+                        
+                        <label for="content">Content:</label>
+                        <textarea id="content" name="content" rows="4" required></textarea>
+                        
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required>
+                        
+                        <button type="submit">Post Announcement</button>
+                    </form>
+                </section>
+                <section id="notifications">
+                    <h2>Notifications</h2>
+                    <div class="notification-list">
+                        <!-- Example notifications -->
+                        <div class="notification">
+                            <p>Your maintenance request has been received.</p>
+                            <span class="date">2024-05-24</span>
+                        </div>
+                        <div class="notification">
+                            <p>Visitor John Doe has been verified and is on their way.</p>
+                            <span class="date">2024-05-23</span>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer>
+                <p>&copy; 2024 Condo Care</p>
+            </footer>
+        </div>
+
+
+
+</body>
+</html>
+  
