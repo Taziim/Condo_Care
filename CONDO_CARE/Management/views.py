@@ -50,56 +50,78 @@ def delete_announcement_log(request, id):
     return redirect('announcementlog')
     
 
-# def update_visitor(request, id):
-#     if request.method == "POST":
-#         name = request.POST.get('full_name')
-#         tenant_name = request.POST.get('tenant_name')
-#         floor_number = request.POST.get('floor_number')
-#         unit_number = request.POST.get('unit_number')
-#         phone_number = request.POST.get('phone_number')
-#         home_address = request.POST.get('home_address')
-#         reason_to_visit = request.POST.get('reason_to_visit')
-#         tower_select = request.POST.get('tower_select')
-#         datetime_local = request.POST.get('datetime_local')
-#         visitor = VisitorRegistration.objects.get(id=id)
-#         visitor.name = name
-#         visitor.tenant_name = tenant_name
-#         visitor.floor_number = floor_number
-#         visitor.unit_number = unit_number
-#         visitor.phone_number = phone_number
-#         visitor.home_address = home_address
-#         visitor.reason_to_visit = reason_to_visit
-#         visitor.tower_select = tower_select
-#         visitor.datetime_local = datetime_local
-#         visitor.save()
-#         messages.success(request, 'Updated successfully')
-#         return redirect('visitorlog')
-#     update_visitor = VisitorRegistration.objects.get(id=id)
-#     context = {
-#         'update_visitor': update_visitor
-#     }
-#     return render(request, 'Security/EditVisitor.html', context)
-
-
-# def security_emergency(request):
-#     # emergency = Emergency.objects.all()
-#     # serilizers = Emergencyserializers(emergency, many = True)
-#     # json_data = JSONRenderer().render(serilizers.data)
-#     # return HttpResponse(json_data, content_type ='application/json')
-#     return render(request, 'Security/Emergency.html',)
-
-# # Assuming you have already imported necessary modules: VisitorRegistration, VisitorRegistrationSerializer, JSONRenderer, render
-
-# def visitor_log(request):
-#     visitor_logs = VisitorRegistration.objects.all()  # Retrieve all visitor logs from database
-#     serializer = VisitorRegistrationSerializer(visitor_logs, many=True)  # Serialize the visitor logs
+def edit_announcement(request, id):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        post_date = request.POST.get('post_date')
     
-#     json_data = JSONRenderer().render(serializer.data)  # Render the serialized data into JSON format
+        announcement = Announcement.objects.get(id=id)
+        announcement.title = title
+        announcement.content = content
+        announcement.post_date = post_date
+        announcement.save()
+        messages.success(request, 'Updated Announcement successfully')
+        return redirect('announcementlog')
+    update_announcement = Announcement.objects.get(id=id)
+    context = {
+        'update_announcement': update_announcement
+    }
+    return render(request, 'Management/EditAnnouncement.html', context)
+
+def create_notification(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        post_date = request.POST.get('post_date')
+        audience = request.POST.get('audience')
+
+        createnotification = Notification(
+            title=title,
+            content=content,
+            post_date=post_date,
+            audience=audience,
+        )
+        createnotification.save()
+        messages.success(request,'Notification Created successfully!')
+        return redirect('createnotification')
+    return render(request, 'Management/CreateNotification.html')
+
+def notification_log(request):
+    notificationlog = Notification.objects.all()
+    context = {
+        'notificationlog':notificationlog
+    }   
+    return render(request, 'Management/NotificationLog.html',context)
+
+def delete_notification_log(request, notification_id):
+    deletenotificationlog = Notification.objects.get(notification_id=notification_id)
+    deletenotificationlog.delete()
+    messages.success(request, 'Deleted successfully')
+    return redirect('notificationlog')
     
-#     context = {
-#         # 'visitorlog': visitor_logs,  # Pass the queryset of visitor logs
-#         'json_data': json_data  # Pass the JSON data to context
-#     }
+
+def edit_notification(request, notification_id):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        post_date = request.POST.get('post_date')
+        audience = request.POST.get('audience')
     
-#     return render(request, 'Security/VisitorLog.html', context)
+        notification = Notification.objects.get(notification_id=notification_id)
+        notification.title = title
+        notification.content = content
+        notification.post_date = post_date
+        notification.audience = audience
+        
+        notification.save()
+        messages.success(request, 'Updated Notification successfully')
+        return redirect('notificationlog')
+    update_notification = Notification.objects.get(notification_id=notification_id)
+    context = {
+        'update_notification': update_notification
+    }
+    return render(request, 'Management/EditNotifications.html', context)
+
+
     
