@@ -1,8 +1,6 @@
 from django.db import models
 from django.core.files import File
-from io import BytesIO
-from PIL import Image, ImageDraw
-import qrcode
+
 
 class VisitorRegistration(models.Model):
     id = models.BigAutoField(primary_key=True)
