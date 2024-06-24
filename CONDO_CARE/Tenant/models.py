@@ -102,10 +102,29 @@ class MakeComplaint(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
 
+class TenantPayment(models.Model):
+    PAYMENT_CHOICES = [
+        ('Online_Payment', 'Online Payment'),
+        ('Manual_Payment', 'Manual Payment'),
+    ]
+
+    MONTH_CHOICES = [
+        (1, 'January'), (2, 'February'), (3, 'March'),
+        (4, 'April'), (5, 'May'), (6, 'June'),
+        (7, 'July'), (8, 'August'), (9, 'September'),
+        (10, 'October'), (11, 'November'), (12, 'December'),
+    ]
 
     
-
-
+    payment_month = models.IntegerField(choices=MONTH_CHOICES)
+    rent_amount = models.DecimalField(max_digits=7, decimal_places=2)
+    electricity_amount = models.DecimalField(max_digits=7, decimal_places=2)
+    water_amount = models.DecimalField(max_digits=7, decimal_places=2)
+    payment_method = models.CharField(max_length=15, choices=PAYMENT_CHOICES)
+    payment_date = models.DateField(auto_now_add=True)  
+    proof_of_rent = models.FileField(upload_to='media/', blank=True, null=True)
+    proof_of_electricity = models.FileField(upload_to='media/', blank=True, null=True)
+    proof_of_water = models.FileField(upload_to='media/', blank=True, null=True)
 
 
 

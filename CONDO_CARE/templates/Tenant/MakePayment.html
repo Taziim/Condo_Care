@@ -9,13 +9,19 @@
     <title>Payment and Billing</title>
 </head>
 <body>
-<div class="payment-billing-section">
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}" role="alert">
+      {{ message }}
+  </div>
+  {% endfor %}
+  <div class="payment-billing-section">
     <h1>Payment and Billing (Tenant)</h1>
     <div class="payment-form">
       <h3>Make a Payment</h3>
-      <form method = "POST">
-        <label for="Rent_amount">Rent Month</label>
-        <select id="payment-month" name="payment-month">
+      <form method="POST" enctype="multipart/form-data"> <!-- Corrected the quotes here -->
+        {% csrf_token %}
+        <label for="payment_month">Rent Month</label>
+        <select id="payment_month" name="payment_month">
                 <option value="#">Select the Month</option>
                 <option value="1">January</option>
                 <option value="2">February</option>
@@ -31,33 +37,35 @@
                 <option value="12">December</option>
         </select>
 
-        <label for="Rent_amount">Monthly Rent Amount</label>
-        <input type="number" min="1" id="Rent_amount" name="Rent_amount">
+        <label for="rent_amount">Monthly Rent Amount</label>
+        <input type="number" min="1" id="rent_amount" name="rent_amount">
 
-        <label for="Rent_amount">Monthly Electricity Amount</label>
-        <input type="number" min="1" id="Rent_amount" name="Rent_amount">
+        <label for="electricity_amount">Monthly Electricity Amount</label>
+        <input type="number" min="1" id="electricity_amount" name="electricity_amount">
 
-        <label for="Rent_amount">Monthly Water Amount</label>
-        <input type="number" min="1" id="Rent_amount" name="Rent_amount">
+        <label for="water_amount">Monthly Water Amount</label>
+        <input type="number" min="1" id="water_amount" name="water_amount">
 
-        <label for="payment-method">Payment Method</label>
-        <select id="payment-method" name="payment-method">
+        <label for="payment_method">Payment Method</label>
+        <select id="payment_method" name="payment_method">
           <option value="Online_Payment">Online Payment</option>
           <option value="Manual_Payment">Manual Payment</option>
         </select>
 
-        <label for="proofofRent">Proof of Rent Bills (IF ONLINE / PDF ONLY)</label>
-        <input type="file" id="proofofRent" name="proofofRent">
+        <label for="proof_of_rent">Proof of Rent Bills (IF ONLINE / PDF ONLY)</label>
+        <input type="file" id="proof_of_rent" name="proof_of_rent">
 
-        <label for="proofofElectricity">Proof of Electricity Bills (IF ONLINE / PDF ONLY))</label>
-        <input type="file" id="proofofElectricity" name="proofofElectricity">
+        <label for="proof_of_electricity">Proof of Electricity Bills (IF ONLINE / PDF ONLY)</label>
+        <input type="file" id="proof_of_electricity" name="proof_of_electricity">
 
-        <label for="proofofWater">Proof of Water Bills (IF ONLINE / PDF ONLY))</label>
-        <input type="file" id="complaintAttachment" name="proofofWater">
+        <label for="proof_of_water">Proof of Water Bills (IF ONLINE / PDF ONLY)</label>
+        <input type="file" id="proof_of_water" name="proof_of_water">
 
         <button type="submit">Submit</button>
       </form>
     </div>
-  </div>
+</div>
+
+
 </body>
 </html>

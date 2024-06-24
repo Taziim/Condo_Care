@@ -1,13 +1,47 @@
 from django.shortcuts import render
-from django.http import FileResponse, HttpResponseNotFound
+from django.http import FileResponse, Http404, HttpResponseNotFound
 from django.http import FileResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from Tenant.models import TenantPayment
 from .models import *
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.conf import settings
 import os
+
+def dashboard_owner(request):
+    return render(request, 'Owner/DashboardOwner.html')
+
+
+
+def view_payment(request):
+    makepayment = TenantPayment.objects.all()
+    context = {
+        'makepayment':makepayment
+    }   
+    return render(request, 'Owner/ViewPayment.html',context)
+
+
+def download_pdf(request, pdf_id):
+    pdf_file = TenantPayment.objects.get(pk=pdf_id).proof_of_rent
+    response = HttpResponse(pdf_file, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="proof_of_rent.pdf"'
+    return response
+
+def delete_payment(request, pdf_id):
+    deletepayment = TenantPayment.objects.get(pk=pdf_id)
+    deletepayment.delete()
+    messages.success(request, 'Payment deleted successfully')
+    return redirect('viewpayment')
+
+
+
+
+
+
+
+
 
 def add_tenant1(request,):
     if request.method == "POST":

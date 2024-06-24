@@ -143,8 +143,34 @@ def delete_complain_history(request, id):
 def outstanding_bills(request):
     return render(request, 'Tenant/OutstandingBill.html')
 
-def make_payment(request):
-    return render(request, 'Tenant/MakePayment.html')
+
 
 def create_visitor(request):
     return render(request, 'Tenant/CreateVisitor.html')
+
+def make_payment(request):
+    if request.method == "POST":
+        payment_month = request.POST.get('payment_month')
+        rent_amount = request.POST.get('rent_amount')
+        electricity_amount = request.POST.get('electricity_amount')
+        water_amount = request.POST.get('water_amount')
+        payment_method = request.POST.get('payment_method')
+        proof_of_rent = request.FILES.get('proof_of_rent')
+        proof_of_electricity = request.FILES.get('proof_of_electricity')
+        proof_of_water = request.FILES.get('proof_of_water')
+
+        payment = TenantPayment(
+            payment_month=payment_month,
+            rent_amount=rent_amount,
+            electricity_amount=electricity_amount,
+            water_amount=water_amount,
+            payment_method=payment_method,
+            proof_of_rent=proof_of_rent,
+            proof_of_electricity=proof_of_electricity,
+            proof_of_water=proof_of_water
+        )
+        payment.save()
+        messages.success(request, 'Payment Done Successfully')
+        return redirect('makepayment')
+    return render(request, 'Tenant/MakePayment.html')
+

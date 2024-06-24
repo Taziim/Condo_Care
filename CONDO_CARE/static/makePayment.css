@@ -57,3 +57,9 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
   }
+
+  .alert {
+    text-align: center;
+    font-size: 16px;
+  }
+  
