@@ -5,9 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'viewTenantAgree.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Tenant Agreement</title>
 </head>
 <body>
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}" role="alert">
+      {{ message }}
+  </div>
+  {% endfor %}
   <div class="table_1">
     <table>
     <caption>
@@ -24,18 +30,27 @@
         <th>Parking Slot</th>
         <th>Action</th>
     </tr>
+    {% for viewagreements in viewagreements %}
     <tr>
-        <td>12</td>
-        <td>23</td>
-        <td>33</td>
-        <td>33</td>
-        <td>22</td>
-        <td>22</td>
-        <td>11</td>
-        <td>11</td>
-    <td>
-        <button>Delete</button>
-    </td>
+      <td>   
+      {% for amenity in amenities %}
+      {{ amenity.full_name }}{% if not forloop.last %}, {% endif %}
+      {% endfor %}
+      </td>
+      <td>{{viewagreements.floor_number}}Floor&nbsp;{{viewagreements.unit_number}}Unit</td>
+      <td>{{viewagreements.security_deposit}}rm</td>
+      <td>{{viewagreements.refundable_amount}}rm</td>
+      <td>{{viewagreements.rent_fee}}rm</td>
+      <td>{{viewagreements.rent_date}}</td>
+      <td>{{viewagreements.additional_charges}}rm</td>
+      <td>{{viewagreements.parking_slot}}</td>
+      <td>
+        <a href="{% url 'delete_agree' viewagreements.id %}">
+          <i class="fa-solid fa-trash"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
     </table>
   </div>
 </body>

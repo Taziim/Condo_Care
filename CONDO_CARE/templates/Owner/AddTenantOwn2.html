@@ -10,7 +10,7 @@
 <body>
     <h1>Condo Amenities</h1>
     <h2>Choose the amenities that are important to you</h2>
-    <form id="amenityForm" method="POST">
+    <form id="amenityForm" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="amenity-container">
             <label for="FitnessCenter">
@@ -43,7 +43,7 @@
                 <span>Playground</span>
                 <input type="checkbox" id="Playground" name="amenities[]" value="Playground">
             </label>
-            <a href="{% url 'addtenant3' %}" class="custom-button">Next</a>
+            <button type="submit" class="custom-button" onclick="window.location.href='{% url 'addtenant3' %}'">Next</button>
         </div>
     </form>
 </body>

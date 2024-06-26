@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'viewTenantInfo.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Addtenant</title>
+    <title>View Tenant Indo</title>
 </head>
 <body>
   {% for message in messages %}
@@ -43,9 +43,13 @@
       <td>{{Tenant.nationality}}</td>
       <td>{{Tenant.home_address}}</td>
       <td>
+        {% if Tenant.passport_or_nric %}
         <a href="{% url 'download_passport_or_nric' Tenant.id %}">
-            <i class="fa-solid fa-download"></i>
+          <i class="fa-solid fa-download"></i>
         </a>
+        {% else %}
+        <p>No Pdf</p>
+        {% endif %} 
       </td>
       <td>
         {% if Tenant.driving_license %}
@@ -57,7 +61,7 @@
         {% endif %}
       </td>
       <td>
-        <a href="{% url 'delete' Tenant.id %}">
+        <a href="{% url 'delete_info' Tenant.id %}">
           <i class="fa-sharp fa-solid fa-trash"></i>
         </a>
       </td>

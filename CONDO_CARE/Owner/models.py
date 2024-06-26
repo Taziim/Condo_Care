@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Addform1(models.Model):
      id = models.BigAutoField(primary_key=True)
      full_name = models.CharField(max_length=64)
@@ -9,11 +10,10 @@ class Addform1(models.Model):
      date_of_birth = models.DateField()
      nationality = models.CharField(max_length=50)
      home_address = models.TextField()
-     passport_or_nric = models.FileField(upload_to='media/')
+     passport_or_nric = models.FileField(upload_to='media/', null=True, blank=True)
      driving_license = models.FileField(upload_to='media/', null=True, blank=True)
 
 class Addform2(models.Model):
-    name = models.CharField(max_length=200)
     fitness_center = models.BooleanField(default=False)
     swimming_pool = models.BooleanField(default=False)
     parking_facilities = models.BooleanField(default=False)

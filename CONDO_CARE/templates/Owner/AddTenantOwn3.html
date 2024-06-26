@@ -9,11 +9,12 @@
 </head>
 <body>
   <h1>Tenant Form</h1>
-  <form id="rental-application">
+  <form id="rental-application" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
     <h2>Rental Agreement</h2>
     <div class="form-group">
-      <label for="lease-term">Tenant Contract:</label>
-      <select name="lease_term" id="lease-term" required>
+      <label for="Contract_term">Tenant Contract:</label>
+      <select name="Contract_term" id="Contract_term">
         <option value="">Select Contract Duration</option>
         <option value="6">6 Months</option>
         <option value="12">1 Year</option>
@@ -22,31 +23,31 @@
     </div>
     <div class="form-group">
         <label for="floor-number">Floor Number:</label>
-        <input type="number" id="floor-number" name="floor_number"  placeholder="Enter Floor Number" required>
+        <input type="number" id="floor-number" name="floor_number"  placeholder="Enter Floor Number">
       </div>
       <div class="form-group">
         <label for="unit-number">Unit Number:</label>
-        <input type="number" id="unit-number" name="unit_number"  placeholder="Enter Unit Number"  required>
+        <input type="number" id="unit-number" name="unit_number"  placeholder="Enter Unit Number">
     </div>
     <div class="form-group">
         <label for="security-deposit">Security Deposit:</label>
-        <input type="number" id="security-deposit" name="security-deposit" placeholder="Enter Security Deposit amount">
+        <input type="number" id="security-deposit" name="security_deposit" placeholder="Enter Security Deposit amount">
       </div>
       <div class="form-group">
         <label for="refundable-amount">Refundable Amount:</label>
-        <input type="number" id="refundable-amount" name="refundable-amount" placeholder="Enter Refundable amount">
+        <input type="number" id="refundable-amount" name="refundable_amount" placeholder="Enter Refundable amount">
       </div>
       <div class="form-group">
         <label for="rent-fee">Rent Fee:</label>
-        <input type="number" id="rent-fee" name="rent-fee" placeholder="Enter Rent Amount Monthly">
+        <input type="number" id="rent-fee" name="rent_fee" placeholder="Enter Rent Amount Monthly">
       </div>
       <div class="form-group">
         <label for="rent-date">Rent Starting Date:</label>
-        <input type="date" id="rent-date" name="rent-date">
+        <input type="date" id="rent-date" name="rent_date">
       </div>
       <div class="form-group">
         <label for="additional-charges">Additional Charges:</label>
-        <input type="number" id="additional-charges" name="additional-charges" placeholder="Enter additional charges if applicable">
+        <input type="number" id="additional-charges" name="additional_charges" placeholder="Enter additional charges if applicable">
       </div>
     <h2>Additional Information</h2>
     <div class="form-group">
@@ -59,7 +60,7 @@
     </div>
         <label for="confirm-email" class="checkbox-button-label">Confirm by Email</label>
         <input type="checkbox" id="confirm-email" name="confirm-email" class="checkbox-button">
-    <a href="{% url 'addtenant3' %}" class="custom-button">Submit</a>
+    <button type="submit" class="custom-button" onclick="window.location.href='{% url 'addtenant3' %}'">Submit</button>
     </form>
 </body>
 </html>

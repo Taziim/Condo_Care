@@ -1,6 +1,4 @@
-from django.shortcuts import render
 from django.http import FileResponse, Http404, HttpResponseNotFound
-from django.http import FileResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from Tenant.models import TenantPayment
@@ -13,15 +11,12 @@ import os
 def dashboard_owner(request):
     return render(request, 'Owner/DashboardOwner.html')
 
-
-
 def view_payment(request):
     makepayment = TenantPayment.objects.all()
     context = {
         'makepayment':makepayment
     }   
     return render(request, 'Owner/ViewPayment.html',context)
-
 
 def download_pdf(request, pdf_id):
     pdf_file = TenantPayment.objects.get(pk=pdf_id).proof_of_rent
@@ -34,14 +29,6 @@ def delete_payment(request, pdf_id):
     deletepayment.delete()
     messages.success(request, 'Payment deleted successfully')
     return redirect('viewpayment')
-
-
-
-
-
-
-
-
 
 def add_tenant1(request,):
     if request.method == "POST":
@@ -58,33 +45,95 @@ def add_tenant1(request,):
        addTenant1.save()
        return redirect('addtenant2')
     return render(request, 'owner/addTenantown1.html',)
+
 def add_tenant2(request):
-    return render(request, 'owner/addTenantown2.html',)
+    if request.method == "POST":
+        fitness_center = request.POST.get('fitness_center') == 'on'
+        swimming_pool = request.POST.get('swimming_pool') == 'on'
+        parking_facilities = request.POST.get('parking_facilities') == 'on'
+        children_play_area = request.POST.get('children_play_area') == 'on'
+        clubhouse = request.POST.get('clubhouse') == 'on'
+        playground = request.POST.get('playground') == 'on'
+
+        addAmenities = Addform2(
+            fitness_center=fitness_center,
+            swimming_pool=swimming_pool,
+            parking_facilities=parking_facilities,
+            children_play_area=children_play_area,
+            clubhouse=clubhouse,
+            playground=playground
+        )
+        addAmenities.save()
+        return redirect('addtenant3') 
+    return render(request, 'owner/addTenantown2.html')
+
 def add_tenant3(request):
-    return render(request, 'owner/addTenantown3.html')
+    if request.method == "POST":
+        Contract_term = request.POST.get('Contract_term')
+        floor_number = request.POST.get('floor_number')
+        unit_number = request.POST.get('unit_number')
+        security_deposit = request.POST.get('security_deposit')
+        refundable_amount = request.POST.get('refundable_amount') 
+        rent_fee = request.POST.get('rent_fee')
+        rent_date = request.POST.get('rent_date')
+        additional_charges = request.POST.get('additional_charges') 
+        parking_slot = request.POST.get('parking_slot') 
+        tenant_insurance = request.POST.get('tenant_insurance')
+
+        addContract = Addform3(
+            Contract_term=Contract_term,
+            floor_number=floor_number,
+            unit_number=unit_number,
+            security_deposit=security_deposit,
+            refundable_amount=refundable_amount,
+            rent_fee=rent_fee,
+            rent_date=rent_date,
+            additional_charges=additional_charges,
+            parking_slot=parking_slot,
+            tenant_insurance=tenant_insurance
+
+            )
+        addContract.save()
+        return redirect('dashboardowner')  
+    return render(request, 'Owner/addTenantown3.html')
+
 def view_tenant_info(request):
     tenantinfo = Addform1.objects.all()
     context = {
         'tenantinfo':tenantinfo
     }
-    return render(request, 'owner/ViewTenantInfo.html',context)
-def view_tenant_agree(request):
-    return render(request, 'owner/ViewTenantAgree.html')
+    return render(request, 'Owner/ViewTenantInfo.html',context)
 
-def delete(request, id):
-    dele = Addform1.objects.get(id=id)
-    dele.delete()
+def view_tenant_agree(request):
+    viewagreements = Addform3.objects.all()
+    amenities = Addform1.objects.values('full_name')
+    context = {
+        'viewagreements': viewagreements,
+        'amenities': amenities,
+    }   
+    return render(request, 'Owner/ViewTenantAgree.html', context)
+
+def delete_info(request, id):
+    delete_info = Addform1.objects.get(id=id)
+    delete_info.delete()
     messages.success(request, 'Tenant deleted successfully')
     return redirect('viewtenantinfo')
 
+def delete_agree(request, id):
+    delete_agree = Addform3.objects.get(id=id)
+    delete_agree.delete()
+    messages.success(request, 'Tenant deleted successfully')
+    return redirect('viewtenantagree')
+
 def download_passport_or_nric(request, id):
-    addform1 = Addform1.objects.get(id=id)
-    response = FileResponse(addform1.passport_or_nric)
-    response['Content-Disposition'] = f'attachment; filename="{addform1.passport_or_nric.name}"'
+    addform1 = Addform1.objects.get(id=id).passport_or_nric
+    response = HttpResponse(addform1, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="passport_or_nric.pdf"'
     return response
 
 def download_driving_license(request, id):
-    addform1 = Addform1.objects.get(id=id)
-    response = FileResponse(addform1.driving_license)
-    response['Content-Disposition'] = f'attachment; filename="{addform1.driving_license.name}"'
+    addform1 = Addform1.objects.get(id=id).driving_license
+    response = HttpResponse(addform1, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="driving_license.pdf"'
     return response
+
