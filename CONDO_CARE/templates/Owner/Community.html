@@ -16,38 +16,33 @@
         <main>
             <section class="message-board">
                 <h2>Community Message Board</h2>
+                {% for message in messages %}
                 <div class="message">
-                    <h3>Owner: John Doe</h3>
-                    <p>Has anyone experienced issues with the water pressure lately?</p>
+                    <h3>{{ message.author.username }}</h3>
+                    <p>{{ message.content }}</p>
                     <div class="message-actions">
-                        <button type="submit"><i class="fa-solid fa-thumbs-up"></i> Like</button>
-                        <button type="submit"><i class="fa-solid fa-thumbs-down"></i> DisLike</button>
-                        <button type="submit"><i class="fa-regular fa-trash-can"></i> Delete</button>
+                        <form action="{% url 'like_message' message.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit"><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                        </form>
+                        <form action="{% url 'unlike_message' message.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit"><i class="fa-solid fa-thumbs-down"></i> Dislike</button>
+                        </form>
+                        <form action="{% url 'delete_message' message.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit"><i class="fa-regular fa-trash-can"></i> Delete</button>
+                        </form>
+                        <span>{{ message.likes.count }} likes</span>
                     </div>
                 </div>
-                <div class="message">
-                    <h3>Management: Sarah Smith</h3>
-                    <p>Reminder: Annual community meeting next Friday at 7 PM in the common room.</p>
-                    <div class="message-actions">
-                        <button type="submit"><i class="fa-solid fa-thumbs-up"></i> Like</button>
-                        <button type="submit"><i class="fa-solid fa-thumbs-down"></i> DisLike</button>
-                        <button type="submit"><i class="fa-regular fa-trash-can"></i> Delete</button>
-                    </div>
-                </div>
-                <div class="message">
-                    <h3>Tenant: Mike Johnson</h3>
-                    <p>Looking for recommendations for a reliable house cleaning service.</p>
-                    <div class="message-actions">
-                        <button type="submit"><i class="fa-solid fa-thumbs-up"></i> Like</button>
-                        <button type="submit"><i class="fa-solid fa-thumbs-down"></i> DisLike</button>
-                        <button type="submit"><i class="fa-regular fa-trash-can"></i> Delete</button>
-                    </div>
-                </div>
+                {% endfor %}
             </section>
             <section class="new-message">
                 <h2>Post a New Message</h2>
-                <form>
-                    <textarea placeholder="Type your message here..."></textarea>
+                <form method="post">
+                    {% csrf_token %}
+                    <textarea name="content" placeholder="Type your message here..."></textarea>
                     <button type="submit">Post Message</button>
                 </form>
             </section>

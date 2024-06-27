@@ -15,7 +15,6 @@ def community(request):
     return render(request, 'Owner/Community.html')
 
 
-
 def view_payment(request):
     makepayment = TenantPayment.objects.all()
     context = {
@@ -142,3 +141,38 @@ def download_driving_license(request, id):
     response['Content-Disposition'] = 'attachment; filename="driving_license.pdf"'
     return response
 
+
+def like_message(request, message_id):
+    message = get_object_or_404(Message, id=message_id)
+    Like.objects.get_or_create(user=request.user, message=message)
+    return redirect('community')
+
+def unlike_message(request, message_id):
+    message = get_object_or_404(Message, id=message_id)
+    Like.objects.filter(user=request.user, message=message).delete()
+    return redirect('community')
+
+def post_message(request):
+    if request.method == "POST":
+        content = request.POST.get('content')
+        
+        post_message = Message(
+            content=content,
+
+            )
+        post_message.save()
+        return redirect('community')  
+    return render(request, 'Owner/Community.html')
+
+def delete_message(request, id):
+    delete_message = Message.objects.get(pk=id)
+    delete_message.delete()
+    messages.success(request, 'Message deleted successfully')
+    return redirect('community')
+
+def view_message(request):
+    messages = Message.objects.all()
+    context = {
+        'messages':messages
+    }
+    return render(request, 'Owner/Community.html',context)

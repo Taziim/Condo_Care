@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+
 class Announcement(models.Model):
     announcement_id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=64)
@@ -27,5 +28,6 @@ class Notification(models.Model):
 
 
 
+    
 
 

@@ -1,9 +1,10 @@
 from django.db import models
+from Main.models import Userinfo
 
 
 class Addform1(models.Model):
      id = models.BigAutoField(primary_key=True)
-     full_name = models.CharField(max_length=64)
+     full_name = models.CharField(max_length=64,null=True)
      email = models.EmailField(unique=True)
      phone_number = models.CharField(max_length=20)
      occupation = models.CharField(max_length=64)
@@ -38,6 +39,14 @@ class Addform3(models.Model):
     parking_slot = models.PositiveIntegerField(null=True, blank=True)
     tenant_insurance = models.CharField(max_length=64, null=True, blank=True)
     
+class Message(models.Model):
+    # author = models.ForeignKey(Userinfo, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
+class Like(models.Model):
+    # user = models.ForeignKey(Userinfo, on_delete=models.CASCADE)
+    message = models.ForeignKey(Message, related_name='likes', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
