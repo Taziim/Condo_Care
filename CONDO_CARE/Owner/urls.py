@@ -10,6 +10,11 @@ urlpatterns = [
     path('viewtenantinfo/', views.view_tenant_info, name='viewtenantinfo'),
     path('viewtenantagree/', views.view_tenant_agree, name='viewtenantagree'),
     path('viewpayment/', views.view_payment, name='viewpayment'),
+    path('community/', views.community, name='community'),
+
+
+
+
     path('delete_info/<int:id>/', views.delete_info, name='delete_info'),
     path('delete_agree/<int:id>/', views.delete_agree, name='delete_agree'),
     path('delete_payment/<int:pdf_id>/', views.delete_payment, name='delete_payment'),

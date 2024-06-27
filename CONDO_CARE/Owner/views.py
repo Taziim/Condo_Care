@@ -11,6 +11,11 @@ import os
 def dashboard_owner(request):
     return render(request, 'Owner/DashboardOwner.html')
 
+def community(request):
+    return render(request, 'Owner/Community.html')
+
+
+
 def view_payment(request):
     makepayment = TenantPayment.objects.all()
     context = {

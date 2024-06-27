@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'community.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Community</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Condo Care Community Interaction</h1>
+        </header>
+        <main>
+            <section class="message-board">
+                <h2>Community Message Board</h2>
+                <div class="message">
+                    <h3>Owner: John Doe</h3>
+                    <p>Has anyone experienced issues with the water pressure lately?</p>
+                    <div class="message-actions">
+                        <button type="submit"><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                        <button type="submit"><i class="fa-solid fa-thumbs-down"></i> DisLike</button>
+                        <button type="submit"><i class="fa-regular fa-trash-can"></i> Delete</button>
+                    </div>
+                </div>
+                <div class="message">
+                    <h3>Management: Sarah Smith</h3>
+                    <p>Reminder: Annual community meeting next Friday at 7 PM in the common room.</p>
+                    <div class="message-actions">
+                        <button type="submit"><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                        <button type="submit"><i class="fa-solid fa-thumbs-down"></i> DisLike</button>
+                        <button type="submit"><i class="fa-regular fa-trash-can"></i> Delete</button>
+                    </div>
+                </div>
+                <div class="message">
+                    <h3>Tenant: Mike Johnson</h3>
+                    <p>Looking for recommendations for a reliable house cleaning service.</p>
+                    <div class="message-actions">
+                        <button type="submit"><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                        <button type="submit"><i class="fa-solid fa-thumbs-down"></i> DisLike</button>
+                        <button type="submit"><i class="fa-regular fa-trash-can"></i> Delete</button>
+                    </div>
+                </div>
+            </section>
+            <section class="new-message">
+                <h2>Post a New Message</h2>
+                <form>
+                    <textarea placeholder="Type your message here..."></textarea>
+                    <button type="submit">Post Message</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
