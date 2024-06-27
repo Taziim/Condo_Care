@@ -34,8 +34,6 @@ def create_announcement(request):
     return render(request, 'Management/CreateAnnouncement.html')
 
 
-
-
 def announcement_log(request):
     announcementlog = Announcement.objects.all()
     context = {

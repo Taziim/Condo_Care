@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+
 urlpatterns = [
     path('dashboardowner/', views.dashboard_owner, name='dashboardowner'),
     path('addtenant1/', views.add_tenant1, name='addtenant1'),
@@ -11,6 +12,10 @@ urlpatterns = [
     path('viewtenantagree/', views.view_tenant_agree, name='viewtenantagree'),
     path('viewpayment/', views.view_payment, name='viewpayment'),
     path('community/', views.community, name='community'),
+    path('createannouncementowner/', views.create_announcement_owner, name='createannouncementowner'),
+    path('announcementlogowner/', views.announcement_log_owner, name='announcementlogowner'),
+
+
 
     path('delete_info/<int:id>/', views.delete_info, name='delete_info'),
     path('delete_agree/<int:id>/', views.delete_agree, name='delete_agree'),
@@ -23,6 +28,8 @@ urlpatterns = [
     path('postmessage/', views.post_message, name='post_message'),
     path('deletemessage/<int:id>/', views.delete_message, name='delete_message'),
     path('viewmessage/', views.view_message, name='view_message'),
+    path('deleteannouncementlog/<int:id>/', views.delete_announcement_log, name='deleteannouncementlog'),
+    path('updateannouncementowner/<int:id>/', views.update_announcement_owner, name='updateannouncementowner'),
 ]
 
 

@@ -13,12 +13,10 @@ class Announcement(models.Model):
 
 class Notification(models.Model):
     notification_id = models.BigAutoField(primary_key=True)
-
     AUDIENCE_CHOICES = [
         ('Owner', 'Owner'),
         ('Tenant', 'Tenant'),
     ]
-
     title = models.CharField(max_length=64)
     content = models.TextField()
     post_date = models.DateField()
