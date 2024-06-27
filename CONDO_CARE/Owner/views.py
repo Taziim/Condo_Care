@@ -15,12 +15,12 @@ def create_announcement_owner(request):
         content = request.POST.get('content')
         post_date = request.POST.get('post_date')
 
-        createannouncement = AnnouncementOwner(
+        createannouncementowner = AnnouncementOwner(
             title=title,
             content=content,
             post_date=post_date,
         )
-        createannouncement.save()
+        createannouncementowner.save()
         messages.success(request,'Announcement Created successfully!')
         return redirect('createannouncementowner')
     return render(request, 'Owner/CreateAnnouncementOwner.html')
@@ -33,10 +33,10 @@ def announcement_log_owner(request):
     return render(request, 'Owner/AnnouncementLog.html',context)
 
 def delete_announcement_log(request, id):
-    deleteannouncementlog = AnnouncementOwner.objects.get(id=id)
-    deleteannouncementlog.delete()
+    deleteannouncementlogowner = AnnouncementOwner.objects.get(announcement_id=id)
+    deleteannouncementlogowner.delete()
     messages.success(request, 'Deleted successfully')
-    return redirect('announcementlogOwner')
+    return redirect('announcementlogowner')
     
 
 def update_announcement_owner(request, id):
@@ -45,16 +45,16 @@ def update_announcement_owner(request, id):
         content = request.POST.get('content')
         post_date = request.POST.get('post_date')
     
-        announcement = AnnouncementOwner.objects.get(id=id)
-        announcement.title = title
-        announcement.content = content
-        announcement.post_date = post_date
-        announcement.save()
+        announcementowner = AnnouncementOwner.objects.get(announcement_id=id)
+        announcementowner.title = title
+        announcementowner.content = content
+        announcementowner.post_date = post_date
+        announcementowner.save()
         messages.success(request, 'Updated Announcement successfully')
-        return redirect('updateannouncementowner')
-    update_announcement = AnnouncementOwner.objects.get(id=id)
+        return redirect('announcementlogowner')
+    updateannouncementowner = AnnouncementOwner.objects.get(announcement_id=id)
     context = {
-        'update_announcement': update_announcement
+        'updateannouncementowner': updateannouncementowner
     }
     return render(request, 'Owner/EditAnnouncementOwner.html', context)
 

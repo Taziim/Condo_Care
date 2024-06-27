@@ -28,8 +28,8 @@ urlpatterns = [
     path('postmessage/', views.post_message, name='post_message'),
     path('deletemessage/<int:id>/', views.delete_message, name='delete_message'),
     path('viewmessage/', views.view_message, name='view_message'),
-    path('deleteannouncementlog/<int:id>/', views.delete_announcement_log, name='deleteannouncementlog'),
-    path('updateannouncementowner/<int:id>/', views.update_announcement_owner, name='updateannouncementowner'),
+    path('deleteannouncementlogowner/<int:id>/', views.delete_announcement_log, name='delete_announcement_log'),
+    path('updateannouncementowner/<int:id>/', views.update_announcement_owner, name='update_announcement_owner'),
 ]
 
 

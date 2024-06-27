@@ -9,11 +9,6 @@
     <title>Announcement Log</title>
 </head>
 <body>
-  {% for message in messages %}
-  <div class="alert alert-{{ message.tags }}" role="alert">
-      {{ message }}
-  </div>
-  {% endfor %}
 <div class="table_1">
     <table>
       <caption>
@@ -26,22 +21,28 @@
         <th>Post Date</th>
         <th>Action</th>
     </tr>
-    {% for announcementlogowner in announcementlogowner %}
+    {% for announcement  in announcementlogowner %}
     <tr>
       <td>{{forloop.counter }}</td>
-      <td>{{announcementlogowner.title}}</td>
-      <td>{{announcementlogowner.content}}</td>
-      <td>{{announcementlogowner.post_date}}</td>
+      <td>{{announcement.title}}</td>
+      <td>{{announcement.content}}</td>
+      <td>{{announcement.post_date}}</td>
       <td>
-        <a href="{% url 'deleteannouncementlog' announcementlog.id %}">
-          <i class="fa-sharp fa-solid fa-trash"></i>
+        <a href="{% url 'delete_announcement_log' announcement.announcement_id %}">
+          <i class="fa-solid fa-trash"></i>
         </a>
-        <a href="{% url 'updateannouncement' announcementlog.id %}">
+        <a href="{% url 'update_announcement_owner' announcement.announcement_id %}">
           <i class="fa-solid fa-user-pen"></i>
         </a> 
+      </td>
     </tr>
     {% endfor %}
     </table>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
 </div>
 </body>
 </html>
