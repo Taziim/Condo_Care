@@ -64,7 +64,7 @@ class AnnouncementOwner(models.Model):
 class NotificationOwner(models.Model):
     notification_id = models.BigAutoField(primary_key=True)
     AUDIENCE_CHOICES = [
-        ('Owner', 'Owner'),
+        ('Management', 'Management'),
         ('Tenant', 'Tenant'),
     ]
     title = models.CharField(max_length=64)

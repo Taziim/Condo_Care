@@ -9,6 +9,81 @@ from django.conf import settings
 import os
 
 
+def create_notification_Owner(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        post_date = request.POST.get('post_date')
+        audience = request.POST.get('audience')
+
+        createnotificationowner = NotificationOwner(
+            title=title,
+            content=content,
+            post_date=post_date,
+            audience=audience,
+        )
+        createnotificationowner.save()
+        messages.success(request,'Notification Created successfully!')
+        return redirect('createnotificationowner')
+    return render(request, 'Owner/CreateNotificationOwner.html')
+
+def notification_log_Owner(request):
+    notificationlogowner = NotificationOwner.objects.all()
+    context = {
+        'notificationlogowner':notificationlogowner
+    }   
+    return render(request, 'Owner/NotificationLog.html',context)
+
+def delete_notification_Owner(request, id):
+    deletenotificationowner = NotificationOwner.objects.get(notification_id=id)
+    deletenotificationowner.delete()
+    messages.success(request, 'Deleted successfully')
+    return redirect('notificationlogowner')
+    
+
+def edit_notification_Owner(request, id):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        post_date = request.POST.get('post_date')
+        audience = request.POST.get('audience')
+    
+        notificationowner = NotificationOwner.objects.get(notification_id=id)
+        notificationowner.title = title
+        notificationowner.content = content
+        notificationowner.post_date = post_date
+        notificationowner.audience = audience
+        
+        notificationowner.save()
+        messages.success(request, 'Updated Notification successfully')
+        return redirect('notificationlogowner')
+    update_notification_owner = NotificationOwner.objects.get(notification_id=id)
+    context = {
+        'update_notification_owner': update_notification_owner
+    }
+    return render(request, 'Owner/EditNotificationOwner.html.', context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def create_announcement_owner(request):
     if request.method == "POST":
         title = request.POST.get('title')

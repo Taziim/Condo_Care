@@ -14,6 +14,8 @@ urlpatterns = [
     path('community/', views.community, name='community'),
     path('createannouncementowner/', views.create_announcement_owner, name='createannouncementowner'),
     path('announcementlogowner/', views.announcement_log_owner, name='announcementlogowner'),
+    path('createnotificationowner/', views.create_notification_Owner, name='createnotificationowner'),
+    path('notificationlogowner/', views.notification_log_Owner, name='notificationlogowner'),
 
 
 
@@ -30,6 +32,8 @@ urlpatterns = [
     path('viewmessage/', views.view_message, name='view_message'),
     path('deleteannouncementlogowner/<int:id>/', views.delete_announcement_log, name='delete_announcement_log'),
     path('updateannouncementowner/<int:id>/', views.update_announcement_owner, name='update_announcement_owner'),
+    path('deletenotificationOwner/<int:id>/', views.delete_notification_Owner, name='delete_notification_Owner'),
+    path('editnotificationOwner/<int:id>/', views.edit_notification_Owner, name='edit_notification_Owner'),
 ]
 
 
