@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'dashboardOwner.css' %}" />
-    <title>Dashboard (Security)</title>
+    <title>Dashboard (Owner)</title>
 </head>
 <body>
     <div class="sidebar">
@@ -14,14 +14,21 @@
         <a href="{% url 'viewtenantinfo' %}">Tenant Information</a>
         <a href="{% url 'viewtenantagree' %}"> Tenant Agreement</a>
         <a href="{% url 'viewpayment' %}">View Payment</a>
+        <a href="{% url 'community' %}">Community</a>
         <div class="dropdown">
-            <button class="dropbtn">Emergency</button>
+            <button class="dropbtn">Announcement</button>
             <div class="dropdown-content">
-                <a href="{% url 'patrolreporting' %}">Alert</a>
-                <a href="{% url 'patrolreporting' %}">Evacuation Plan</a>
+                <a href="{% url 'createannouncementowner' %}">Create Announcement</a>
+                <a href="{% url 'announcementlogowner' %}">Announcement Log</a>
             </div>
         </div>
-        <a href="{% url 'qr' %}">QR</a>
+        <div class="dropdown">
+            <button class="dropbtn">Notification</button>
+            <div class="dropdown-content">
+                <a href="{% url 'createnotificationowner' %}">Create Notification</a>
+                <a href="{% url 'notificationlogowner' %}">Notification Log</a>
+            </div>
+        </div>
         <a href="{% url 'main' %}">Log out</a>
     </div>
 

@@ -126,7 +126,13 @@ class TenantPayment(models.Model):
     proof_of_electricity = models.FileField(upload_to='media/', blank=True, null=True)
     proof_of_water = models.FileField(upload_to='media/', blank=True, null=True)
 
-
+class VisitorRegistrationTenant(models.Model):
+    visitor_name = models.CharField(max_length=64)
+    visitor_contact = models.CharField(max_length=20)
+    floor_number = models.PositiveIntegerField()
+    unit_number = models.PositiveIntegerField()
+    reason_to_visit = models.TextField()
+    datetime_local = models.DateTimeField()
 
 
 

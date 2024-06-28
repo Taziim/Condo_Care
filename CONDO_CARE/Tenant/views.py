@@ -4,7 +4,6 @@ from django.http import HttpResponse
 from .models import *
 
 
-
 def maintenenece_request(request):
     if request.method == "POST":         
         name = request.POST.get("Tenant",'')
@@ -29,8 +28,6 @@ def available_facilities(request):
 def booking_history(request):
     return render(request, 'Tenant/BookingHistory.html')
 
-from django.shortcuts import render, redirect
-from .models import FacilityBooking
 
 def book_facilities(request):
     if request.method == "POST":
@@ -99,8 +96,6 @@ def update_history(request, id):
     }   
     return render(request, 'Tenant/EditHistory.html', context)
 
-
-
 def complain_history(request):
     complainhistory = MakeComplaint.objects.all()
     context = {
@@ -118,7 +113,6 @@ def make_complaint(request):
         description = request.POST.get('description')
         attachment = request.FILES.get('attachment')
 
-        # Create a new Complaint instance
         complaint = MakeComplaint(
             name=name,
             floor_number=floor_number,
@@ -143,10 +137,21 @@ def delete_complain_history(request, id):
 def outstanding_bills(request):
     return render(request, 'Tenant/OutstandingBill.html')
 
-
-
 def create_visitor(request):
+    if request.method == 'POST':
+        visitor = VisitorRegistrationTenant(
+            visitor_name=request.POST['visitor_name'],
+            visitor_contact=request.POST['visitor_contact'],
+            floor_number=request.POST['floor_number'],
+            unit_number=request.POST['unit_number'],
+            reason_to_visit=request.POST['reason_to_visit'],
+            datetime_local=request.POST['datetime_local']
+        )
+        visitor.save()
+        messages.success(request, 'Visitor registered successfully!')
+        return redirect('createvisitor')
     return render(request, 'Tenant/CreateVisitor.html')
+
 
 def make_payment(request):
     if request.method == "POST":
