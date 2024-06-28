@@ -196,3 +196,8 @@ def make_payment(request):
         return redirect('makepayment')
     return render(request, 'Tenant/MakePayment.html')
 
+def delete_request(request, id):
+    delhistory = MaintenenceRequest.objects.get(pk=id)
+    delhistory.delete()
+    messages.success(request, 'Deleted successfully')
+    return redirect('requesthistory')

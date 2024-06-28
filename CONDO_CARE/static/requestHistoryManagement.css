@@ -38,54 +38,26 @@ th{
   border-bottom: 0.3px solid #000;
 }
 
-button {
-  padding: 5px 10px;
-  margin-right: 5px;
-  border: none;
-  background-color: red;
-  color: white;
-  font-weight: bolder;
-  cursor: pointer;
-  border-radius: 3px;
-}
-
 button:hover {
   background-color: blue;
 }
 
-.fa-download {
-  font-size: 12px;
-  margin-left: 45px;
-  color: rgb(19, 6, 6);
-}
-.fa-trash {
-  margin-left: 16px;
-  font-size: 12px;
-  color: rgb(0, 0, 0); 
-}
-.custom-button {
-  background-color: #3366FF;
-  border: none;
-  color: white;
-  padding: 3px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  position: fixed;
-  font-size: 12px;
-  border-radius: 3px;
-  transition-duration: 0.3s;
-  cursor: pointer;
-  right: 0px;
-  margin-top: 3px;
-  left:92%;
-}
-
-.custom-button:hover {
-  background-color: #45a049;
-}
 
 .alert {
   text-align: center;
   font-size: 16px;
+}
+
+
+
+.fa-download {
+  font-size: 16px;
+  color: rgb(0, 0, 0); 
+}
+
+.fa-sync-alt,
+.fa-trash {
+  font-size: 16px;
+  color: #000;
+  margin-right: 15px;
 }

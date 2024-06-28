@@ -1,4 +1,5 @@
-from django.http import HttpResponse
+from django.http import FileResponse, Http404, HttpResponse
+from Tenant.models import MaintenenceRequest
 from .models import *
 from django.contrib import messages
 from django.shortcuts import redirect, render
@@ -122,4 +123,41 @@ def edit_notification(request, notification_id):
     return render(request, 'Management/EditNotifications.html', context)
 
 
+def maintenance_request_management(request):
+    maintenancerequestmanagement = MaintenenceRequest.objects.all()
+    context = {
+        'maintenancerequestmanagement':maintenancerequestmanagement
+    }   
+    return render(request, 'Management/RequestHistoryManagement.html',context)
+
+def delete_maintenance_request(request, id):
+    deletemaintenancerequest = MaintenenceRequest.objects.get(id=id)
+    deletemaintenancerequest.delete()
+    messages.success(request, 'Deleted Maintenence Request successfully')
+    return redirect('maintenancerequestmanagement')
+
+
+def update_maintenance_request(request, id):
+    updatemaintenancerequest = MaintenenceRequest.objects.get(pk=id)
+    if request.method == "POST":
+        status = request.POST.get('status')
+        updatemaintenancerequest.status = status
+        updatemaintenancerequest.save()
+        messages.success(request, 'Updated Maintenence Request successfully')
+        return redirect('maintenancerequestmanagement')
     
+    context = {
+        'updatemaintenancerequest': updatemaintenancerequest,
+        'STATUS_CHOICES': MaintenenceRequest.STATUS_CHOICES
+    }
+    return render(request, 'Management/UpdateMaintenence.html', context)
+
+
+def download_image_maintence(request, id):
+    downloadimagemaintence = MaintenenceRequest.objects.get(pk=id)
+    if downloadimagemaintence.photo:
+        response = FileResponse(downloadimagemaintence.photo.open(), content_type='image/jpeg')
+        response['Content-Disposition'] = f'attachment; filename="{downloadimagemaintence.photo.name}"'
+        return response
+    else:
+        raise Http404("No image found.")

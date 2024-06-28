@@ -27,6 +27,7 @@
         <th>Location</th>
         <th>issue description</th>
         <th>Status</th>
+        <th>Action</th>
     </tr>
     {% for request_history in request_history %}
     <tr>
@@ -37,6 +38,11 @@
       <td>{{request_history.location}}</td>
       <td>{{request_history.description}}</td>
       <td>{{request_history.status}}</td>
+      <td>
+        <a href="{% url 'delete_request' request_history.id %}">
+          <i class="fa-solid fa-trash"></i>
+        </a>
+      </td>
     </tr>
     {% endfor %}
     </table>
