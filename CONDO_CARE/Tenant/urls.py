@@ -4,8 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     
-
-     path('maintenenecerequest/', views.maintenenece_request, name='maintenenecerequest'),
+     path('dashboardtenant/', views.dashboard_tenant, name='dashboardtenant'),
      path('maintenenecerequest/', views.maintenenece_request, name='maintenenecerequest'),
      path('requesthistory/', views.request_history, name='requesthistory'),
      path('bookfacilities/', views.book_facilities, name='bookfacilities'),
@@ -20,6 +19,7 @@ urlpatterns = [
      path('deletecomplianhistory/<int:id>/', views.delete_complain_history, name='deletecomplianhistory'),
      path('updatehistory/<int:id>/', views.update_history, name='updatehistory'),
      path('updatehistory/<int:id>/', views.update_history, name='updatehistory'), 
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

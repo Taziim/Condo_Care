@@ -4,18 +4,35 @@ from django.http import HttpResponse
 from .models import *
 
 
+def dashboard_tenant(request):
+    return render(request, 'Tenant/DashboardTenant.html')
+
+
 def maintenenece_request(request):
     if request.method == "POST":         
-        name = request.POST.get("Tenant",'')
-        issue_type = request.POST.get("issue_type",'')
-        location = request.POST.get("location",'')
-        request_datetime = request.POST.get("request_datetime",'')
-        priority = request.POST.get("priority",'')
-        photo = request.POST.get("photo",'')
-        maintenenecerequest = MaintenenceRequest(name=name, issue_type=issue_type, location=location, request_datetime=request_datetime, priority=priority, photo=photo)
+        name = request.POST.get("Tenant")
+        issue_type = request.POST.get("issue_type")
+        location = request.POST.get("location")
+        request_datetime = request.POST.get("request_datetime")
+        priority = request.POST.get("priority")
+        description = request.POST.get("description")
+        
+        maintenenecerequest = MaintenenceRequest(
+            name=name, 
+            issue_type=issue_type, 
+            location=location, 
+            request_datetime=request_datetime, 
+            priority=priority,
+            description=description,
+        )
+        
+        if 'photo' in request.FILES:
+            maintenenecerequest.photo = request.FILES['photo']
+        
         maintenenecerequest.save()
         return redirect('maintenenecerequest')  
     return render(request, 'Tenant/MainReq.html')
+
 
 def request_history(request):
     requesthistory = MaintenenceRequest.objects.all()    

@@ -15,10 +15,10 @@
     <main>
         <section id="submit-request">
             <h2>Submit a Maintenance Request</h2>
-            <form id="request-form" method = "POST">
+            <form id="request-form" method = "POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <label for="issue-type"><i class="fa-solid fa-screwdriver-wrench"></i>Request Type</label>
-                <select id="issue-type" name="issueType">
+                <select id="issue-type" name="issue_type">
                     <option value="">Select a type</option>
                     <option value="Appliance">Appliance Repair</option>
                     <option value="Plumbing">Plumbing</option>
@@ -37,9 +37,6 @@
                 <label for="datetime-local">Request Date And Time</label>
                 <input type="datetime-local" id="datetime-local" name="request_datetime" required>
 
-                 
-
-                
                 <label for="description">Describe the issue</label>
                 <textarea id="description" name="description" rows="4" placeholder="provide the issue details"></textarea>
 
@@ -50,11 +47,16 @@
                     <option value="high">High</option>
                 </select>
 
-                <label for="photo">Upload Photo(</label>
-                <input type="file" id="photo" name="photo" accept="image/*,video/*">
+                <label for="photo">Upload Photo</label>
+                <input type="file" id="photo" name="photo" accept="image/*">
             
-                <button type="submit">Create a Request</button>
+                <button type="submit" class="custom-button">Submit</button>
             </form>
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
         </section>
     </main>
 
