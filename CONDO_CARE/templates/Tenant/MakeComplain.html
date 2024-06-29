@@ -14,7 +14,7 @@
     </header>
     <section class="submit-complaint">
         <h2>Submit a Complaint</h2>
-        <form id="complaintForm" method="POST">
+        <form id="complaintForm" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Enter Your Name">

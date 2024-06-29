@@ -126,7 +126,6 @@ def make_complaint(request):
         category = request.POST.get('category')
         date = request.POST.get('date')
         description = request.POST.get('description')
-        attachment = request.FILES.get('attachment')
 
         complaint = MakeComplaint(
             name=name,
@@ -135,7 +134,6 @@ def make_complaint(request):
             category=category,
             date=date,
             description=description,
-            attachment=attachment
         )
         
         if 'attachment' in request.FILES:

@@ -1,5 +1,8 @@
+from django.conf import settings
 from django.urls import path
-from . import views
+from .import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('maintenancerequestmanagement/', views.maintenance_request_management, name='maintenancerequestmanagement'),
@@ -12,11 +15,8 @@ urlpatterns = [
     path('tenantbookinglist/', views.tenant_booking_list, name='tenant_booking_list'),
     path('managefacilities/', views.manage_facilities, name='managefacilities'),
     path('viewfacilities/', views.view_facilities, name='viewfacilities'),
-    path('complainhistorytenant/', views.complain_history_tenant, name='complain_history_tenant'),
-
-   
-
-    path('downloadimagecomplainhistory/<int:id>/', views.download_image_complainhistory, name='download_image_complainhistory'),
+    path('complainhistorytenant/', views.complain_history_tenant, name='complainhistorytenant'),
+    
     path('deletehistorytenant/<int:id>/', views.delete_history_tenant, name='delete_history_tenant'),
     path('deleteallfacilities/', views.delete_all_facilities, name='delete_all_facilities'),
     path('deletetenantbooking/<int:id>/', views.delete_tenant_booking, name='delete_tenant_booking'),
@@ -28,4 +28,7 @@ urlpatterns = [
     path('updateannouncement/<int:id>/', views.edit_announcement, name='updateannouncement'),
     path('editnotification/<int:notification_id>/', views.edit_notification, name='editnotification'),
     path('createnotification', views.create_notification, name='createnotification'),
-]   
+    path('downloadimagecomplainhistory/<int:id>/', views.download_image_complainhistory, name='download_image_complainhistory'),
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

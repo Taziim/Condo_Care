@@ -9,8 +9,7 @@ body {
     background-color: #c9ccd1;
     font-size: 13px;
     color: #000;
-}
-
+ }
 h2 {
   text-align: center;
 }
@@ -20,23 +19,19 @@ h2 {
   margin: 10px auto;
   padding: 20px;
 }
-
 .my_bookings table {
   width: 100%;
   border-collapse: collapse;
 }
-
 .my_bookings th, .my_bookings td {
   border: 1px solid #ccc;
   padding: 10px;
   text-align: left;
 }
-
 .my_bookings th {
   background-color: #333;
   color: #fff;
 }
-
 .my_bookings button {
   background-color: #333;
   color: #fff;
@@ -54,18 +49,19 @@ h2 {
 }
 
 .fa-user-pen{
-  font-size: 18px;
+  font-size: 16px;
   margin-left: 20px;
   margin-right: 0px;
   color: rgb(19, 6, 6);
 }
 .fa-trash {
   margin-left: 5px;
-  font-size: 18px;
+  font-size: 16px;
   margin-right: 0px;
   color: rgb(0, 0, 0); 
 }
 
 .messages {
   text-align: center;
+  font-size: 16px;
 }
