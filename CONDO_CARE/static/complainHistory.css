@@ -26,7 +26,7 @@ h2 {
 .my_bookings th, .my_bookings td {
   border: 1px solid #ccc;
   padding: 10px;
-  text-align: left;
+  text-align: center;
 }
 .my_bookings th {
   background-color: #333;
