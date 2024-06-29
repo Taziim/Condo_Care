@@ -1,5 +1,5 @@
 from django.http import FileResponse, Http404, HttpResponse
-from Tenant.models import FacilityBooking, MaintenenceRequest
+from Tenant.models import FacilityBooking, MaintenenceRequest, MakeComplaint
 from .models import *
 from django.contrib import messages
 from django.shortcuts import redirect, render
@@ -92,7 +92,6 @@ def delete_notification_log(request, notification_id):
     messages.success(request, 'Deleted successfully')
     return redirect('notificationlog')
     
-
 def edit_notification(request, notification_id):
     if request.method == "POST":
         title = request.POST.get('title')
@@ -143,7 +142,6 @@ def update_maintenance_request(request, id):
     }
     return render(request, 'Management/UpdateMaintenence.html', context)
 
-
 def download_image_maintence(request, id):
     downloadimagemaintence = MaintenenceRequest.objects.get(pk=id)
     if downloadimagemaintence.photo:
@@ -165,14 +163,6 @@ def delete_tenant_booking(request, id):
     deletetenantbooking.delete()
     messages.success(request, 'Deleted Tenant Booking successfully')
     return redirect('tenantbookinglist')
-
-# def manage_facilities(request):
-#     managefacilities = Facility.objects.all()
-#     context = {
-#         'managefacilities':managefacilities
-#     }   
-#     return render(request, 'Management/ManageFacilities.html',context)
-
 
 def manage_facilities(request):
     if request.method == 'POST':
@@ -241,3 +231,26 @@ def delete_all_facilities(request):
         return redirect('viewfacilities')  
 
     return render(request, 'Management/Deletefacilities.html')
+
+def complain_history_tenant(request):
+    complainhistorytenant = MakeComplaint.objects.all()
+    context = {
+        'complainhistorytenant':complainhistorytenant
+    }   
+    return render(request, 'Management/ComplainTenant.html',context)
+
+def delete_history_tenant(request, id):
+    deletehistorytenant = MakeComplaint.objects.get(id=id)
+    deletehistorytenant.delete()
+    messages.success(request, 'Deleted Tenant history successfully')
+    return redirect('complainhistorytenant')
+
+    
+def download_image_complainhistory(request, id):
+    downloadimagecomplainhistory = MakeComplaint.objects.get(id=id)
+    if downloadimagecomplainhistory.attachment:
+        response = FileResponse(downloadimagecomplainhistory.attachment.open(), content_type='image/jpeg')
+        response['Content-Disposition'] = f'attachment; filename="{downloadimagecomplainhistory.attachment.name}"'
+        return response
+    else:
+        raise Http404("No image found.")    

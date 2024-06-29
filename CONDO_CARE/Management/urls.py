@@ -12,9 +12,12 @@ urlpatterns = [
     path('tenantbookinglist/', views.tenant_booking_list, name='tenant_booking_list'),
     path('managefacilities/', views.manage_facilities, name='managefacilities'),
     path('viewfacilities/', views.view_facilities, name='viewfacilities'),
+    path('complainhistorytenant/', views.complain_history_tenant, name='complain_history_tenant'),
 
+   
 
-    
+    path('downloadimagecomplainhistory/<int:id>/', views.download_image_complainhistory, name='download_image_complainhistory'),
+    path('deletehistorytenant/<int:id>/', views.delete_history_tenant, name='delete_history_tenant'),
     path('deleteallfacilities/', views.delete_all_facilities, name='delete_all_facilities'),
     path('deletetenantbooking/<int:id>/', views.delete_tenant_booking, name='delete_tenant_booking'),
     path('deletemaintenancerequest/<int:id>/', views.delete_maintenance_request, name='delete_maintenance_request'),

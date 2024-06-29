@@ -97,7 +97,7 @@ class MakeComplaint(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Open')
     date = models.DateField()
     description = models.TextField()
-    attachment = models.FileField(upload_to='media/', null=True, blank=True)
+    attachment = models.ImageField(upload_to='media/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

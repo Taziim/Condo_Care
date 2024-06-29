@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'complainTenant.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Complain History Tenant</title>
+</head>
+<body>
+  <h2>Complain History</h2>
+  <div class="my_bookings">
+    <table>
+      <thead>
+        <tr>
+          <th>Complaint Title</th>
+          <th>Description of the issue</th>
+          <th>Date Submitted</th>
+          <th>floor/Unit Number</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for complainhistorytenant in complainhistorytenant %}
+        <tr>
+          <td>{{complainhistorytenant.name}}</td>
+          <td>{{complainhistorytenant.description}}</td>
+          <td>{{complainhistorytenant.date}}</td>
+          <td>{{complainhistorytenant.floor_number}} Floor {{complainhistorytenant.unit_number}} Unit </td>
+          <td>
+            <a href="{% url 'download_image_complainhistory' complainhistorytenant.id %}">
+                <i class="fas fa-download"></i> 
+            </a>
+          </td>
+          <td>
+            <a href="{% url 'delete_history_tenant' complainhistorytenant.id %}">
+              <i class="fa-sharp fa-solid fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if messages %}
+  <div class="messages">
+      {% for message in messages %}
+          <div class="alert alert-success" role="alert">
+              {{ message }}
+          </div>
+      {% endfor %}
+  </div>
+  {% endif %}
+</body>
+</html>
+    

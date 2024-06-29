@@ -117,6 +117,7 @@ def complain_history(request):
     }   
     return render(request, 'Tenant/ComplainHistory.html',context)
 
+
 def make_complaint(request):
     if request.method == "POST":
         name = request.POST.get('name')
@@ -136,12 +137,16 @@ def make_complaint(request):
             description=description,
             attachment=attachment
         )
+        
+        if 'attachment' in request.FILES:
+            complaint.attachment = request.FILES['attachment']
+
         complaint.save()
         messages.success(request, 'Complaint submitted successfully!')
-        return redirect('complainhistory')  
-    return render(request, 'Tenant/MakeComplain.html')  
-
-
+        return redirect('complainhistory')
+        
+    return render(request, 'Tenant/MakeComplain.html')
+ 
 def delete_complain_history(request, id):
     delhistory = MakeComplaint.objects.get(pk=id)
     delhistory.delete()
