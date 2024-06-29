@@ -16,3 +16,6 @@ class Userinfo(models.Model):
     def save(self, *args, **kwargs):
         self.password = make_password(self.password)
         super().save(*args, **kwargs)
+
+    def get_usertype(self):
+        return self.usertype

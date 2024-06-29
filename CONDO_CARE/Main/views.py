@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import FileResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from .models import *
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
@@ -13,18 +14,19 @@ def log_in(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
+        usertype = request.POST.get('usertype')
         user = authenticate(request, username=username, password=password)
         
         if user is not None:
             login(request, user)
             if user.usertype == 'Tenant':
-                return redirect('dashboardtenant')
-            # elif user.usertype == 'Owner':
-            #     return redirect('dashboardowner')
-            # elif user.usertype == 'Security':
-            #     return redirect('dashboardsecurity')
-            # elif user.usertype == 'Management':
-            #     return redirect('dashboardmanagement')
+                return redirect(reverse('Tenant:dashboardtenant'))
+            elif user.usertype == 'Owner':
+                return redirect(reverse('Owner:dashboardowner'))
+            elif user.usertype == 'Security':
+                return redirect(reverse('Security:dashboardsecurity'))
+            elif user.usertype == 'Management':
+                return redirect(reverse('Management:dashboardmanagement'))
             else:
                 return redirect('main')  # Default redirection if user type does not match
         else:
