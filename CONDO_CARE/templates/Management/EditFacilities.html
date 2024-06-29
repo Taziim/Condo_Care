@@ -6,59 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'editfacilities.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Manage Facilities</title>
+    <title>Edit Facilities</title>
 </head>
 <body>
     <div class="container">
         <section id="available-facilities">
             <h2>Manage Facilities</h2>
-            {% for managefacilities in managefacilities %}
+            {% for view_facilities in view_facilities %}
             <div class="facility">
-                <h3>{{ facility.name }}</h3>
-                <p>Available: {{ facility.availability }}</p>
-                <p>Capacity: {{ facility.capacity }} people</p>
-                <p>Available Time: {{ facility.available_days }}, {{ facility.available_time }}</p>
+                <h3>{{ view_facilities.name }}</h3>
+                <p>Available: {{ view_facilities.available|yesno:"Yes,No" }}</p>
+                <p>Capacity: {{ view_facilities.capacity }} people</p>
+                <p>Available Time: {{ view_facilities.available_time }}</p>
             </div>
-            <div class="facility">
-                <h3>Common Room</h3>
-                <p>Available: Yes</p>
-                <p>Capacity: 10 people</p>
-                <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
-            </div>
-            <div class="facility">
-                <h3>Hall Room</h3>
-                <p>Available: No</p>
-                <p>Capacity: 50 people</p>
-                <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
-            </div>
-            <div class="facility">
-                <h3>Swimming Pool</h3>
-                <p>Available: Yes</p>
-                <p>Capacity: 20 people</p>
-                <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
-            </div>
-            <div class="facility">
-                <h3>BBQ Area</h3>
-                <p>Available: Yes</p>
-                <p>Capacity: 20 people</p>
-                <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
-            </div>
-            <div class="facility">
-                <h3>Rooftop Terrace</h3>
-                <p>Available: Yes</p>
-                <p>Capacity: 20 people</p>
-                <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
-            </div>
-            <div class="facility">
-                <h3>Sports Facilities</h3>
-                <p>Available: Yes</p>
-                <p>Capacity: 20 people</p>
-                <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
-            </div>
-            <a href="{% url 'update_facilities' managefacilities.id %}">
-                <button class="btn">Edit</button>
-            </a> 
             {% endfor %}
-    </section>
+        </section>
+        <a href="{% url 'delete_all_facilities' %}" class="btn">Delete All</a>
+    </div>
 </body>
 </html>

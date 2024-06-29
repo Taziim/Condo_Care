@@ -10,11 +10,12 @@ urlpatterns = [
     path('announcementlog/', views.announcement_log, name='announcementlog'),
     path('notificationlog/', views.notification_log, name='notificationlog'),
     path('tenantbookinglist/', views.tenant_booking_list, name='tenant_booking_list'),
-    path('managefacilities/', views.manage_facilities, name='manage_facilities'),
+    path('managefacilities/', views.manage_facilities, name='managefacilities'),
+    path('viewfacilities/', views.view_facilities, name='viewfacilities'),
 
 
     
-    # path('updatefacilities/<int:id>/', views.update_facilities, name='update_facilities'),
+    path('deleteallfacilities/', views.delete_all_facilities, name='delete_all_facilities'),
     path('deletetenantbooking/<int:id>/', views.delete_tenant_booking, name='delete_tenant_booking'),
     path('deletemaintenancerequest/<int:id>/', views.delete_maintenance_request, name='delete_maintenance_request'),
     path('updatemaintenancerequest/<int:id>/', views.update_maintenance_request, name='update_maintenance_request'),

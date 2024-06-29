@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from Management.models import Facility
 from .models import *
 
 
@@ -196,3 +197,10 @@ def delete_request(request, id):
     delhistory.delete()
     messages.success(request, 'Deleted successfully')
     return redirect('requesthistory')
+
+def available_facilities(request):
+    availablefacilities = Facility.objects.all()
+    context = {
+        'availablefacilities':availablefacilities
+    }   
+    return render(request, 'Tenant/AvailableFacilities.html',context)

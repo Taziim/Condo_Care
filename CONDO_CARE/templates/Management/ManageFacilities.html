@@ -9,93 +9,179 @@
     <title>Manage Facilities</title>
 </head>
 <body>
-   
-<div class="container">
-    <section id="available-facilities">
-        <h2>Manage Facilities</h2>
-        <form id="facilities-form" method="POST" >
-        {% csrf_token %}
-        <div class="facility">
-            <h3>Common Room</h3>
-            <label>Available:</label>
-            <label>
-                <input type="radio" name="common_room_available" value="Yes" required> Yes
-            </label>
-            <label>
-                <input type="radio" name="common_room_available" value="No"> No
-            </label>
-            
-            <label for="common_room_capacity">Capacity:</label>
-            <input type="number" id="common_room_capacity" name="common_room_capacity" required>
-            
-            <label for="common_room_time">Available Time:</label>
-            <select id="common_room_time" name="common_room_time" required>
-                <option value="Monday to Friday, 9 AM to 9 PM">Monday to Friday, 9 AM to 9 PM</option>
-                <option value="Weekends, 10 AM to 6 PM">Weekends, 10 AM to 6 PM</option>
-                <!-- Add more time slots as needed -->
-            </select>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="facility">
-            <h3>Common Room</h3>
-            <p>Available: Yes</p>
-            <p>Capacity: 10 people</p>
-            <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
-        </div>
-        <div class="facility">
-            <h3>Hall Room</h3>
-            <p>Available: No</p>
-            <p>Capacity: 50 people</p>
-            <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
-        </div>
-        <div class="facility">
-            <h3>Swimming Pool</h3>
-            <p>Available: Yes</p>
-            <p>Capacity: 20 people</p>
-            <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
-        </div>
-        <div class="facility">
-            <h3>BBQ Area</h3>
-            <p>Available: Yes</p>
-            <p>Capacity: 20 people</p>
-            <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
-        </div>
-        <div class="facility">
-            <h3>Rooftop Terrace</h3>
-            <p>Available: Yes</p>
-            <p>Capacity: 20 people</p>
-            <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
-        </div>
-        <div class="facility">
-            <h3>Sports Facilities</h3>
-            <p>Available: Yes</p>
-            <p>Capacity: 20 people</p>
-            <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
-        </div>
-        <button type="submit" class="btn">Update</button>
-    </form>
-    {% if messages %}
-    <div class="messages">
-        {% for message in messages %}
-            <div class="alert alert-success" role="alert">
-                {{ message }}
+    <div class="container">
+        <section id="available-facilities">
+            <h2>Manage Facilities</h2>
+            <form id="facilities-form" method="POST">
+                {% csrf_token %}
+                <div class="facility">
+                    <h3>Common Room</h3>
+                    <label for="common-room-available">Available</label>
+                    <select id="common-room-available" name="common_room_available">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <label for="common-room-capacity">Capacity:</label>
+                    <input type="number" id="common-room-capacity" name="common_room_capacity">
+                    
+                    <label for="time">Available Time</label>
+                    <select id="time" name="common_room_time">
+                      <option value="9:00 am To 10:00 am">9:00 am To 10:00 am</option>
+                      <option value="10:00 am To 11:00 am">10:00 am To 11:00 am</option>
+                      <option value="11:00 am To 12:00 pm">11:00 am To 12:00 pm</option>
+                      <option value="12:00 pm To 1:00 pm">12:00 pm To 1:00 pm</option>
+                      <option value="1:00 pm To 2:00 pm">1:00 pm To 2:00 pm</option>
+                      <option value="2:00 pm To 3:00 pm">2:00 pm To 3:00 pm</option>
+                      <option value="3:00 pm To 4:00 pm">3:00 pm To 4:00 pm</option>
+                      <option value="4:00 pm To 5:00 pm">4:00 pm To 5:00 pm</option>
+                      <option value="5:00 pm To 6:00 pm">5:00 pm To 6:00 pm</option>
+                      <option value="6:00 pm To 7:00 pm">6:00 pm To 7:00 pm</option>
+                      <option value="7:00 pm To 8:00 pm">7:00 pm To 8:00 pm</option>
+                      <option value="8:00 pm To 9:00 pm">8:00 pm To 9:00 pm</option>
+                    </select>
+                </div>
+                <div class="facility">
+                    <h3>Hall Room</h3>
+                    <label for="hall-room-available">Available:</label>
+                    <select id="hall-room-available" name="hall_room_available">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <label for="hall-room-capacity">Capacity:</label>
+                    <input type="number" id="hall-room-capacity" name="hall_room_capacity">
+                    
+                    <label for="time">Available Time:</label>
+                    <select id="time" name="hall_room_time">
+                      <option value="9:00 am To 10:00 am">9:00 am To 10:00 am</option>
+                      <option value="10:00 am To 11:00 am">10:00 am To 11:00 am</option>
+                      <option value="11:00 am To 12:00 pm">11:00 am To 12:00 pm</option>
+                      <option value="12:00 pm To 1:00 pm">12:00 pm To 1:00 pm</option>
+                      <option value="1:00 pm To 2:00 pm">1:00 pm To 2:00 pm</option>
+                      <option value="2:00 pm To 3:00 pm">2:00 pm To 3:00 pm</option>
+                      <option value="3:00 pm To 4:00 pm">3:00 pm To 4:00 pm</option>
+                      <option value="4:00 pm To 5:00 pm">4:00 pm To 5:00 pm</option>
+                      <option value="5:00 pm To 6:00 pm">5:00 pm To 6:00 pm</option>
+                      <option value="6:00 pm To 7:00 pm">6:00 pm To 7:00 pm</option>
+                      <option value="7:00 pm To 8:00 pm">7:00 pm To 8:00 pm</option>
+                      <option value="8:00 pm To 9:00 pm">8:00 pm To 9:00 pm</option>
+                    </select>
+                </div>
+                <div class="facility">
+                    <h3>Swimming Pool</h3>
+                    <label for="swimming-pool-available">Available:</label>
+                    <select id="swimming-pool-available" name="swimming_pool_available">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <label for="swimming-pool-capacity">Capacity:</label>
+                    <input type="number" id="swimming-pool-capacity" name="swimming_pool_capacity">
+                    
+                    <label for="time">Available Time:</label>
+                    <select id="time" name="swimming_pool_time">
+                      <option value="9:00 am To 10:00 am">9:00 am To 10:00 am</option>
+                      <option value="10:00 am To 11:00 am">10:00 am To 11:00 am</option>
+                      <option value="11:00 am To 12:00 pm">11:00 am To 12:00 pm</option>
+                      <option value="12:00 pm To 1:00 pm">12:00 pm To 1:00 pm</option>
+                      <option value="1:00 pm To 2:00 pm">1:00 pm To 2:00 pm</option>
+                      <option value="2:00 pm To 3:00 pm">2:00 pm To 3:00 pm</option>
+                      <option value="3:00 pm To 4:00 pm">3:00 pm To 4:00 pm</option>
+                      <option value="4:00 pm To 5:00 pm">4:00 pm To 5:00 pm</option>
+                      <option value="5:00 pm To 6:00 pm">5:00 pm To 6:00 pm</option>
+                      <option value="6:00 pm To 7:00 pm">6:00 pm To 7:00 pm</option>
+                      <option value="7:00 pm To 8:00 pm">7:00 pm To 8:00 pm</option>
+                      <option value="8:00 pm To 9:00 pm">8:00 pm To 9:00 pm</option>
+                    </select>
+                </div>
+                <div class="facility">
+                    <h3>BBQ Area</h3>
+                    <label for="bbq-area-available">Available:</label>
+                    <select id="bbq-area-available" name="bbq_area_available">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <label for="bbq-area-capacity">Capacity:</label>
+                    <input type="number" id="bbq-area-capacity" name="bbq_area_capacity">
+                
+                    <label for="time">Available Time:</label>
+                    <select id="time" name="bbq_area_time">
+                      <option value="9:00 am To 10:00 am">9:00 am To 10:00 am</option>
+                      <option value="10:00 am To 11:00 am">10:00 am To 11:00 am</option>
+                      <option value="11:00 am To 12:00 pm">11:00 am To 12:00 pm</option>
+                      <option value="12:00 pm To 1:00 pm">12:00 pm To 1:00 pm</option>
+                      <option value="1:00 pm To 2:00 pm">1:00 pm To 2:00 pm</option>
+                      <option value="2:00 pm To 3:00 pm">2:00 pm To 3:00 pm</option>
+                      <option value="3:00 pm To 4:00 pm">3:00 pm To 4:00 pm</option>
+                      <option value="4:00 pm To 5:00 pm">4:00 pm To 5:00 pm</option>
+                      <option value="5:00 pm To 6:00 pm">5:00 pm To 6:00 pm</option>
+                      <option value="6:00 pm To 7:00 pm">6:00 pm To 7:00 pm</option>
+                      <option value="7:00 pm To 8:00 pm">7:00 pm To 8:00 pm</option>
+                      <option value="8:00 pm To 9:00 pm">8:00 pm To 9:00 pm</option>
+                    </select>
+                </div>
+                <div class="facility">
+                    <h3>Rooftop Terrace</h3>
+                    <label for="rooftop-terrace-available">Available:</label>
+                    <select id="rooftop-terrace-available" name="rooftop_terrace_available">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <label for="rooftop-terrace-capacity">Capacity:</label>
+                    <input type="number" id="rooftop-terrace-capacity" name="rooftop_terrace_capacity">
+                 
+                    <label for="time">Available Time:</label>
+                    <select id="time" name="rooftop_terrace_time">
+                      <option value="9:00 am To 10:00 am">9:00 am To 10:00 am</option>
+                      <option value="10:00 am To 11:00 am">10:00 am To 11:00 am</option>
+                      <option value="11:00 am To 12:00 pm">11:00 am To 12:00 pm</option>
+                      <option value="12:00 pm To 1:00 pm">12:00 pm To 1:00 pm</option>
+                      <option value="1:00 pm To 2:00 pm">1:00 pm To 2:00 pm</option>
+                      <option value="2:00 pm To 3:00 pm">2:00 pm To 3:00 pm</option>
+                      <option value="3:00 pm To 4:00 pm">3:00 pm To 4:00 pm</option>
+                      <option value="4:00 pm To 5:00 pm">4:00 pm To 5:00 pm</option>
+                      <option value="5:00 pm To 6:00 pm">5:00 pm To 6:00 pm</option>
+                      <option value="6:00 pm To 7:00 pm">6:00 pm To 7:00 pm</option>
+                      <option value="7:00 pm To 8:00 pm">7:00 pm To 8:00 pm</option>
+                      <option value="8:00 pm To 9:00 pm">8:00 pm To 9:00 pm</option>
+                    </select>
+                </div>
+                <div class="facility">
+                    <h3>Sports Facilities</h3>
+                    <label for="sports-facilities-available">Available:</label>
+                    <select id="sports-facilities-available" name="sports_facilities_available">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <label for="sports-facilities-capacity">Capacity:</label>
+                    <input type="number" id="sports-facilities-capacity" name="sports_facilities_capacity">
+                 
+                    <label for="time">Available Time:</label>
+                    <select id="time" name="sports_facilities_time">
+                      <option value="9:00 am To 10:00 am">9:00 am To 10:00 am</option>
+                      <option value="10:00 am To 11:00 am">10:00 am To 11:00 am</option>
+                      <option value="11:00 am To 12:00 pm">11:00 am To 12:00 pm</option>
+                      <option value="12:00 pm To 1:00 pm">12:00 pm To 1:00 pm</option>
+                      <option value="1:00 pm To 2:00 pm">1:00 pm To 2:00 pm</option>
+                      <option value="2:00 pm To 3:00 pm">2:00 pm To 3:00 pm</option>
+                      <option value="3:00 pm To 4:00 pm">3:00 pm To 4:00 pm</option>
+                      <option value="4:00 pm To 5:00 pm">4:00 pm To 5:00 pm</option>
+                      <option value="5:00 pm To 6:00 pm">5:00 pm To 6:00 pm</option>
+                      <option value="6:00 pm To 7:00 pm">6:00 pm To 7:00 pm</option>
+                      <option value="7:00 pm To 8:00 pm">7:00 pm To 8:00 pm</option>
+                      <option value="8:00 pm To 9:00 pm">8:00 pm To 9:00 pm</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Update</button>
+            </form>
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+            {% endif %}
+        </section>
     </div>
-   {% endif %}
-</section>
-
 </body>
 </html>

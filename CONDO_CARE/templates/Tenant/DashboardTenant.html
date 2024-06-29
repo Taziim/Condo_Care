@@ -15,7 +15,13 @@
     <a href="{% url 'requesthistory' %}">Maintenenece Log</a>
     <a href="{% url 'bookfacilities' %}">Book Facilities</a>
     <a href="{% url 'availablefacilities' %}">Avaiable Facilities</a>
-    <a href="{% url 'complain' %}">Complain</a>
+    <div class="dropdown">
+        <button class="dropbtn">Complain</button>
+        <div class="dropdown-content">
+            <a href="{% url 'complain' %}">Complain</a>
+            <a href="{% url 'complainhistory' %}">Complain Log</a>
+        </div>
+    </div>
     <a href="{% url 'main' %}">Log out</a>
 </div>
 

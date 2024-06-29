@@ -4,10 +4,6 @@ from .models import *
 from django.contrib import messages
 from django.shortcuts import redirect, render
 
-
-
-
-
 def create_bills(request):
     return render(request, 'Management/CreateBills.html')
 
@@ -16,7 +12,6 @@ def dashboard_management(request):
 
 def notification_announcement(request):
     return render(request, 'Management/Notifications.html')
-
 
 def create_announcement(request):
     if request.method == "POST":
@@ -34,7 +29,6 @@ def create_announcement(request):
         return redirect('createannouncement')
     return render(request, 'Management/CreateAnnouncement.html')
 
-
 def announcement_log(request):
     announcementlog = Announcement.objects.all()
     context = {
@@ -48,7 +42,6 @@ def delete_announcement_log(request, id):
     messages.success(request, 'Deleted successfully')
     return redirect('announcementlog')
     
-
 def edit_announcement(request, id):
     if request.method == "POST":
         title = request.POST.get('title')
@@ -122,7 +115,6 @@ def edit_notification(request, notification_id):
     }
     return render(request, 'Management/EditNotifications.html', context)
 
-
 def maintenance_request_management(request):
     maintenancerequestmanagement = MaintenenceRequest.objects.all()
     context = {
@@ -135,7 +127,6 @@ def delete_maintenance_request(request, id):
     deletemaintenancerequest.delete()
     messages.success(request, 'Deleted Maintenence Request successfully')
     return redirect('maintenancerequestmanagement')
-
 
 def update_maintenance_request(request, id):
     updatemaintenancerequest = MaintenenceRequest.objects.get(pk=id)
@@ -175,11 +166,78 @@ def delete_tenant_booking(request, id):
     messages.success(request, 'Deleted Tenant Booking successfully')
     return redirect('tenantbookinglist')
 
+# def manage_facilities(request):
+#     managefacilities = Facility.objects.all()
+#     context = {
+#         'managefacilities':managefacilities
+#     }   
+#     return render(request, 'Management/ManageFacilities.html',context)
 
 
 def manage_facilities(request):
-    managefacilities = Facility.objects.all()
+    if request.method == 'POST':
+        facilities_data = [
+            {
+                'name': 'Common Room',
+                'available': request.POST.get('common_room_available') == 'yes',
+                'capacity': request.POST.get('common_room_capacity'),
+                'available_time': request.POST.get('common_room_time')
+            },
+            {
+                'name': 'Hall Room',
+                'available': request.POST.get('hall_room_available') == 'yes',
+                'capacity': request.POST.get('hall_room_capacity'),
+                'available_time': request.POST.get('hall_room_time')
+            },
+            {
+                'name': 'Swimming Pool',
+                'available': request.POST.get('swimming_pool_available') == 'yes',
+                'capacity': request.POST.get('swimming_pool_capacity'),
+                'available_time': request.POST.get('swimming_pool_time')
+            },
+            {
+                'name': 'BBQ Area',
+                'available': request.POST.get('bbq_area_available') == 'yes',
+                'capacity': request.POST.get('bbq_area_capacity'),
+                'available_time': request.POST.get('bbq_area_time')
+            },
+            {
+                'name': 'Rooftop Terrace',
+                'available': request.POST.get('rooftop_terrace_available') == 'yes',
+                'capacity': request.POST.get('rooftop_terrace_capacity'),
+                'available_time': request.POST.get('rooftop_terrace_time')
+            },
+            {
+                'name': 'Sports Facilities',
+                'available': request.POST.get('sports_facilities_available') == 'yes',
+                'capacity': request.POST.get('sports_facilities_capacity'),
+                'available_time': request.POST.get('sports_facilities_time')
+            }
+        ]
+
+        for data in facilities_data:
+            Facility.objects.update_or_create(
+                name=data['name'],
+                defaults={
+                    'available': data['available'],
+                    'capacity': data['capacity'],
+                    'available_time': data['available_time']
+                }
+            )
+        messages.success(request, 'Added Facilities successfully')
+        return redirect('managefacilities')
+    return render(request, 'Management/ManageFacilities.html')
+
+def view_facilities(request):
+    view_facilities = Facility.objects.all()
     context = {
-        'managefacilities':managefacilities
+        'view_facilities':view_facilities
     }   
-    return render(request, 'Management/ManageFacilities.html',context)
+    return render(request, 'Management/EditFacilities.html',context)
+
+def delete_all_facilities(request):
+    if request.method == 'POST':
+        Facility.objects.all().delete()
+        return redirect('viewfacilities')  
+
+    return render(request, 'Management/Deletefacilities.html')
