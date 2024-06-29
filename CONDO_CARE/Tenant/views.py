@@ -7,7 +7,6 @@ from .models import *
 def dashboard_tenant(request):
     return render(request, 'Tenant/DashboardTenant.html')
 
-
 def maintenenece_request(request):
     if request.method == "POST":         
         name = request.POST.get("Tenant")
@@ -33,18 +32,15 @@ def maintenenece_request(request):
         return redirect('maintenenecerequest')  
     return render(request, 'Tenant/MainReq.html')
 
-
 def request_history(request):
     requesthistory = MaintenenceRequest.objects.all()    
     return render(request, 'Tenant/RequestHistory.html',{'request_history':requesthistory})
-
 
 def available_facilities(request):
     return render(request, 'Tenant/AvailableFacilities.html')
 
 def booking_history(request):
     return render(request, 'Tenant/BookingHistory.html')
-
 
 def book_facilities(request):
     if request.method == "POST":
@@ -168,7 +164,6 @@ def create_visitor(request):
         messages.success(request, 'Visitor registered successfully!')
         return redirect('createvisitor')
     return render(request, 'Tenant/CreateVisitor.html')
-
 
 def make_payment(request):
     if request.method == "POST":

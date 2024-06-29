@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'manageFacilities.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Manage Facilities</title>
+</head>
+<body>
+   
+<div class="container">
+    <section id="available-facilities">
+        <h2>Manage Facilities</h2>
+        <form id="facilities-form" method="POST" >
+        {% csrf_token %}
+        <div class="facility">
+            <h3>Common Room</h3>
+            <label>Available:</label>
+            <label>
+                <input type="radio" name="common_room_available" value="Yes" required> Yes
+            </label>
+            <label>
+                <input type="radio" name="common_room_available" value="No"> No
+            </label>
+            
+            <label for="common_room_capacity">Capacity:</label>
+            <input type="number" id="common_room_capacity" name="common_room_capacity" required>
+            
+            <label for="common_room_time">Available Time:</label>
+            <select id="common_room_time" name="common_room_time" required>
+                <option value="Monday to Friday, 9 AM to 9 PM">Monday to Friday, 9 AM to 9 PM</option>
+                <option value="Weekends, 10 AM to 6 PM">Weekends, 10 AM to 6 PM</option>
+                <!-- Add more time slots as needed -->
+            </select>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="facility">
+            <h3>Common Room</h3>
+            <p>Available: Yes</p>
+            <p>Capacity: 10 people</p>
+            <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
+        </div>
+        <div class="facility">
+            <h3>Hall Room</h3>
+            <p>Available: No</p>
+            <p>Capacity: 50 people</p>
+            <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
+        </div>
+        <div class="facility">
+            <h3>Swimming Pool</h3>
+            <p>Available: Yes</p>
+            <p>Capacity: 20 people</p>
+            <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
+        </div>
+        <div class="facility">
+            <h3>BBQ Area</h3>
+            <p>Available: Yes</p>
+            <p>Capacity: 20 people</p>
+            <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
+        </div>
+        <div class="facility">
+            <h3>Rooftop Terrace</h3>
+            <p>Available: Yes</p>
+            <p>Capacity: 20 people</p>
+            <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
+        </div>
+        <div class="facility">
+            <h3>Sports Facilities</h3>
+            <p>Available: Yes</p>
+            <p>Capacity: 20 people</p>
+            <p>Available Time: Monday to Friday, 9 AM to 9 PM</p>
+        </div>
+        <button type="submit" class="btn">Update</button>
+    </form>
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+   {% endif %}
+</section>
+
+</body>
+</html>

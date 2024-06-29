@@ -25,7 +25,17 @@ class Notification(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-
+class Facility(models.Model):
+    AVAILABILITY_CHOICES = [
+        ('Yes', 'Available'),
+        ('No', 'Not Available'),
+    ]
+    name = models.CharField(max_length=100)
+    availability = models.CharField(max_length=3, choices=AVAILABILITY_CHOICES, default='Yes')
+    capacity = models.PositiveIntegerField()
+    available_time_start = models.TimeField()
+    available_time_end = models.TimeField()
+    available_days = models.CharField(max_length=200, default="Monday to Friday")
     
 
 

@@ -1,5 +1,5 @@
 from django.http import FileResponse, Http404, HttpResponse
-from Tenant.models import MaintenenceRequest
+from Tenant.models import FacilityBooking, MaintenenceRequest
 from .models import *
 from django.contrib import messages
 from django.shortcuts import redirect, render
@@ -161,3 +161,25 @@ def download_image_maintence(request, id):
         return response
     else:
         raise Http404("No image found.")
+    
+def tenant_booking_list(request):
+    tenantbookinglist = FacilityBooking.objects.all()
+    context = {
+        'tenantbookinglist':tenantbookinglist
+    }   
+    return render(request, 'Management/BookingList.html',context)
+
+def delete_tenant_booking(request, id):
+    deletetenantbooking = FacilityBooking.objects.get(pk=id)
+    deletetenantbooking.delete()
+    messages.success(request, 'Deleted Tenant Booking successfully')
+    return redirect('tenantbookinglist')
+
+
+
+def manage_facilities(request):
+    managefacilities = Facility.objects.all()
+    context = {
+        'managefacilities':managefacilities
+    }   
+    return render(request, 'Management/ManageFacilities.html',context)
