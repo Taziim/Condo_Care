@@ -32,7 +32,7 @@
       <td>{{tenantbookinglists.attendees}}</td>
       <td>{{tenantbookinglists.additional_notes}}</td>
       <td>
-        <a href="{% url 'delete_tenant_booking' tenantbookinglists.id %}">
+        <a href="{% url 'management:delete_tenant_booking' tenantbookinglists.id %}">
           <i class="fa-solid fa-trash"></i>
         </a>
       </td>

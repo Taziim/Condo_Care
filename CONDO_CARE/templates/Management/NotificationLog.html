@@ -17,10 +17,9 @@
 <div class="table_1">
     <table>
       <caption>
-        Notification Log
+        Announcement Log
       </caption>
     <tr>
-        <th>#</th>
         <th>Title</th>
         <th>Content</th>
         <th>Post Date</th>
@@ -29,16 +28,15 @@
     </tr>
     {% for notificationlog in notificationlog %}
     <tr>
-      <td>{{forloop.counter }}</td>
       <td>{{notificationlog.title}}</td>
       <td>{{notificationlog.content}}</td>
       <td>{{notificationlog.post_date}}</td>
       <td>{{notificationlog.audience}}</td>
       <td>
-        <a href="{% url 'deletenotificationlog' notificationlog.notification_id %}">
+        <a href="{% url 'management:deletenotificationlog' notificationlog.notification_id %}">
           <i class="fa-sharp fa-solid fa-trash"></i>
         </a>
-        <a href="{% url 'editnotification' notificationlog.notification_id %}">
+        <a href="{% url 'management:editnotification' notificationlog.notification_id %}">
           <i class="fa-solid fa-user-pen"></i>
         </a>
     </td>

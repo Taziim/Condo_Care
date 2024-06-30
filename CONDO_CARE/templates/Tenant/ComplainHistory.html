@@ -31,7 +31,7 @@
           <td>{{complainhistory.floor_number}} floor {{complainhistory.unit_number}} unit </td>
           <td>{{complainhistory.status}}</td>
           <td>
-            <a href="{% url 'deletecomplianhistory' complainhistory.id %}">
+            <a href="{% url 'tenant:deletecomplianhistory' complainhistory.id %}">
               <i class="fa-sharp fa-solid fa-trash"></i>
             </a>
           </td>

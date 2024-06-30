@@ -18,11 +18,13 @@ urlpatterns = [
      path('outstandingbills/', views.outstanding_bills, name='outstandingbills'),
      path('makepayment/', views.make_payment, name='makepayment'),
      path('createvisitor/', views.create_visitor, name='createvisitor'), 
+     path('viewannouncement/', views.view_announcement, name='viewannouncement'), 
 
      path('deleterequest/<int:id>/', views.delete_request, name='delete_request'), 
      path('deletehistory/<int:id>/', views.delete_history, name='deletehistory'),
      path('deletecomplianhistory/<int:id>/', views.delete_complain_history, name='deletecomplianhistory'),
      path('updatehistory/<int:id>/', views.update_history, name='updatehistory'),
+     path('deleteannouncement/<int:id>/', views.delete_announcement, name='delete_announcement'),
 
 ]
 if settings.DEBUG:

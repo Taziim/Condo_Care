@@ -33,10 +33,10 @@
           <td>{{booking_history.attendees}}</td>
           <td>{{booking_history.status}}</td>
           <td>
-            <a href="/deletehistory/{{booking_history.id}}">
+            <a href="{% url 'tenant:deletehistory' booking_history.id %}">
               <i class="fa-sharp fa-solid fa-trash"></i>
             </a>
-            <a href="{% url 'updatehistory' booking_history.id %}">
+            <a href="{% url 'tenant:updatehistory' booking_history.id %}">
               <i class="fa-solid fa-user-pen"></i>
             </a>
           </td>

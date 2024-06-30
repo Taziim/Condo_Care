@@ -39,7 +39,7 @@
       <td>{{request_history.description}}</td>
       <td>{{request_history.status}}</td>
       <td>
-        <a href="{% url 'delete_request' request_history.id %}">
+        <a href="{% url 'tenant:delete_request' request_history.id %}">
           <i class="fa-solid fa-trash"></i>
         </a>
       </td>
@@ -47,6 +47,5 @@
     {% endfor %}
     </table>
   </div>
-  <button type="submit" class="custom-button" onclick="window.location.href='{% url 'maintenenecerequest' %}'">Go Back to Main</button>
 </body>
 </html>

@@ -35,7 +35,7 @@ def announcement_log(request):
     return render(request, 'Management/AnnouncementLog.html',context)
 
 def delete_announcement_log(request, id):
-    deleteannouncementlog = Announcement.objects.get(id=id)
+    deleteannouncementlog = Announcement.objects.get(announcement_id=id)
     deleteannouncementlog.delete()
     messages.success(request, 'Deleted successfully')
     return redirect('management:announcementlog')
@@ -46,14 +46,14 @@ def edit_announcement(request, id):
         content = request.POST.get('content')
         post_date = request.POST.get('post_date')
     
-        announcement = Announcement.objects.get(id=id)
+        announcement = Announcement.objects.get(announcement_id=id)
         announcement.title = title
         announcement.content = content
         announcement.post_date = post_date
         announcement.save()
         messages.success(request, 'Updated Announcement successfully')
         return redirect('management:announcementlog')
-    update_announcement = Announcement.objects.get(id=id)
+    update_announcement = Announcement.objects.get(announcement_id=id)
     context = {
         'update_announcement': update_announcement
     }

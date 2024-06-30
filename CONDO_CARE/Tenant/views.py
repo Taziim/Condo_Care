@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from Management.models import Facility
+from Management.models import Announcement, Facility
 from .models import *
 
 
@@ -66,7 +66,7 @@ def book_facilities(request):
         )
         booking.save()
         messages.success(request, 'Facility booking is successful!')
-        return redirect('bookfacilities')
+        return redirect('tenant:bookfacilities')
     return render(request, 'Tenant/BookFacilities.html')
 
 def booking_history(request):
@@ -103,7 +103,7 @@ def update_history(request, id):
         edit.additional_notes = additional_notes
         edit.save()
         messages.success(request, 'Updated successfully')
-        return redirect('bookinghistory')
+        return redirect('tenant:bookinghistory')
     booking_history = FacilityBooking.objects.get(pk=id)
     context = {
         'booking_history':booking_history
@@ -141,7 +141,7 @@ def make_complaint(request):
 
         complaint.save()
         messages.success(request, 'Complaint submitted successfully!')
-        return redirect('complainhistory')
+        return redirect('tenant:complainhistory')
         
     return render(request, 'Tenant/MakeComplain.html')
  
@@ -208,3 +208,15 @@ def available_facilities(request):
     }   
     return render(request, 'Tenant/AvailableFacilities.html',context)
 
+def view_announcement(request):
+    viewannouncements = Announcement.objects.all()
+    context = {
+        'viewannouncements':viewannouncements
+    }   
+    return render(request, 'Tenant/ViewAnnouncement.html',context)
+
+def delete_announcement(request, id):
+    deleteannouncement = Announcement.objects.get(announcement_id=id)
+    deleteannouncement.delete()
+    messages.success(request, 'Deleted successfully')
+    return redirect('tenant:viewannouncement')

@@ -30,12 +30,12 @@
           <td>{{complainhistorytenant.date}}</td>
           <td>{{complainhistorytenant.floor_number}} Floor {{complainhistorytenant.unit_number}} Unit </td>
           <td>
-            <a href="{% url 'download_image_complainhistory' complainhistorytenant.id %}">
+            <a href="{% url 'management:download_image_complainhistory' complainhistorytenant.id %}">
                 <i class="fas fa-download"></i> 
             </a>
           </td>
           <td>
-            <a href="{% url 'delete_history_tenant' complainhistorytenant.id %}">
+            <a href="{% url 'management:delete_history_tenant' complainhistorytenant.id %}">
               <i class="fa-sharp fa-solid fa-trash"></i>
             </a>
           </td>
