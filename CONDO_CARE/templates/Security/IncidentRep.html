@@ -14,31 +14,41 @@
         </header>
         <section class="report-form">
             <h2>Incident Reporting</h2>
-            <form id="incident-report-form">
-                <select id="incident_type" name="incident_type" >
+            <form id="incident-report-form" method="POST" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <select id="incidenttype" name="incidenttype" >
                     <option value="">Select Incident Type</option>
-                    <option value="theft">Theft</option>
-                    <option value="vandalism">Vandalism</option>
-                    <option value="suspicious-activity">Suspicious Activity</option>
-                    <option value="suspicious-activity">Parking Violation</option>
-                    <option value="other">Others</option>
+                    <option value="Theft">Theft</option>
+                    <option value="Vandalism">Vandalism</option>
+                    <option value="Suspicious_Activity">Suspicious Activity</option>
+                    <option value="Parking_Violation">Parking Violation</option>
+                    <option value="Others">Others</option>
                   </select>
                 
                 <label for="incident-description">Incident Description:</label>
-                <textarea id="incident-description" name="description" rows="3" required></textarea>
+                <textarea id="incident-description" name="description" rows="3"></textarea>
 
                 <label for="incident-location">Location:</label>
-                <input type="text" id="incident-location" name="incident-location" required>   
+                <input type="text" id="incident-location" name="location">   
 
                 <label for="datetime-local">Enter Date And Time:</label>
-                <input type="datetime-local" id="datetime-local" name="datetime-local" required>
+                <input type="datetime-local" id="datetime-local" name="datetimereported">
 
                 <label for="incident-attachment">Upload Evidence:</label>
-                <input type="file" id="incident-attachment" name="attachment">
+                <input type="file" id="incident-attachment" name="photo" accept="image/*" >
 
                 <button type="submit">Submit Report</button>
             </form>
         </section>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+       {% endif %}
     </div>
 </body>
 </html>

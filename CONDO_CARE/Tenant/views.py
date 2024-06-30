@@ -166,7 +166,7 @@ def create_visitor(request):
         )
         visitor.save()
         messages.success(request, 'Visitor registered successfully!')
-        return redirect('createvisitor')
+        return redirect('tenant:createvisitor')
     return render(request, 'Tenant/CreateVisitor.html')
 
 def make_payment(request):

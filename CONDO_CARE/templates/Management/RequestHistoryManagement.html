@@ -35,15 +35,15 @@
       <td>{{maintenancerequestmanagements.description}}</td>
       <td>{{maintenancerequestmanagements.status}}</td>
       <td>
-        <a href="{% url 'delete_maintenance_request' maintenancerequestmanagements.id %}">
+        <a href="{% url 'management:delete_maintenance_request' maintenancerequestmanagements.id %}">
           <i class="fa-sharp fa-solid fa-trash"></i>
         </a>
-        <a href="{% url 'update_maintenance_request' maintenancerequestmanagements.id %}">
+        <a href="{% url 'management:update_maintenance_request' maintenancerequestmanagements.id %}">
           <i class="fas fa-sync-alt"></i>
         </a> 
       </td>
       <td>
-        <a href="{% url 'download_image_maintence' maintenancerequestmanagements.id %}">
+        <a href="{% url 'management:download_image_maintence' maintenancerequestmanagements.id %}">
           <i class="fa fa-download" aria-hidden="true"></i>
         </a> 
       </td>

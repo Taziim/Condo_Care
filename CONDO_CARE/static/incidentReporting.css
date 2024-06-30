@@ -8,7 +8,7 @@
 body {
   font-family: "Poppins", sans-serif;
   background-color: #c9ccd1;
-  font-size: 16px;
+  font-size: 14px;
   color: #000;
 }
 
@@ -64,7 +64,7 @@ button {
     border: none;
     background-color: #28a745;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -72,4 +72,9 @@ button {
 
 button:hover {
     background-color: #218838;
+}
+
+.alert {
+    text-align: center;
+    font-size: 16px;
 }

@@ -36,6 +36,28 @@ class Emergency(models.Model):
     created_at  = models.DateTimeField(auto_now_add=True)
 
 
+from django import forms
+
+
+from django.db import models
+from django.utils import timezone
+
+class IncidentReport(models.Model):
+    INCIDENT_TYPES = [
+        ('Theft', 'Theft'),
+        ('Vandalism', 'Vandalism'),
+        ('Suspicious_Activity', 'Suspicious Activity'),
+        ('Parking_Violation', 'Parking Violation'),
+        ('Others', 'Others'),
+    ]
+
+    incidenttype = models.CharField(max_length=60, choices=INCIDENT_TYPES)
+    description = models.TextField()
+    location = models.CharField(max_length=155)
+    datetimereported = models.DateTimeField(default=timezone.now)
+    photo = models.ImageField(upload_to='media/', null=True, blank=True)
+
+
 
 
 

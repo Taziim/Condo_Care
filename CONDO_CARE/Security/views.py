@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from rest_framework. renderers import JSONRenderer
 from Tenant.models import VisitorRegistrationTenant
 from .models import *
+
+
 
 def view_visitor(request):
     return render(request, 'Security/ViewVisitor.html')
@@ -13,13 +14,40 @@ def dashboard_security(request):
 
 
 def incident_reporting(request):
+    if request.method == "POST":
+        incidenttype = request.POST.get('incidenttype')
+        description = request.POST.get('description')
+        location = request.POST.get('location')
+        datetimereported = request.POST.get('datetimereported')
+
+
+        incidentreporting = IncidentReport(
+            incidenttype=incidenttype,
+            description=description,
+            location=location,
+            datetimereported=datetimereported,
+
+        )
+        if 'photo' in request.FILES:
+            incidentreporting.photo = request.FILES['photo']
+
+        incidentreporting.save()
+        messages.success(request,'Incident Register successfully!')
+        return redirect('security:incidentreporting')
     return render(request, 'Security/IncidentRep.html')
+
+
+
+
+
+
+
+
+
+
 
 def patrol_reporting(request):
     return render(request, 'Security/PatrolRep.html')
-
-def qr(request):
-    return render(request, 'Security/Qr.html',)
      
 def visitor_registration(request):
     if request.method == "POST":
@@ -46,7 +74,7 @@ def visitor_registration(request):
         )
         Registration.save()
         messages.success(request,'Visitor Register successfully!')
-        return redirect('visitorregistration')
+        return redirect('security:visitorregistration')
     return render(request, 'Security/VisitorReg.html')
 
 def visitor_log(request):
@@ -60,7 +88,7 @@ def delete_visitor(request, id):
     delvisitor = VisitorRegistration.objects.get(id=id)
     delvisitor.delete()
     messages.success(request, 'Deleted successfully')
-    return redirect('visitorlog')
+    return redirect('security:visitorlog')
 
 def update_visitor(request, id):
     if request.method == "POST":
@@ -85,7 +113,7 @@ def update_visitor(request, id):
         visitor.datetime_local = datetime_local
         visitor.save()
         messages.success(request, 'Updated successfully')
-        return redirect('visitorlog')
+        return redirect('security:visitorlog')
     update_visitor = VisitorRegistration.objects.get(id=id)
     context = {
         'update_visitor': update_visitor
@@ -107,5 +135,5 @@ def delete_visitor_tenant(request, id):
     deletevisitor = VisitorRegistrationTenant.objects.get(pk=id)
     deletevisitor.delete()
     messages.success(request, 'Deleted successfully')
-    return redirect('viewvisitor')
+    return redirect('security:viewvisitor')
 

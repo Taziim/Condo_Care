@@ -9,43 +9,55 @@
     <title>View Visitors</title>
 </head>
 <body>
-    <section class="view-visitors">
-        <h2>View Visitors</h2>
-        <table class="visitors-table">
-          <thead>
-            <tr>
-              <th>Visitor Name</th>
-              <th>Visitor Contact</th>
-              <th>Floor Number</th>
-              <th>Unit Number</th>
-              <th>Purpose</th>
-              <th>Visit Date and Time</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for viewvisitors in viewvisitor %}
-            <tr>
-              <td>{{ viewvisitors.visitor_name }}</td>
-              <td>{{ viewvisitors.visitor_contact }}</td>
-              <td>{{ viewvisitors.floor_number }}</td>
-              <td>{{ viewvisitors.unit_number }}</td>
-              <td>{{ viewvisitors.reason_to_visit }}</td>
-              <td>{{ viewvisitors.datetime_local }}</td>
-              <td>
-                <a href="{% url 'delete_visitor_tenant' viewvisitors.id %}">
-                  <i class="fa-solid fa-trash"></i>
-                </a>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}" role="alert">
-            {{ message }}
-        </div>
-        {% endfor %}
-      </section>
+  <div class="table_1">
+    <table>
+      <caption>
+        View Visitors
+      </caption>
+    <tr>
+      <th>Visitor Name</th>
+      <th>Visitor Contact</th>
+      <th>Floor Number</th>
+      <th>Unit Number</th>
+      <th>Purpose</th>
+      <th>Visit Date and Time</th>
+      <th>Actions</th>
+    </tr>
+    {% for viewvisitors in viewvisitor %}
+    <tr>
+      <td>{{ viewvisitors.visitor_name }}</td>
+      <td>{{ viewvisitors.visitor_contact }}</td>
+      <td>{{ viewvisitors.floor_number }}</td>
+      <td>{{ viewvisitors.unit_number }}</td>
+      <td>{{ viewvisitors.reason_to_visit }}</td>
+      <td>{{ viewvisitors.datetime_local }}</td>
+      <td>
+        <a href="{% url 'security:delete_visitor_tenant' viewvisitors.id %}">
+          <i class="fa-solid fa-trash"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+    </table>
+  </div>
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}" role="alert">
+      {{ message }}
+  </div>
+  {% endfor %}
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

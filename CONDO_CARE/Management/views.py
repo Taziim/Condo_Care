@@ -10,8 +10,6 @@ def create_bills(request):
 def dashboard_management(request):
     return render(request, 'Management/DashboardManagement.html')
 
-def notification_announcement(request):
-    return render(request, 'Management/Notifications.html')
 
 def create_announcement(request):
     if request.method == "POST":
@@ -26,7 +24,7 @@ def create_announcement(request):
         )
         createannouncement.save()
         messages.success(request,'Announcement Created successfully!')
-        return redirect('createannouncement')
+        return redirect('management:createannouncement')
     return render(request, 'Management/CreateAnnouncement.html')
 
 def announcement_log(request):
@@ -40,7 +38,7 @@ def delete_announcement_log(request, id):
     deleteannouncementlog = Announcement.objects.get(id=id)
     deleteannouncementlog.delete()
     messages.success(request, 'Deleted successfully')
-    return redirect('announcementlog')
+    return redirect('management:announcementlog')
     
 def edit_announcement(request, id):
     if request.method == "POST":
@@ -54,7 +52,7 @@ def edit_announcement(request, id):
         announcement.post_date = post_date
         announcement.save()
         messages.success(request, 'Updated Announcement successfully')
-        return redirect('announcementlog')
+        return redirect('management:announcementlog')
     update_announcement = Announcement.objects.get(id=id)
     context = {
         'update_announcement': update_announcement
@@ -76,7 +74,7 @@ def create_notification(request):
         )
         createnotification.save()
         messages.success(request,'Notification Created successfully!')
-        return redirect('createnotification')
+        return redirect('management:createnotification')
     return render(request, 'Management/CreateNotification.html')
 
 def notification_log(request):
@@ -90,7 +88,7 @@ def delete_notification_log(request, notification_id):
     deletenotificationlog = Notification.objects.get(notification_id=notification_id)
     deletenotificationlog.delete()
     messages.success(request, 'Deleted successfully')
-    return redirect('notificationlog')
+    return redirect('management:notificationlog')
     
 def edit_notification(request, notification_id):
     if request.method == "POST":
@@ -107,7 +105,7 @@ def edit_notification(request, notification_id):
         
         notification.save()
         messages.success(request, 'Updated Notification successfully')
-        return redirect('notificationlog')
+        return redirect('management:notificationlog')
     update_notification = Notification.objects.get(notification_id=notification_id)
     context = {
         'update_notification': update_notification
@@ -125,7 +123,7 @@ def delete_maintenance_request(request, id):
     deletemaintenancerequest = MaintenenceRequest.objects.get(id=id)
     deletemaintenancerequest.delete()
     messages.success(request, 'Deleted Maintenence Request successfully')
-    return redirect('maintenancerequestmanagement')
+    return redirect('management:maintenancerequestmanagement')
 
 def update_maintenance_request(request, id):
     updatemaintenancerequest = MaintenenceRequest.objects.get(pk=id)
@@ -134,7 +132,7 @@ def update_maintenance_request(request, id):
         updatemaintenancerequest.status = status
         updatemaintenancerequest.save()
         messages.success(request, 'Updated Maintenence Request successfully')
-        return redirect('maintenancerequestmanagement')
+        return redirect('management:maintenancerequestmanagement')
     
     context = {
         'updatemaintenancerequest': updatemaintenancerequest,
@@ -162,7 +160,7 @@ def delete_tenant_booking(request, id):
     deletetenantbooking = FacilityBooking.objects.get(pk=id)
     deletetenantbooking.delete()
     messages.success(request, 'Deleted Tenant Booking successfully')
-    return redirect('tenantbookinglist')
+    return redirect('management:tenantbookinglist')
 
 def manage_facilities(request):
     if request.method == 'POST':
@@ -215,7 +213,7 @@ def manage_facilities(request):
                 }
             )
         messages.success(request, 'Added Facilities successfully')
-        return redirect('managefacilities')
+        return redirect('management:managefacilities')
     return render(request, 'Management/ManageFacilities.html')
 
 def view_facilities(request):
@@ -228,7 +226,7 @@ def view_facilities(request):
 def delete_all_facilities(request):
     if request.method == 'POST':
         Facility.objects.all().delete()
-        return redirect('viewfacilities')  
+        return redirect('management:viewfacilities')  
 
     return render(request, 'Management/Deletefacilities.html')
 
@@ -243,7 +241,7 @@ def delete_history_tenant(request, id):
     deletehistorytenant = MakeComplaint.objects.get(id=id)
     deletehistorytenant.delete()
     messages.success(request, 'Deleted Tenant history successfully')
-    return redirect('complainhistorytenant')
+    return redirect('management:complainhistorytenant')
 
     
 def download_image_complainhistory(request, id):

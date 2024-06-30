@@ -9,18 +9,12 @@
     <title>Visitor Log</title>
 </head>
 <body>
-  {% for message in messages %}
-  <div class="alert alert-{{ message.tags }}" role="alert">
-      {{ message }}
-  </div>
-  {% endfor %}
   <div class="table_1">
     <table>
       <caption>
         Visitor information
       </caption>
     <tr>
-        <th>#</th>
         <th>Visitor Name</th>
         <th>Tenant Name</th>
         <th>Floor and Unit Number</th>
@@ -33,7 +27,6 @@
     </tr>
     {% for visitorlog in visitorlog %}
     <tr>
-      <td>{{forloop.counter }}</td>
       <td>{{visitorlog.name}}</td>
       <td>{{visitorlog.tenant_name}}</td>
       <td>{{visitorlog.floor_number}} Floor and {{visitorlog.unit_number}} Unit</td>
@@ -43,10 +36,10 @@
       <td>{{visitorlog.tower_select}}</td>
       <td>{{visitorlog.datetime_local}}</td>
       <td>
-        <a href="{% url 'delete' visitorlog.id %}">
+        <a href="{% url 'security:delete' visitorlog.id %}">
           <i class="fa-sharp fa-solid fa-trash"></i>
         </a>
-        <a href="{% url 'update' visitorlog.id %}">
+        <a href="{% url 'security:update' visitorlog.id %}">
           <i class="fa-solid fa-user-pen"></i>
         </a>
       </td>
@@ -54,5 +47,10 @@
     {% endfor %}
     </table>
   </div>
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}" role="alert">
+      {{ message }}
+  </div>
+  {% endfor %}
 </body>
 </html>

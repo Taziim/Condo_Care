@@ -11,3 +11,4 @@ class Userinfo(models.Model):
     )
     usertype = models.CharField(max_length=64, choices=USER_TYPES)
     password = models.CharField(max_length=128)
+

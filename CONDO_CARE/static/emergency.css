@@ -8,7 +8,7 @@
 body {
   font-family: "Poppins", sans-serif;
   background-color: #c9ccd1;
-  font-size: 16px;
+  font-size: 14px;
   color: #000;
 }
 .container {
@@ -23,52 +23,6 @@ body {
 h1 {
     text-align: center;
     margin-bottom: 10px;
-}
-
-.emergency-form {
-    margin-bottom: 10px;
-}
-
-.emergency-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.emergency-form select, .emergency-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.emergency-form button {
-    color: white;
-    padding: 10px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-right: 10px;
-}
-
-
-.emergency-form .notify-checkbox {
-    margin-bottom: 5px;
- }
-
-.emergency-form .notify-checkbox label {
-    font-weight: normal;
-}
-
-.emergency-form .notify-button {
-    background-color: #3366FF;
-}
-
-.emergency-form .notify-button:hover {
-    background-color: #45a049;
 }
 
 .emergency-info {

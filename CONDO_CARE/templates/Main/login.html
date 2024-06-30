@@ -30,7 +30,12 @@
                     <option value="Management">Management</option>
                 </select>  {% endcomment %}
                 <button type="submit">Login</button>
-            </form>    
+            </form>
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}    
             <p>Don't have an account? <a href={% url 'signup' %}>Sign up here</a></p>
         </div>
     </main>
