@@ -10,13 +10,14 @@
 <body>
   <div class="sidebar">
     <h2>Dashboard</h2>
-    <a href="{% url 'visitorregistration' %}">Visitor Registration</a>
+    <a href="{% url 'management:maintenancerequestmanagement' %}">Create Visitor</a>
+    {% comment %} <a href="{% url 'visitorregistration' %}">Visitor Registration</a>
     <a href="{% url 'visitorlog' %}">Visitor Log</a>
     <a href="{% url 'incidentreporting' %}">Incident Reporting</a>
     <a href="{% url 'patrolreporting' %}">Patrol Reporting</a>
     <a href="{% url 'emergency' %}">Emergency</a>
     <a href="{% url 'qr' %}">QR</a>
-    <a href="{% url 'main' %}">Log out</a>
+    <a href="{% url 'main' %}">Log out</a> {% endcomment %}
 </div>
 
 <div class="main_content">

@@ -4,6 +4,8 @@ from .import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+app_name = 'management'
+
 urlpatterns = [
     path('maintenancerequestmanagement/', views.maintenance_request_management, name='maintenancerequestmanagement'),
     path('createbills/', views.create_bills, name='createbills'),

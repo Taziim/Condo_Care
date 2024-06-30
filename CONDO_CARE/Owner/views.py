@@ -8,6 +8,11 @@ from django.shortcuts import get_object_or_404
 from django.conf import settings
 import os
 
+def dashboard_owner(request):
+    return render(request, 'Owner/DashboardOwner.html')
+
+
+
 
 def create_notification_Owner(request):
     if request.method == "POST":

@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate, login
 def main(request):
     return render(request,'Main/main.html',)
 
-def log_in(request):
+def login_page(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -19,18 +19,16 @@ def log_in(request):
         if user is not None:
             login(request, user)
             try:
-                # Get the Userinfo object for this user
                 userinfo = Userinfo.objects.get(username=username)
-                usertype = userinfo.usertype  # Get the usertype
-
-                if usertype == 'Tenant':
-                    return redirect('tenant:dashboardtenant')
-                elif usertype == 'Owner':
-                    return redirect('owner:dashboard_owner')
-                elif usertype == 'Security':
-                    return redirect('security:dashboard_security')
-                elif usertype == 'Management':
-                    return redirect('management:dashboard_management')
+                usertypes = userinfo.usertype
+                if usertypes == 'Tenant':
+                    return HttpResponse('tenant:dashboardtenant')
+                elif usertypes == 'Owner':
+                    return redirect('owner:dashboardowner')
+                elif usertypes == 'Security':
+                    return redirect('security:dashboardsecurity')
+                elif usertypes == 'Management':
+                    return redirect('management:dashboardmanagement')
                 else:
                     return redirect('main')
             except Userinfo.DoesNotExist:
@@ -40,7 +38,7 @@ def log_in(request):
             messages.error(request, "Invalid login credentials.")
     return render(request, 'Main/login.html')
 
-def sing_up(request):
+def singup_page(request):
     if request.method == "POST":
         username = request.POST.get('username')
         usertype = request.POST.get('usertype')
@@ -53,4 +51,5 @@ def sing_up(request):
             userinfo.password = make_password(password)
             userinfo.save()
         messages.success(request, 'User Created successfully!')
+        return redirect('main')
     return render(request, 'Main/singup.html',)

@@ -22,7 +22,7 @@
                 {% csrf_token %}
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password" required>
-                <select name="usertype" required>
+                <select name="usertype">
                     <option value="" disabled selected>Select User Type</option>
                     <option value="Tenant">Tenant</option>
                     <option value="Owner">Owner</option>

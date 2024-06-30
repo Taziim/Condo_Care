@@ -11,11 +11,6 @@
   <div class="sidebar">
     <h2>Dashboard</h2>
     <a href="{% url 'tenant:createvisitor' %}">Create Visitor</a>
-    <a href="{% url 'tenant:maintenenecerequest' %}">Create Visitor</a>
-    <a href="{% url 'tenant:requesthistory' %}">Create Visitor</a>
-    <a href="{% url 'tenant:bookfacilities' %}">Create Visitor</a>
-    <a href="{% url 'tenant:availablefacilities' %}">Create Visitor</a>
-    <a href="{% url 'tenant:createvisitor' %}">Create Visitor</a>
     {% comment %} <a href="{% url 'maintenenecerequest' %}">Maintenenece Request</a>
     <a href="{% url 'requesthistory' %}">Maintenenece Log</a>
     <a href="{% url 'bookfacilities' %}">Book Facilities</a>
@@ -29,6 +24,7 @@
         </div>
     </div>
     <a href="{% url 'main' %}">Log out</a> {% endcomment %}
+    {% comment %} <a href="{% url 'main' %}">Logout</a> {% endcomment %}
 </div>
 
 <div class="main_content">

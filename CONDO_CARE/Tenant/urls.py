@@ -23,7 +23,6 @@ urlpatterns = [
      path('deletehistory/<int:id>/', views.delete_history, name='deletehistory'),
      path('deletecomplianhistory/<int:id>/', views.delete_complain_history, name='deletecomplianhistory'),
      path('updatehistory/<int:id>/', views.update_history, name='updatehistory'),
-     path('updatehistory/<int:id>/', views.update_history, name='updatehistory'), 
 
 ]
 if settings.DEBUG:

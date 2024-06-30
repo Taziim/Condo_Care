@@ -112,3 +112,4 @@ def delete_visitor_tenant(request, id):
     deletevisitor.delete()
     messages.success(request, 'Deleted successfully')
     return redirect('viewvisitor')
+

@@ -10,7 +10,8 @@
 <body>
     <div class="sidebar">
         <h2>Dashboard</h2>
-        <a href="{% url 'addtenant1' %}">Add Tenant</a>
+        <a href="{% url 'owner:add_tenant1' %}">Add Tenant</a>
+        {% comment %} <a href="{% url 'addtenant1' %}">Add Tenant</a>
         <a href="{% url 'viewtenantinfo' %}">Tenant Information</a>
         <a href="{% url 'viewtenantagree' %}"> Tenant Agreement</a>
         <a href="{% url 'viewpayment' %}">View Payment</a>
@@ -21,15 +22,15 @@
                 <a href="{% url 'createannouncementowner' %}">Create Announcement</a>
                 <a href="{% url 'announcementlogowner' %}">Announcement Log</a>
             </div>
-        </div>
-        <div class="dropdown">
+        </div> {% endcomment %}
+        {% comment %} <div class="dropdown">
             <button class="dropbtn">Notification</button>
             <div class="dropdown-content">
                 <a href="{% url 'createnotificationowner' %}">Create Notification</a>
                 <a href="{% url 'notificationlogowner' %}">Notification Log</a>
             </div>
         </div>
-        <a href="{% url 'main' %}">Log out</a>
+        <a href="{% url 'main' %}">Log out</a> {% endcomment %}
     </div>
 
 <div class="main_content">
