@@ -207,3 +207,4 @@ def available_facilities(request):
         'availablefacilities':availablefacilities
     }   
     return render(request, 'Tenant/AvailableFacilities.html',context)
+

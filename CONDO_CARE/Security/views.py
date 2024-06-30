@@ -12,10 +12,6 @@ def dashboard_security(request):
     return render(request, 'Security/DashboardSecurity.html')
 
 
-
-def dashboard_security(request):
-    return render(request, 'Security/DashboardSecurity.html')
-
 def incident_reporting(request):
     return render(request, 'Security/IncidentRep.html')
 

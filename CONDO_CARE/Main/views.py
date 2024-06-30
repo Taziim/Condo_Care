@@ -1,11 +1,9 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.http import FileResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import *
 from django.contrib import messages
-from django.contrib.auth.hashers import make_password
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login ,logout
 
 def main(request):
     return render(request,'Main/main.html',)
@@ -22,7 +20,7 @@ def login_page(request):
                 userinfo = Userinfo.objects.get(username=username)
                 usertypes = userinfo.usertype
                 if usertypes == 'Tenant':
-                    return HttpResponse('tenant:dashboardtenant')
+                    return redirect('tenant:dashboardtenant')
                 elif usertypes == 'Owner':
                     return redirect('owner:dashboardowner')
                 elif usertypes == 'Security':
@@ -48,8 +46,13 @@ def singup_page(request):
             messages.error(request, "Username already Exists")
         else:
             userinfo = Userinfo(username=username, usertype=usertype, password=password)
-            userinfo.password = make_password(password)
             userinfo.save()
         messages.success(request, 'User Created successfully!')
         return redirect('main')
     return render(request, 'Main/singup.html',)
+
+def logout_page(request):
+    logout(request)
+    messages.success(request, "You have been successfully logged out.")
+    return redirect('main')
+
