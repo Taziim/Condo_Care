@@ -10,20 +10,25 @@
 <body>
   <div class="sidebar">
     <h2>Dashboard</h2>
-    <a href="{% url 'createvisitor' %}">Register Visitor</a>
-    <a href="{% url 'maintenenecerequest' %}">Maintenenece Request</a>
+    <a href="{% url 'tenant:createvisitor' %}">Create Visitor</a>
+    <a href="{% url 'tenant:maintenenecerequest' %}">Create Visitor</a>
+    <a href="{% url 'tenant:requesthistory' %}">Create Visitor</a>
+    <a href="{% url 'tenant:bookfacilities' %}">Create Visitor</a>
+    <a href="{% url 'tenant:availablefacilities' %}">Create Visitor</a>
+    <a href="{% url 'tenant:createvisitor' %}">Create Visitor</a>
+    {% comment %} <a href="{% url 'maintenenecerequest' %}">Maintenenece Request</a>
     <a href="{% url 'requesthistory' %}">Maintenenece Log</a>
     <a href="{% url 'bookfacilities' %}">Book Facilities</a>
     <a href="{% url 'availablefacilities' %}">Avaiable Facilities</a>
-    <a href="{% url 'bookinghistory' %}">Booking Log</a>
-    <div class="dropdown">
+    <a href="{% url 'bookinghistory' %}">Booking Log</a> {% endcomment %}
+    {% comment %} <div class="dropdown">
         <button class="dropbtn">Complain</button>
         <div class="dropdown-content">
             <a href="{% url 'complain' %}">Complain</a>
             <a href="{% url 'complainhistory' %}">Complain Log</a>
         </div>
     </div>
-    <a href="{% url 'main' %}">Log out</a>
+    <a href="{% url 'main' %}">Log out</a> {% endcomment %}
 </div>
 
 <div class="main_content">

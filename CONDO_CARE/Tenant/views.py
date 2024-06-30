@@ -30,7 +30,7 @@ def maintenenece_request(request):
             maintenenecerequest.photo = request.FILES['photo']
         
         maintenenecerequest.save()
-        return redirect('maintenenecerequest')  
+        return redirect('tenant:maintenenecerequest')  
     return render(request, 'Tenant/MainReq.html')
 
 def request_history(request):

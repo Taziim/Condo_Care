@@ -14,21 +14,28 @@ def log_in(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        usertype = request.POST.get('usertype')
         user = authenticate(request, username=username, password=password)
-        
+
         if user is not None:
             login(request, user)
-            if user.usertype == 'Tenant':
-                return redirect(reverse('Tenant:dashboardtenant'))
-            elif user.usertype == 'Owner':
-                return redirect(reverse('Owner:dashboardowner'))
-            elif user.usertype == 'Security':
-                return redirect(reverse('Security:dashboardsecurity'))
-            elif user.usertype == 'Management':
-                return redirect(reverse('Management:dashboardmanagement'))
-            else:
-                return redirect('main')  # Default redirection if user type does not match
+            try:
+                # Get the Userinfo object for this user
+                userinfo = Userinfo.objects.get(username=username)
+                usertype = userinfo.usertype  # Get the usertype
+
+                if usertype == 'Tenant':
+                    return redirect('tenant:dashboardtenant')
+                elif usertype == 'Owner':
+                    return redirect('owner:dashboard_owner')
+                elif usertype == 'Security':
+                    return redirect('security:dashboard_security')
+                elif usertype == 'Management':
+                    return redirect('management:dashboard_management')
+                else:
+                    return redirect('main')
+            except Userinfo.DoesNotExist:
+                messages.error(request, "User info not found.")
+                return redirect('main')
         else:
             messages.error(request, "Invalid login credentials.")
     return render(request, 'Main/login.html')
