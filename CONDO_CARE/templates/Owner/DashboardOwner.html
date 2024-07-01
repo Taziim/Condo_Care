@@ -10,29 +10,12 @@
 <body>
     <div class="sidebar">
         <h2>Dashboard</h2>
-        <a href="{% url 'owner:add_tenant1' %}">Add Tenant</a>
-        {% comment %} <a href="{% url 'addtenant1' %}">Add Tenant</a>
-        <a href="{% url 'viewtenantinfo' %}">Tenant Information</a>
-        <a href="{% url 'viewtenantagree' %}"> Tenant Agreement</a>
-        <a href="{% url 'viewpayment' %}">View Payment</a>
-        <a href="{% url 'community' %}">Community</a>
-        <div class="dropdown">
-            <button class="dropbtn">Announcement</button>
-            <div class="dropdown-content">
-                <a href="{% url 'createannouncementowner' %}">Create Announcement</a>
-                <a href="{% url 'announcementlogowner' %}">Announcement Log</a>
-            </div>
-        </div> {% endcomment %}
-        {% comment %} <div class="dropdown">
-            <button class="dropbtn">Notification</button>
-            <div class="dropdown-content">
-                <a href="{% url 'createnotificationowner' %}">Create Notification</a>
-                <a href="{% url 'notificationlogowner' %}">Notification Log</a>
-            </div>
-        </div>
-        <a href="{% url 'main' %}">Log out</a> {% endcomment %}
+        <a href="{% url 'owner:addtenant1' %}">Add Tenant</a>
+        <a href="{% url 'owner:viewtenantinfo' %}">Tenant Info</a>
+        <a href="{% url 'owner:viewtenantagree' %}">Tenant Agreement</a>
+        <a href="{% url 'owner:createnotificationowner' %}">Create Notification</a>
+        <a href="{% url 'owner:notificationlogowner' %}">Notification Log</a>
     </div>
-
 <div class="main_content">
     <div class="dashboard_div">
         <h3>Visitor Analytics</h3>

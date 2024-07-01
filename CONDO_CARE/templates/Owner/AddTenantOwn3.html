@@ -58,9 +58,7 @@
       <label for="tenant-insurance">Tenant Insurance: (Optional)</label>
       <input type="text" id="tenant-insurance" name="tenant_insurance" placeholder="Enter Tenant Insurance If Applicable">
     </div>
-        <label for="confirm-email" class="checkbox-button-label">Confirm by Email</label>
-        <input type="checkbox" id="confirm-email" name="confirm-email" class="checkbox-button">
-    <button type="submit" class="custom-button" onclick="window.location.href='{% url 'addtenant3' %}'">Submit</button>
+    <button type="submit" class="custom-button" onclick="window.location.href='{% url 'owner:addtenant3' %}'">Submit</button>
     </form>
 </body>
 </html>

@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from Management.models import Announcement, Facility
+from Management.models import Announcement, Facility, Notification
 from .models import *
 
 
@@ -209,14 +209,14 @@ def available_facilities(request):
     return render(request, 'Tenant/AvailableFacilities.html',context)
 
 def view_announcement(request):
-    viewannouncements = Announcement.objects.all()
+    viewannouncements = Notification.objects.all()
     context = {
         'viewannouncements':viewannouncements
     }   
     return render(request, 'Tenant/ViewAnnouncement.html',context)
 
 def delete_announcement(request, id):
-    deleteannouncement = Announcement.objects.get(announcement_id=id)
+    deleteannouncement = Announcement.objects.get(notification_id=id)
     deleteannouncement.delete()
     messages.success(request, 'Deleted successfully')
     return redirect('tenant:viewannouncement')

@@ -11,9 +11,6 @@ import os
 def dashboard_owner(request):
     return render(request, 'Owner/DashboardOwner.html')
 
-
-
-
 def create_notification_Owner(request):
     if request.method == "POST":
         title = request.POST.get('title')
@@ -29,7 +26,7 @@ def create_notification_Owner(request):
         )
         createnotificationowner.save()
         messages.success(request,'Notification Created successfully!')
-        return redirect('createnotificationowner')
+        return redirect('owner:createnotificationowner')
     return render(request, 'Owner/CreateNotificationOwner.html')
 
 def notification_log_Owner(request):
@@ -43,8 +40,7 @@ def delete_notification_Owner(request, id):
     deletenotificationowner = NotificationOwner.objects.get(notification_id=id)
     deletenotificationowner.delete()
     messages.success(request, 'Deleted successfully')
-    return redirect('notificationlogowner')
-    
+    return redirect('owner:notificationlogowner')
 
 def edit_notification_Owner(request, id):
     if request.method == "POST":
@@ -61,33 +57,12 @@ def edit_notification_Owner(request, id):
         
         notificationowner.save()
         messages.success(request, 'Updated Notification successfully')
-        return redirect('notificationlogowner')
+        return redirect('owner:notificationlogowner')
     update_notification_owner = NotificationOwner.objects.get(notification_id=id)
     context = {
         'update_notification_owner': update_notification_owner
     }
     return render(request, 'Owner/EditNotificationOwner.html.', context)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 def create_announcement_owner(request):
     if request.method == "POST":
@@ -102,7 +77,7 @@ def create_announcement_owner(request):
         )
         createannouncementowner.save()
         messages.success(request,'Announcement Created successfully!')
-        return redirect('createannouncementowner')
+        return redirect('owner:createannouncementowner')
     return render(request, 'Owner/CreateAnnouncementOwner.html')
 
 def announcement_log_owner(request):
@@ -116,8 +91,7 @@ def delete_announcement_log(request, id):
     deleteannouncementlogowner = AnnouncementOwner.objects.get(announcement_id=id)
     deleteannouncementlogowner.delete()
     messages.success(request, 'Deleted successfully')
-    return redirect('announcementlogowner')
-    
+    return redirect('owner:announcementlogowner')
 
 def update_announcement_owner(request, id):
     if request.method == "POST":
@@ -131,39 +105,18 @@ def update_announcement_owner(request, id):
         announcementowner.post_date = post_date
         announcementowner.save()
         messages.success(request, 'Updated Announcement successfully')
-        return redirect('announcementlogowner')
+        return redirect('owner:announcementlogowner')
     updateannouncementowner = AnnouncementOwner.objects.get(announcement_id=id)
     context = {
         'updateannouncementowner': updateannouncementowner
     }
     return render(request, 'Owner/EditAnnouncementOwner.html', context)
 
-
-def dashboard_owner(request):
-    return render(request, 'Owner/DashboardOwner.html')
-
-def community(request):
-    return render(request, 'Owner/Community.html')
-
-
-def view_payment(request):
-    makepayment = TenantPayment.objects.all()
-    context = {
-        'makepayment':makepayment
-    }   
-    return render(request, 'Owner/ViewPayment.html',context)
-
 def download_pdf(request, pdf_id):
     pdf_file = TenantPayment.objects.get(pk=pdf_id).proof_of_rent
     response = HttpResponse(pdf_file, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="proof_of_rent.pdf"'
     return response
-
-def delete_payment(request, pdf_id):
-    deletepayment = TenantPayment.objects.get(pk=pdf_id)
-    deletepayment.delete()
-    messages.success(request, 'Payment deleted successfully')
-    return redirect('viewpayment')
 
 def add_tenant1(request,):
     if request.method == "POST":
@@ -178,7 +131,7 @@ def add_tenant1(request,):
        driving_license = request.FILES['driving_license']
        addTenant1 = Addform1(full_name=full_name,email=email,phone_number=phone_number, occupation=occupation, nationality=nationality,date_of_birth=date_of_birth,  passport_or_nric=passport_or_nric,driving_license=driving_license,home_address=home_address)
        addTenant1.save()
-       return redirect('addtenant2')
+       return redirect('owner:addtenant2')
     return render(request, 'owner/addTenantown1.html',)
 
 def add_tenant2(request):
@@ -199,7 +152,7 @@ def add_tenant2(request):
             playground=playground
         )
         addAmenities.save()
-        return redirect('addtenant3') 
+        return redirect('owner:addtenant3') 
     return render(request, 'owner/addTenantown2.html')
 
 def add_tenant3(request):
@@ -229,7 +182,7 @@ def add_tenant3(request):
 
             )
         addContract.save()
-        return redirect('dashboardowner')  
+        return redirect('owner:dashboardowner')  
     return render(request, 'Owner/addTenantown3.html')
 
 def view_tenant_info(request):
@@ -252,13 +205,13 @@ def delete_info(request, id):
     delete_info = Addform1.objects.get(id=id)
     delete_info.delete()
     messages.success(request, 'Tenant deleted successfully')
-    return redirect('viewtenantinfo')
+    return redirect('owner:viewtenantinfo')
 
 def delete_agree(request, id):
     delete_agree = Addform3.objects.get(id=id)
     delete_agree.delete()
     messages.success(request, 'Tenant deleted successfully')
-    return redirect('viewtenantagree')
+    return redirect('owner:viewtenantagree')
 
 def download_passport_or_nric(request, id):
     addform1 = Addform1.objects.get(id=id).passport_or_nric
@@ -273,37 +226,3 @@ def download_driving_license(request, id):
     return response
 
 
-def like_message(request, message_id):
-    message = get_object_or_404(Message, id=message_id)
-    Like.objects.get_or_create(user=request.user, message=message)
-    return redirect('community')
-
-def unlike_message(request, message_id):
-    message = get_object_or_404(Message, id=message_id)
-    Like.objects.filter(user=request.user, message=message).delete()
-    return redirect('community')
-
-def post_message(request):
-    if request.method == "POST":
-        content = request.POST.get('content')
-        
-        post_message = Message(
-            content=content,
-
-            )
-        post_message.save()
-        return redirect('community')  
-    return render(request, 'Owner/Community.html')
-
-def delete_message(request, id):
-    delete_message = Message.objects.get(pk=id)
-    delete_message.delete()
-    messages.success(request, 'Message deleted successfully')
-    return redirect('community')
-
-def view_message(request):
-    messages = Message.objects.all()
-    context = {
-        'messages':messages
-    }
-    return render(request, 'Owner/Community.html',context)

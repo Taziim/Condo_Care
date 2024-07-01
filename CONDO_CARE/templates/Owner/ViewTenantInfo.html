@@ -44,7 +44,7 @@
       <td>{{Tenant.home_address}}</td>
       <td>
         {% if Tenant.passport_or_nric %}
-        <a href="{% url 'download_passport_or_nric' Tenant.id %}">
+        <a href="{% url 'owner:download_passport_or_nric' Tenant.id %}">
           <i class="fa-solid fa-download"></i>
         </a>
         {% else %}
@@ -53,7 +53,7 @@
       </td>
       <td>
         {% if Tenant.driving_license %}
-        <a href="{% url 'download_driving_license' Tenant.id %}">
+        <a href="{% url 'owner:download_driving_license' Tenant.id %}">
           <i class="fa-solid fa-download"></i>
         </a>
         {% else %}
@@ -61,7 +61,7 @@
         {% endif %}
       </td>
       <td>
-        <a href="{% url 'delete_info' Tenant.id %}">
+        <a href="{% url 'owner:delete_info' Tenant.id %}">
           <i class="fa-sharp fa-solid fa-trash"></i>
         </a>
       </td>
@@ -69,6 +69,5 @@
     {% endfor %}
     </table>
   </div>
-  <button type="submit" class="custom-button" onclick="window.location.href='{% url 'addtenant2' %}'">Go Back to Main</button>
 </body>
 </html>

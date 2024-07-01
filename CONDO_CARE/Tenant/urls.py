@@ -15,8 +15,6 @@ urlpatterns = [
      path('complain/', views.make_complaint, name='complain'),
      path('complainhistory/', views.complain_history, name='complainhistory'),
      path('bookinghistory/', views.booking_history, name='bookinghistory'),
-     path('outstandingbills/', views.outstanding_bills, name='outstandingbills'),
-     path('makepayment/', views.make_payment, name='makepayment'),
      path('createvisitor/', views.create_visitor, name='createvisitor'), 
      path('viewannouncement/', views.view_announcement, name='viewannouncement'), 
 

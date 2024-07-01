@@ -4,9 +4,6 @@ from .models import *
 from django.contrib import messages
 from django.shortcuts import redirect, render
 
-def create_bills(request):
-    return render(request, 'Management/CreateBills.html')
-
 def dashboard_management(request):
     return render(request, 'Management/DashboardManagement.html')
 

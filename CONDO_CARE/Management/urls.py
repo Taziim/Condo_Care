@@ -10,7 +10,6 @@ urlpatterns = [
 
     path('dashboardmanagement/', views.dashboard_management, name='dashboardmanagement'),
     path('maintenancerequestmanagement/', views.maintenance_request_management, name='maintenancerequestmanagement'),
-    path('createbills/', views.create_bills, name='createbills'),
     path('notificationlog/', views.notification_log, name='notificationlog'),
     path('tenantbookinglist/', views.tenant_booking_list, name='tenantbookinglist'),
     path('managefacilities/', views.manage_facilities, name='managefacilities'),
