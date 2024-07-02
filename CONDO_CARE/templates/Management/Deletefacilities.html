@@ -13,7 +13,7 @@
         <form method="POST">
             {% csrf_token %}
             <button type="submit">Delete all</button>
-            <a href="{% url 'viewfacilities' %}">Go back</a>
+            <a href="{% url 'management:viewfacilities' %}">Go back</a>
         </form>
     </div>
 </body>

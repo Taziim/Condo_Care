@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}" />
+    <title>Dashboard (Tenant)</title>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Dashboard</h2>
+     <div class="dropdown">
+        <button class="dropbtn">Tenant</button>
+        <div class="dropdown-content">
+            <a href="{% url 'tenant:maintenenecerequest' %}">Maintenenece Request</a>
+            <a href="{% url 'tenant:requesthistory' %}">Maintenenece History</a>
+            <a href="{% url 'tenant:bookfacilities' %}">Book Facilities</a>
+            <a href="{% url 'tenant:availablefacilities' %}">Avaiable Facilities</a>
+            <a href="{% url 'tenant:complain' %}">Complain</a>
+            <a href="{% url 'tenant:complainhistory' %}">Complain History</a>
+            <a href="{% url 'tenant:bookinghistory' %}">Booking History</a>
+            <a href="{% url 'tenant:createvisitor' %}">Register Visitor </a>
+            <a href="{% url 'tenant:viewannouncement' %}">View Announcement</a>
+        </div>
+    </div>
+     <div class="dropdown">
+        <button class="dropbtn">Management</button>
+        <div class="dropdown-content">
+            <a href="{% url 'management:maintenancerequestmanagement' %}">Maintenenece Requested</a>
+            <a href="{% url 'management:createnotification' %}">Create Announcement</a>
+            <a href="{% url 'management:notificationlog' %}">Announcement Log</a>
+            <a href="{% url 'management:tenantbookinglist' %}">Tenant Booking</a>
+            <a href="{% url 'management:managefacilities' %}">Manage Facilities</a>
+            <a href="{% url 'management:viewfacilities' %}">View facilities </a>
+            <a href="{% url 'management:complainhistorytenant' %}">Complain History</a>
+            <a href="{% url 'management:incidentreporting' %}">incident Reporting</a>
+         
+        </div>
+    </div>
+     <div class="dropdown">
+        <button class="dropbtn">Security</button>
+        <div class="dropdown-content">
+            <a href="{% url 'security:visitorregistration' %}">Visitor Registration</a>
+            <a href="{% url 'security:visitorlog' %}">Visitor Log</a>
+            <a href="{% url 'security:viewvisitor' %}">Visitor Arriving</a>
+            <a href="{% url 'security:emergency' %}">Emergency</a>
+            <a href="{% url 'security:incidentreporting' %}">Incident Reporting</a>
+        </div>
+    </div>
+     <div class="dropdown">
+        <button class="dropbtn">Owner</button>
+        <div class="dropdown-content">
+            <a href="{% url 'owner:addtenant1' %}">Add Tenant</a>
+            <a href="{% url 'owner:viewtenantinfo' %}">Tenant Info</a>
+            <a href="{% url 'owner:viewtenantagree' %}">Tenant Agreement</a>
+            {% comment %} <a href="{% url 'owner:createnotificationowner' %}">Create Announcement</a> {% endcomment %}
+            <a href="{% url 'owner:notificationlogowner' %}">Announcement Log</a>
+        </div>
+    </div>
+    <a href="{% url 'logout' %}">Log Out</a>
+</div>
+<div class="main_content">
+    <div class="dashboard_div">
+        {% if last_visitor %}
+            <h3>Last Visitor Visited:</h3>
+            <p>Name: {{ last_visitor.name }}</p>
+            <p>Tower: {{ last_visitor.tower_select }}</p>
+            <p>Visited At: {{ last_visitor.datetime_local }}</p>
+        {% else %}
+            <p>No visitors have registered yet.</p>
+        {% endif %}
+    </div>
+    <div class="dashboard_div">
+        <h3>Total Number of Maintenance Requests </h3>
+        <p>{{ total_maintenance_requests }}</p>
+        <div id="incident-charts"></div>
+    </div>
+    <div class="dashboard_div">
+        {% for visitorlogs in visitorlogs %}
+        <p> last visitor {{ visitorlogs.visitor_name }} visited at {{ visitorlogs.datetime_local }}</p>
+        {% endfor %}
+    </div>
+    <div class="dashboard_div">
+        <h3>Surveillance Analysis</h3>
+        <div id="surveillance-charts"></div>
+    </div>
+</div>
+</body>
+</html>

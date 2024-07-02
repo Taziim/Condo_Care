@@ -30,6 +30,7 @@ def maintenenece_request(request):
             maintenenecerequest.photo = request.FILES['photo']
         
         maintenenecerequest.save()
+        messages.success(request, 'Maintennance Request submitted Successfully!')
         return redirect('tenant:maintenenecerequest')  
     return render(request, 'Tenant/MainReq.html')
 
@@ -80,7 +81,7 @@ def delete_history(request, id):
     delhistory = FacilityBooking.objects.get(pk=id)
     delhistory.delete()
     messages.success(request, 'Deleted successfully')
-    return redirect('bookinghistory')
+    return redirect('tenant:bookinghistory')
 
 def update_history(request, id):
     if request.method == "POST":
@@ -141,7 +142,7 @@ def make_complaint(request):
 
         complaint.save()
         messages.success(request, 'Complaint submitted successfully!')
-        return redirect('tenant:complainhistory')
+        return redirect('tenant:complain')
         
     return render(request, 'Tenant/MakeComplain.html')
  
@@ -149,7 +150,7 @@ def delete_complain_history(request, id):
     delhistory = MakeComplaint.objects.get(pk=id)
     delhistory.delete()
     messages.success(request, 'Deleted successfully')
-    return redirect('complainhistory')
+    return redirect('tenant:complainhistory')
 
 def outstanding_bills(request):
     return render(request, 'Tenant/OutstandingBill.html')
@@ -192,14 +193,14 @@ def make_payment(request):
         )
         payment.save()
         messages.success(request, 'Payment Done Successfully')
-        return redirect('makepayment')
+        return redirect('tenant:makepayment')
     return render(request, 'Tenant/MakePayment.html')
 
 def delete_request(request, id):
     delhistory = MaintenenceRequest.objects.get(pk=id)
     delhistory.delete()
     messages.success(request, 'Deleted successfully')
-    return redirect('requesthistory')
+    return redirect('tenant:requesthistory')
 
 def available_facilities(request):
     availablefacilities = Facility.objects.all()
@@ -216,7 +217,7 @@ def view_announcement(request):
     return render(request, 'Tenant/ViewAnnouncement.html',context)
 
 def delete_announcement(request, id):
-    deleteannouncement = Announcement.objects.get(notification_id=id)
+    deleteannouncement = Notification.objects.get(notification_id=id)
     deleteannouncement.delete()
     messages.success(request, 'Deleted successfully')
     return redirect('tenant:viewannouncement')

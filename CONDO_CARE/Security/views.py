@@ -37,15 +37,6 @@ def incident_reporting(request):
     return render(request, 'Security/IncidentRep.html')
 
 
-
-
-
-
-
-
-
-
-
 def patrol_reporting(request):
     return render(request, 'Security/PatrolRep.html')
      

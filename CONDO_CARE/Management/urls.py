@@ -16,7 +16,9 @@ urlpatterns = [
     path('viewfacilities/', views.view_facilities, name='viewfacilities'),
     path('complainhistorytenant/', views.complain_history_tenant, name='complainhistorytenant'),
     path('createnotification', views.create_notification, name='createnotification'),
-    
+    path('incidentreporting', views.incident_reporting, name='incidentreporting'),
+
+    path('deleteincidentreporting/<int:id>/', views.delete_incident_reporting, name='delete_incident_reporting'),
     path('deletehistorytenant/<int:id>/', views.delete_history_tenant, name='delete_history_tenant'),
     path('deleteallfacilities/', views.delete_all_facilities, name='delete_all_facilities'),
     path('deletetenantbooking/<int:id>/', views.delete_tenant_booking, name='delete_tenant_booking'),

@@ -22,14 +22,14 @@
                 {% csrf_token %}
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password" required>
-                <select name="usertype">
+                {% comment %} <select name="usertype">
                     <option value="" disabled selected>Select User Type</option>
                     <option value="Tenant">Tenant</option>
                     <option value="Owner">Owner</option>
                     <option value="Security">Security</option>
                     <option value="Management">Management</option>
-                </select> 
-                <button type="submit">Sign Up</button>
+                </select>  {% endcomment %}
+                <button type="submit">Sign Up</button> 
                 {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}" role="alert">
                     {{ message }}

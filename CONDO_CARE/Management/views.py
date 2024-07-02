@@ -1,4 +1,5 @@
 from django.http import FileResponse, Http404, HttpResponse
+from Security.models import IncidentReport
 from Tenant.models import FacilityBooking, MaintenenceRequest, MakeComplaint
 from .models import *
 from django.contrib import messages
@@ -70,7 +71,7 @@ def create_notification(request):
             audience=audience,
         )
         createnotification.save()
-        messages.success(request,'Notification Created successfully!')
+        messages.success(request,'Announcement Created successfully!')
         return redirect('management:createnotification')
     return render(request, 'Management/CreateNotification.html')
 
@@ -209,7 +210,7 @@ def manage_facilities(request):
                     'available_time': data['available_time']
                 }
             )
-        messages.success(request, 'Added Facilities successfully')
+        messages.success(request, 'Updated Facilities successfully')
         return redirect('management:managefacilities')
     return render(request, 'Management/ManageFacilities.html')
 
@@ -237,7 +238,7 @@ def complain_history_tenant(request):
 def delete_history_tenant(request, id):
     deletehistorytenant = MakeComplaint.objects.get(id=id)
     deletehistorytenant.delete()
-    messages.success(request, 'Deleted Tenant history successfully')
+    messages.success(request, 'Deleted Tenant Complain successfully')
     return redirect('management:complainhistorytenant')
 
     
@@ -249,3 +250,16 @@ def download_image_complainhistory(request, id):
         return response
     else:
         raise Http404("No image found.")    
+
+def incident_reporting(request):
+    incidentreporitng = IncidentReport.objects.all()
+    context = {
+        'incidentreporitng':incidentreporitng
+    }   
+    return render(request, 'Management/IncidentReporting.html',context)
+
+def delete_incident_reporting(request, id):
+    deletehistorytenant = IncidentReport.objects.get(id=id)
+    deletehistorytenant.delete()
+    messages.success(request, 'Deleted Incident successfully')
+    return redirect('management:incidentreporting')

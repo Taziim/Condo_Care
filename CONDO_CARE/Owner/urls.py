@@ -15,6 +15,7 @@ urlpatterns = [
     path('createnotificationowner/', views.create_notification_Owner, name='createnotificationowner'),
     path('notificationlogowner/', views.notification_log_Owner, name='notificationlogowner'),
 
+
     path('delete_info/<int:id>/', views.delete_info, name='delete_info'),
     path('delete_agree/<int:id>/', views.delete_agree, name='delete_agree'),
     path('download_pdf/<int:pdf_id>/', views.download_pdf, name='download_pdf'),

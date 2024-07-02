@@ -1,6 +1,7 @@
 from django.http import FileResponse, Http404, HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from Management.models import Notification
 from Tenant.models import TenantPayment
 from .models import *
 from django.contrib import messages
@@ -30,14 +31,14 @@ def create_notification_Owner(request):
     return render(request, 'Owner/CreateNotificationOwner.html')
 
 def notification_log_Owner(request):
-    notificationlogowner = NotificationOwner.objects.all()
+    notificationlogowner = Notification.objects.all()
     context = {
         'notificationlogowner':notificationlogowner
     }   
     return render(request, 'Owner/NotificationLog.html',context)
 
 def delete_notification_Owner(request, id):
-    deletenotificationowner = NotificationOwner.objects.get(notification_id=id)
+    deletenotificationowner = Notification.objects.get(notification_id=id)
     deletenotificationowner.delete()
     messages.success(request, 'Deleted successfully')
     return redirect('owner:notificationlogowner')
@@ -182,7 +183,7 @@ def add_tenant3(request):
 
             )
         addContract.save()
-        return redirect('owner:dashboardowner')  
+        return redirect('owner:viewtenantinfo')  
     return render(request, 'Owner/addTenantown3.html')
 
 def view_tenant_info(request):
@@ -224,5 +225,4 @@ def download_driving_license(request, id):
     response = HttpResponse(addform1, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="driving_license.pdf"'
     return response
-
 

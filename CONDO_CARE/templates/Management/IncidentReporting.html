@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'incidentreportingsecurity.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Incident</title>
+</head>
+<body>
+
+<div class="table_1">
+    <table>
+      <caption>
+        Incident 
+      </caption>
+    <tr>
+        <th>Incident</th>
+        <th>Description</th>
+        <th>location</th>
+        <th>Reported Time</th>
+        <th>Actions</th>
+    </tr>
+    {% for incidentreporitng in incidentreporitng %}
+    <tr>
+      <td>{{incidentreporitng.incidenttype}}</td>
+      <td>{{incidentreporitng.description}}</td>
+      <td>{{incidentreporitng.location}}</td>
+      <td>{{incidentreporitng.datetimereported}}</td>
+      <td>
+        <a href="{% url 'management:delete_incident_reporting' incidentreporitng.id %}">
+          <i class="fa-solid fa-trash"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+    </table>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
