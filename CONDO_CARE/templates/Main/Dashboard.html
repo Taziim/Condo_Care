@@ -82,8 +82,15 @@
         {% endfor %}
     </div>
     <div class="dashboard_div">
-        <h3>Surveillance Analysis</h3>
-        <div id="surveillance-charts"></div>
+        {% if notifications %}
+        <h3>Announcement</h3>
+        <p>Title :{{ notifications.title }}</p>
+        <p>Comtent:{{ notifications.content }}</p>
+        <p>Post Date:{{ notifications.post_date }}</p>
+        <p>Audience:{{ notifications.audience }}</p>
+        {% else %}
+        <p>No announcements available.</p>
+        {% endif %}
     </div>
 </div>
 </body>

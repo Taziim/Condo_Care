@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from Management.models import Notification
 from Tenant.models import MaintenenceRequest, VisitorRegistrationTenant
 from Security.models import VisitorRegistration
 from .models import *
@@ -49,6 +50,7 @@ def dashboard(request):
     total_visitors = visitorlog.count()
     last_visitor = visitorlog.first() if total_visitors > 0 else None
     visitorlogs = VisitorRegistrationTenant.objects.all().order_by('-datetime_local')
+    notifications = Notification.objects.all().order_by('-post_date').first()
   
 
     context = {
@@ -57,6 +59,7 @@ def dashboard(request):
         "maintenance_requests": maintenance_requests,
         "total_maintenance_requests": total_maintenance_requests,
         "visitorlogs": visitorlogs,
+        "notifications": notifications,
     }
 
     return render(request,'Main/Dashboard.html',context)
