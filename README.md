@@ -32,5 +32,7 @@
   5.python manage.py sqlmigrate Tenant 0001
 14...now write python manage.py migrate to migrate the table to the database and check in the postgrel database in the schema and table section
 15...Now ready to go run the command in the terminal (venv) PS C:\Users\tariq\OneDrive\Desktop\Condo_Care\CONDO_CARE> python manage.py runserver  
-16.if the login system cannot render you can direct go to dashaboard by putting http://127.0.0.1:8000/dashboard/ after the port number.
 
+-------------------------------------------------------Note----------------------------------------------------
+16.if the login system cannot render you can direct go to dashaboard by putting http://127.0.0.1:8000/dashboard/ after the port number.
+17.if you Donot want to create virtual environment you can.you can run directly from ternminal without creating the virtual environment.
